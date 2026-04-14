@@ -1,55 +1,42 @@
-# GSurf Website — Revamped Design (v3)
+# GSurf Website — Revamped Design (v4)
 
 ## 📁 Folder Structure
 
 ```
 gsurf-website-v2/
 │
-├── index.html                        ← Homepage
+├── index.html                            ← Homepage (with services strip)
 │
 └── pages/
     ├── about.html
     ├── contact.html
-    ├── coverage.html                 ← Has Popular Hubs section
+    ├── coverage.html                     ← Popular Hubs (Bangalore > HSR, BTM)
     ├── business.html
-    ├── plans.html
+    ├── plans.html                        ← Residential plans
     ├── sitemap.html
     │
+    ├── services/                         ← NEW: Individual service pages
+    │   ├── home-broadband.html
+    │   ├── office-broadband.html
+    │   ├── leased-lines.html
+    │   ├── download-1gbps.html
+    │   ├── speed-on-demand.html
+    │   ├── upgrade-speed.html
+    │   ├── home-security.html
+    │   ├── mobile-connectivity.html
+    │   ├── seamless-wifi.html
+    │   └── enterprise-plans.html        ← Full enterprise pricing page
+    │
     ├── bangalore/
-    │   ├── index.html                ← Bangalore City HyperLocal
-    │   └── plans.html                ← Bangalore-specific Plans
-    │
+    │   ├── index.html
+    │   └── plans.html
     ├── hsr-layout/
-    │   └── index.html                ← HSR Layout Area Drilldown
-    │
-    └── btm-layout/
-        └── index.html                ← BTM Layout Area Drilldown
+    │   └── index.html
+    ├── btm-layout/
+    │   └── index.html
+    └── docs/
+        ├── seo-audit.html
+        └── dev-notes.html
 ```
 
-## 🧭 Hierarchy
-
-```
-Homepage
-│
-├── Fiber Plans / Business / Coverage / About / Contact
-│
-└── Bangalore  (pages/bangalore/)
-    ├── Bangalore Plans
-    ├── HSR Layout  (pages/hsr-layout/)
-    └── BTM Layout  (pages/btm-layout/)
-```
-
-## ✅ What Was Updated (v3)
-
-- Chennai → Bangalore (city page, all content, title, office address, hotline)
-- Adyar → HSR Layout (area page, all content, local landmarks, team location)
-- T. Nagar → BTM Layout (area page, all content, pincode, landmarks)
-- Coverage page: Bangalore card is now a clickable link
-- Coverage page: New "Popular Hubs" section with HSR Layout + BTM Layout cards
-- Footer and nav updated sitewide across all 11 pages
-- Internal links: HSR + BTM pills inside Bangalore page are clickable
-
-## 📌 Developer Notes
-
-- To add more areas under Bangalore: copy `pages/hsr-layout/` → `pages/koramangala/`, update content, add card to Coverage Popular Hubs + Bangalore coverage grid
-- All links use relative paths — no domain hardcoded
+## 🧭 Total: 21 pages

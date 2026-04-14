@@ -1,153 +1,72 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "outline": "#727783",
-                    "secondary-fixed-dim": "#b8c5f1",
-                    "on-error-container": "#93000a",
-                    "surface-container-high": "#e2e7ff",
-                    "primary-container": "#0061b4",
-                    "on-secondary-fixed": "#0a1a3c",
-                    "on-primary": "#ffffff",
-                    "surface-container-highest": "#dae2ff",
-                    "tertiary-fixed": "#ffdbd0",
-                    "on-secondary-container": "#4d5a81",
-                    "error": "#ba1a1a",
-                    "outline-variant": "#c1c6d3",
-                    "surface": "#faf8ff",
-                    "tertiary-fixed-dim": "#ffb59e",
-                    "tertiary": "#892500",
-                    "inverse-primary": "#a6c8ff",
-                    "on-primary-container": "#caddff",
-                    "secondary": "#505d84",
-                    "surface-container": "#eaedff",
-                    "primary": "#00498a",
-                    "on-background": "#0a1a3c",
-                    "primary-fixed": "#d5e3ff",
-                    "on-secondary-fixed-variant": "#38466a",
-                    "inverse-on-surface": "#eef0ff",
-                    "error-container": "#ffdad6",
-                    "surface-container-lowest": "#ffffff",
-                    "on-tertiary-fixed-variant": "#852400",
-                    "secondary-container": "#c6d3ff",
-                    "surface-dim": "#ced9ff",
-                    "background": "#faf8ff",
-                    "tertiary-container": "#b23300",
-                    "surface-bright": "#faf8ff",
-                    "primary-fixed-dim": "#a6c8ff",
-                    "on-tertiary-fixed": "#3a0b00",
-                    "inverse-surface": "#212f53",
-                    "on-primary-fixed": "#001c3b",
-                    "surface-variant": "#dae2ff",
-                    "on-surface": "#0a1a3c",
-                    "on-tertiary": "#ffffff",
-                    "on-surface-variant": "#414752",
-                    "on-error": "#ffffff",
-                    "secondary-fixed": "#dae2ff",
-                    "surface-container-low": "#f2f3ff",
-                    "surface-tint": "#005fb0",
-                    "on-secondary": "#ffffff",
-                    "on-primary-fixed-variant": "#004786",
-                    "on-tertiary-container": "#ffd2c5"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "fontFamily": {
-                    "headline": ["Plus Jakarta Sans"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
-          },
-        },
-      }
-    </script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "outline": "#727783","secondary-fixed-dim": "#b8c5f1","on-error-container": "#93000a",
+        "surface-container-high": "#e2e7ff","primary-container": "#0061b4","on-secondary-fixed": "#0a1a3c",
+        "on-primary": "#ffffff","surface-container-highest": "#dae2ff","tertiary-fixed": "#ffdbd0",
+        "on-secondary-container": "#4d5a81","error": "#ba1a1a","outline-variant": "#c1c6d3",
+        "surface": "#faf8ff","tertiary-fixed-dim": "#ffb59e","tertiary": "#892500",
+        "inverse-primary": "#a6c8ff","on-primary-container": "#caddff","secondary": "#505d84",
+        "surface-container": "#eaedff","primary": "#00498a","on-background": "#0a1a3c",
+        "primary-fixed": "#d5e3ff","on-secondary-fixed-variant": "#38466a","inverse-on-surface": "#eef0ff",
+        "error-container": "#ffdad6","surface-container-lowest": "#ffffff","on-tertiary-fixed-variant": "#852400",
+        "secondary-container": "#c6d3ff","surface-dim": "#ced9ff","background": "#faf8ff",
+        "tertiary-container": "#b23300","surface-bright": "#faf8ff","primary-fixed-dim": "#a6c8ff",
+        "on-tertiary-fixed": "#3a0b00","inverse-surface": "#212f53","on-primary-fixed": "#001c3b",
+        "surface-variant": "#dae2ff","on-surface": "#0a1a3c","on-tertiary": "#ffffff",
+        "on-surface-variant": "#414752","on-error": "#ffffff","secondary-fixed": "#dae2ff",
+        "surface-container-low": "#f2f3ff","surface-tint": "#005fb0","on-secondary": "#ffffff",
+        "on-primary-fixed-variant": "#004786","on-tertiary-container": "#ffd2c5"
+      },
+      borderRadius: { "DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem" },
+      fontFamily: { "headline": ["Plus Jakarta Sans"],"body": ["Inter"],"label": ["Inter"] }
+    }
+  }
+}
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-nav {
-            backdrop-filter: blur(12px);
-        }
-    </style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+
+<title>Speed On Demand — Flexible Internet Speed Boost | GSurf Fiber Broadband</title>
+<meta name="description" content="GSurf Speed On Demand lets you boost your internet speed instantly from the app. Hourly or daily boosts, pay per use. Available on all GSurf fiber plans in Bangalore.">
 </head>
 <body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
-<div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
-<div class="flex items-center gap-8">
-<span class="text-2xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-50 font-headline">GSurf</span>
-<div class="hidden md:flex items-center gap-6">
-<a class="font-headline font-bold tracking-tight text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Fiber Plans</a>
-<a class="font-headline font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Business</a>
-      <a class="hover:text-blue-600 transition-all" href="services/enterprise-plans.html">Enterprise Plans</a>
-<a class="font-headline font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Coverage</a>
-<a class="font-headline font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Support</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="text-on-surface-variant font-headline font-bold px-4 py-2 hover:text-primary transition-colors">Login</button>
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-headline font-bold scale-95 active:scale-90 transition-transform hover:shadow-lg">Get Started</button>
-</div>
-</div>
-</nav>
-<!-- SideNavBar (Portal Quick Access) -->
-<aside class="hidden lg:flex flex-col p-4 space-y-6 bg-[#ffffff] dark:bg-[#0a1a3c] rounded-l-2xl fixed right-0 top-1/2 -translate-y-1/2 shadow-2xl z-40 font-['Inter'] text-sm">
-<div class="flex flex-col items-center gap-1 mb-2">
-<span class="material-symbols-outlined text-primary text-2xl">account_circle</span>
-<span class="text-[10px] font-bold text-on-surface-variant">PORTAL</span>
-</div>
-<div class="flex flex-col gap-4">
-<button class="flex flex-col items-center p-3 rounded-xl text-[#414752] hover:bg-[#f2f3ff] dark:hover:bg-[#1a2a4c] hover:translate-x-[-4px] transition-transform">
-<span class="material-symbols-outlined">payments</span>
-<span class="text-[10px] mt-1 font-medium">Quick Pay</span>
-</button>
-<button class="flex flex-col items-center p-3 rounded-xl bg-[#eaedff] text-[#00498a] font-semibold hover:translate-x-[-4px] transition-transform">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
-<span class="text-[10px] mt-1">Recharge</span>
-</button>
-</div>
-</aside>
-<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto flex-grow">
-<!-- Hero Section -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
 <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
-  <a href="../index.html" class="flex items-center">
+  <a href="../../index.html" class="flex items-center">
     <img src="data:image/png;base64,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" alt="GSurf Logo" style="height:44px;width:auto;" />
   </a>
   <nav class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/plans.html">Fiber Plans</a>
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/business.html">Business</a>
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/coverage.html">Coverage</a>
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/contact.html">Support</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../plans.html">Fiber Plans</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../business.html">Business</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../coverage.html">Coverage</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../contact.html">Support</a>
   </nav>
   <div class="flex items-center space-x-4">
     <button class="text-slate-600 font-bold text-sm">Login</button>
-    <a href="../pages/plans.html" class="bg-gradient-to-br from-[#00498a] to-[#0061b4] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transition-all">Get Started</a>
+    <a href="../plans.html" class="bg-gradient-to-br from-[#00498a] to-[#0061b4] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transition-all">Get Started</a>
   </div>
   <button class="md:hidden" id="mobile-menu-btn">
     <span class="material-symbols-outlined text-[#00498a]">menu</span>
   </button>
 </div>
 <div class="md:hidden hidden bg-white border-t border-slate-100 px-8 py-4 space-y-3" id="mobile-menu">
-  <a class="block font-bold text-slate-600 py-2" href="../pages/plans.html">Fiber Plans</a>
-  <a class="block font-bold text-slate-600 py-2" href="../pages/business.html">Business</a>
-  <a class="block font-bold text-slate-600 py-2" href="../pages/coverage.html">Coverage</a>
-  <a class="block font-bold text-slate-600 py-2" href="../pages/contact.html">Support</a>
+  <a class="block font-bold text-slate-600 py-2" href="../plans.html">Fiber Plans</a>
+  <a class="block font-bold text-slate-600 py-2" href="../business.html">Business</a>
+  <a class="block font-bold text-slate-600 py-2" href="../coverage.html">Coverage</a>
+  <a class="block font-bold text-slate-600 py-2" href="../contact.html">Support</a>
 </div>
 <script>
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -155,198 +74,117 @@
   });
 </script>
 </header>
-<!-- Plans Filter / Toggle -->
-<div class="flex justify-center mb-12">
-<div class="bg-surface-container p-1.5 rounded-full flex gap-1">
-<button class="px-8 py-2.5 rounded-full bg-surface-container-lowest text-primary font-bold shadow-sm transition-all">Monthly</button>
-<button class="px-8 py-2.5 rounded-full text-on-surface-variant font-medium hover:text-on-surface transition-all">Annual (Save 15%)</button>
-</div>
-</div>
-<!-- Plans Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Plan 1: Starter -->
-<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_20px_40px_rgba(10,26,60,0.04)] ring-1 ring-outline-variant/10 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
-<div class="mb-8">
-<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary">speed</span>
-</div>
-<h3 class="text-2xl font-headline font-extrabold text-on-background">50 Mbps</h3>
-<p class="text-on-surface-variant text-sm mt-1">Starter Fiber</p>
-</div>
-<div class="space-y-4 mb-10 flex-grow">
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Unlimited Data (3300GB FUP)</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Free Wi-Fi Router</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">24/7 Priority Support</span>
-</div>
-</div>
-<div class="pt-8 border-t border-outline-variant/10">
-<div class="flex items-baseline gap-1 mb-2">
-<span class="text-3xl font-headline font-extrabold text-on-background">₹499</span>
-<span class="text-on-surface-variant text-sm">/ month</span>
-</div>
-<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹5,389*</p>
-<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-headline font-bold hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">Buy Now</button>
-</div>
-</div>
-<!-- Plan 2: Value -->
-<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_20px_40px_rgba(10,26,60,0.04)] ring-1 ring-outline-variant/10 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
-<div class="mb-8">
-<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary">bolt</span>
-</div>
-<h3 class="text-2xl font-headline font-extrabold text-on-background">150 Mbps</h3>
-<p class="text-on-surface-variant text-sm mt-1">Value Plus</p>
-</div>
-<div class="space-y-4 mb-10 flex-grow">
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Unlimited Data (3300GB FUP)</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Free Wi-Fi Router</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">OTT Subscriptions Included</span>
-</div>
-</div>
-<div class="pt-8 border-t border-outline-variant/10">
-<div class="flex items-baseline gap-1 mb-2">
-<span class="text-3xl font-headline font-extrabold text-on-background">₹799</span>
-<span class="text-on-surface-variant text-sm">/ month</span>
-</div>
-<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹8,629*</p>
-<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-headline font-bold hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">Buy Now</button>
-</div>
-</div>
-<!-- Plan 3: Popular -->
-<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_30px_60px_rgba(10,26,60,0.12)] ring-2 ring-primary flex flex-col hover:shadow-2xl transition-all relative overflow-hidden scale-105 z-10">
-<div class="absolute top-0 right-0 bg-primary text-on-primary px-6 py-2 rounded-bl-2xl font-headline font-bold text-xs uppercase tracking-widest">Popular</div>
-<div class="mb-8">
-<div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
-</div>
-<h3 class="text-2xl font-headline font-extrabold text-on-background">300 Mbps</h3>
-<p class="text-primary font-bold text-sm mt-1">Elite Gamer</p>
-</div>
-<div class="space-y-4 mb-10 flex-grow">
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm font-semibold">Unlimited Data (3300GB FUP)</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Dual-Band Gigabit Router</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">All OTT Premium Access</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">No Lag Gaming Engine</span>
-</div>
-</div>
-<div class="pt-8 border-t border-outline-variant/20">
-<div class="flex items-baseline gap-1 mb-2">
-<span class="text-4xl font-headline font-extrabold text-on-background">₹999</span>
-<span class="text-on-surface-variant text-sm font-medium">/ month</span>
-</div>
-<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹10,789*</p>
-<button class="w-full py-4 rounded-xl bg-tertiary-container text-on-tertiary font-headline font-bold hover:opacity-90 transition-all shadow-lg shadow-tertiary-container/30">Buy Now</button>
-</div>
-</div>
-<!-- Plan 4: Ultimate -->
-<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_20px_40px_rgba(10,26,60,0.04)] ring-1 ring-outline-variant/10 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
-<div class="mb-8">
-<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary">public</span>
-</div>
-<h3 class="text-2xl font-headline font-extrabold text-on-background">1000 Mbps</h3>
-<p class="text-on-surface-variant text-sm mt-1">GigaForce</p>
-</div>
-<div class="space-y-4 mb-10 flex-grow">
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Unlimited Data (3300GB FUP)</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Premium Mesh Router Set</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
-<span class="text-sm">Personal Relationship Manager</span>
-</div>
-</div>
-<div class="pt-8 border-t border-outline-variant/10">
-<div class="flex items-baseline gap-1 mb-2">
-<span class="text-3xl font-headline font-extrabold text-on-background">₹2,499</span>
-<span class="text-on-surface-variant text-sm">/ month</span>
-</div>
-<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹26,989*</p>
-<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-headline font-bold hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">Buy Now</button>
-</div>
-</div>
-</div>
-<!-- Secondary Banner Section -->
-<section class="mt-24 bg-surface-container rounded-[3rem] p-12 relative overflow-hidden flex flex-col md:flex-row items-center gap-12">
-<div class="md:w-1/2 z-10 text-center md:text-left">
-<h2 class="text-3xl md:text-4xl font-headline font-extrabold text-on-background mb-6 leading-tight">Switch to GSurf Fiber and experience the difference</h2>
-<ul class="space-y-4 mb-8 inline-block text-left">
-<li class="flex items-center gap-3">
-<div class="p-1 rounded-full bg-primary text-on-primary">
-<span class="material-symbols-outlined text-sm">done</span>
-</div>
-<span class="font-medium">99.9% Network Uptime Guaranteed</span>
-</li>
-<li class="flex items-center gap-3">
-<div class="p-1 rounded-full bg-primary text-on-primary">
-<span class="material-symbols-outlined text-sm">done</span>
-</div>
-<span class="font-medium">Free Installation on Annual Plans</span>
-</li>
-<li class="flex items-center gap-3">
-<div class="p-1 rounded-full bg-primary text-on-primary">
-<span class="material-symbols-outlined text-sm">done</span>
-</div>
-<span class="font-medium">Secure Firewall &amp; Parental Controls</span>
-</li>
-</ul>
-<button class="bg-primary-container text-on-primary px-8 py-4 rounded-2xl font-headline font-bold hover:shadow-xl transition-all">Check Eligibility In Your Area</button>
-</div>
-<div class="md:w-1/2 relative">
-<div class="aspect-square w-full rounded-[2rem] overflow-hidden shadow-2xl">
-<img alt="Modern server room with blue glowing lights and optical fiber cables in a professional data center setting" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5C7bogPoJrwA7NX3L2cxA4YrWCEs4aDqqfGt2DmmDOzwZv_PzFUiRVrbeKjBRAqT66MDmK3N8AIiXJuU7Bqht0gjWVh0-qq85LRTMqYxR2hLtS9ohKLVmap3_oZHzP_tQumbct891iaiCifuqiolZTkGDCJnVsS4RBy6k8AvZtKNa-ZmGldG4ymVShAz-e8Ddv5GrtIpXoqB8lfYpYQoIHLujMhqDJCnrmNBXyZaLp7lyjskpYFSA4K3TnFTEPHNYImZfRKnrf0"/>
-</div>
-</div>
+<main class="pt-28 pb-20 flex-grow">
+
+<section class="bg-gradient-to-br from-surface-container-low to-surface py-20 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <div class="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">signal_cellular_alt</span>
+        </div>
+        <span class="inline-block bg-secondary-container text-on-secondary-container text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Flexible Speed Boosts</span>
+        <h1 class="text-5xl md:text-6xl font-headline font-extrabold text-on-background leading-tight tracking-tight">Speed On Demand</h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">Life is unpredictable — your internet speed shouldn't be. GSurf's Speed On Demand lets you temporarily boost your plan speed for events, deadlines, or big downloads, and pay only for what you use.</p>
+        <div class="flex gap-4 pt-2">
+          <a href="../plans.html" class="bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:shadow-xl transition-all">View Plans</a>
+          <a href="../contact.html" class="border border-outline-variant/40 text-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-surface-container transition-all">Get Quote</a>
+        </div>
+      </div>
+      <div class="relative hidden lg:block">
+        <div class="absolute -top-8 -right-8 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="bg-surface-container-lowest rounded-[2rem] p-12 shadow-2xl border border-outline-variant/10 flex items-center justify-center aspect-square">
+          <span class="material-symbols-outlined text-primary" style="font-size:160px;font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 48">signal_cellular_alt</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-24 px-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-headline font-bold text-on-background mb-4">What's Included</h2>
+      <p class="text-on-surface-variant max-w-2xl mx-auto">Everything you need for a seamless experience, backed by GSurf's fiber infrastructure.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10 group">
+      <div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-primary text-3xl">rocket_launch</span>
+      </div>
+      <h3 class="text-xl font-headline font-bold text-on-background mb-3">Instant Speed Boost</h3>
+      <p class="text-on-surface-variant leading-relaxed text-sm">Activate a speed boost from the GSurf app in seconds. No technician visit, no waiting.</p>
+    </div>
+    <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10 group">
+      <div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-primary text-3xl">timer</span>
+      </div>
+      <h3 class="text-xl font-headline font-bold text-on-background mb-3">Hourly or Daily Boosts</h3>
+      <p class="text-on-surface-variant leading-relaxed text-sm">Choose short boosts for a single event or a full-day upgrade for heavy workdays.</p>
+    </div>
+    <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10 group">
+      <div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-primary text-3xl">payments</span>
+      </div>
+      <h3 class="text-xl font-headline font-bold text-on-background mb-3">Pay Per Use</h3>
+      <p class="text-on-surface-variant leading-relaxed text-sm">No monthly commitment. Pay only for the speed you boost, when you boost it.</p>
+    </div>
+    <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10 group">
+      <div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-primary text-3xl">devices</span>
+      </div>
+      <h3 class="text-xl font-headline font-bold text-on-background mb-3">Works Across All Devices</h3>
+      <p class="text-on-surface-variant leading-relaxed text-sm">Speed boosts apply to your entire home network — every device benefits automatically.</p>
+    </div>
+    <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10 group">
+      <div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-primary text-3xl">history</span>
+      </div>
+      <h3 class="text-xl font-headline font-bold text-on-background mb-3">Boost History & Controls</h3>
+      <p class="text-on-surface-variant leading-relaxed text-sm">Track all your boosts, see usage patterns, and set boost schedules from the app.</p>
+    </div>
+    <div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10 group">
+      <div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-primary text-3xl">tune</span>
+      </div>
+      <h3 class="text-xl font-headline font-bold text-on-background mb-3">Works on Any GSurf Plan</h3>
+      <p class="text-on-surface-variant leading-relaxed text-sm">Speed On Demand is available as an add-on to any GSurf residential or business plan.</p>
+    </div>
+    </div>
+  </div>
+</section>
+<section class="py-24 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="bg-on-background rounded-[3rem] p-12 lg:p-20 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-5">
+        <div class="w-full h-full" style="background:radial-gradient(circle at 20% 50%, #a6c8ff 0%, transparent 60%)"></div>
+      </div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-headline font-extrabold text-surface mb-4 max-w-xl">Boost Your Speed Anytime</h2>
+        <p class="text-surface-variant/80 text-lg">No contracts · Instant activation · Available on all GSurf plans</p>
+      </div>
+      <div class="relative z-10 flex flex-col sm:flex-row gap-4 shrink-0">
+        <a href="../contact.html" class="bg-primary text-on-primary px-10 py-4 rounded-full font-headline font-bold hover:scale-105 transition-transform text-center">Get Connection</a>
+        <a href="../plans.html" class="border border-surface-variant/30 text-surface px-10 py-4 rounded-full font-headline font-bold hover:bg-white/10 transition-all text-center">See Plans</a>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-<!-- Footer -->
 <footer class="w-full py-12 mt-auto bg-slate-50 border-t border-slate-200">
 <div class="max-w-7xl mx-auto px-8">
   <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
-    <a href="../index.html" class="flex items-center">
+    <a href="../../index.html" class="flex items-center">
       <img src="data:image/png;base64,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" alt="GSurf Logo" style="height:44px;width:auto;" />
     </a>
     <nav class="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
-      <a class="hover:text-blue-600 transition-all" href="../pages/plans.html">Fiber Plans</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/business.html">Business</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/coverage.html">Coverage</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/bangalore/index.html">Bangalore</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/hsr-layout/index.html">HSR Layout</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/btm-layout/index.html">BTM Layout</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/about.html">About Us</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/contact.html">Contact</a>
+      <a class="hover:text-blue-600 transition-all" href="../plans.html">Fiber Plans</a>
+      <a class="hover:text-blue-600 transition-all" href="../business.html">Business</a>
+      <a class="hover:text-blue-600 transition-all" href="../coverage.html">Coverage</a>
+      <a class="hover:text-blue-600 transition-all" href="../bangalore/index.html">Bangalore</a>
+      <a class="hover:text-blue-600 transition-all" href="../hsr-layout/index.html">HSR Layout</a>
+      <a class="hover:text-blue-600 transition-all" href="../btm-layout/index.html">BTM Layout</a>
+      <a class="hover:text-blue-600 transition-all" href="../about.html">About Us</a>
+      <a class="hover:text-blue-600 transition-all" href="../contact.html">Contact</a>
     </nav>
   </div>
   <div class="border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
@@ -361,7 +199,7 @@
 
   <!-- SEO Docs Highlighted Button -->
   <div class="border-t border-slate-700/50 mt-6 pt-6 flex justify-center">
-    <a href="docs/seo-audit.html"
+    <a href="../docs/seo-audit.html"
        style="display:inline-flex;align-items:center;gap:0.6rem;
               background:linear-gradient(135deg,#1e293b,#0f172a);
               border:1px solid #334155;
@@ -388,3 +226,5 @@
   </div>
 </footer>
 </body></html>
+</body>
+</html>
