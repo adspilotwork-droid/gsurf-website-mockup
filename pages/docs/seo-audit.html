@@ -4,955 +4,429 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GSurf SEO Audit Report — April 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #09090b;
-    --surface: #111113;
-    --surface2: #18181b;
-    --surface3: #1f1f23;
-    --border: #27272a;
-    --border2: #3f3f46;
-    --text: #fafafa;
-    --muted: #a1a1aa;
-    --muted2: #71717a;
-    --critical: #ef4444;
-    --critical-bg: #1a0a0a;
-    --critical-border: #7f1d1d;
-    --high: #f97316;
-    --high-bg: #1a0e04;
-    --high-border: #7c2d12;
-    --medium: #eab308;
-    --medium-bg: #161204;
-    --medium-border: #713f12;
-    --good: #22c55e;
-    --good-bg: #051a0d;
-    --good-border: #14532d;
-    --blue: #3b82f6;
-    --blue-bg: #0a0e1a;
-    --accent: #6366f1;
-    --accent2: #8b5cf6;
-  }
+:root {
+  --bg:#f4f6fb;--surface:#ffffff;--surface2:#f0f3fa;--surface3:#e6ebf5;
+  --border:#dde3ef;--border2:#c5cfe0;
+  --text:#0f1c35;--muted:#4a5873;--muted2:#8e9bb5;
+  --crit:#c92020;--crit-bg:#fff1f1;--crit-bd:#fbd5d5;--crit-bar:#ef4444;
+  --high:#c4500a;--high-bg:#fff8f0;--high-bd:#fddcbb;--high-bar:#f97316;
+  --med:#9a6c00;--med-bg:#fffceb;--med-bd:#fde99a;--med-bar:#eab308;
+  --good:#166534;--good-bg:#f0fdf4;--good-bd:#bbf7d0;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bd:#bfdbfe;
+  --acc:#4338ca;--acc-bg:#eef2ff;--acc-bd:#c7d2fe;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;min-height:100vh}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* TOP BAR */
+.bar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;box-shadow:0 1px 4px rgba(15,28,53,.06)}
+.bar-l{display:flex;align-items:center;gap:.875rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--crit-bg);border:1px solid var(--crit-bd);border-radius:6px;padding:.25rem .7rem;font-size:.68rem;font-weight:700;color:var(--crit);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--crit);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.bar-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--muted)}
+.bar-r{display:flex;align-items:center;gap:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .85rem;border-radius:7px;font-size:.76rem;font-weight:600;text-decoration:none;transition:all .15s;border:1px solid;white-space:nowrap;font-family:'Inter',sans-serif}
+.btn-ghost{background:var(--surface);color:var(--muted);border-color:var(--border)}
+.btn-ghost:hover{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+.btn-acc{background:var(--acc-bg);color:var(--acc);border-color:var(--acc-bd)}
+.btn-acc:hover{background:var(--acc);color:#fff}
+.btn-live{background:var(--good-bg);color:var(--good);border-color:var(--good-bd)}
+.btn-live:hover{background:var(--good);color:#fff}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+/* LAYOUT */
+.wrap{max-width:1080px;margin:0 auto;padding:2.5rem 2rem 5rem}
 
-  /* ── TOP BAR ── */
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(9,9,11,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
+/* HERO */
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(15,28,53,.05)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--crit-bar),var(--high-bar),var(--med-bar),var(--acc))}
+.eyebrow{display:inline-flex;align-items:center;gap:.4rem;background:var(--crit-bg);border:1px solid var(--crit-bd);color:var(--crit);padding:.22rem .7rem;border-radius:5px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.875rem;font-family:'JetBrains Mono',monospace}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:800;color:var(--text);margin-bottom:.5rem;line-height:1.2}
+.hero h1 span{color:var(--acc)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:.78rem;color:var(--muted);margin-top:.5rem}
 
-  .topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+/* SCORE GRID */
+.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:2rem}
+.sc{border-radius:10px;padding:1.1rem 1rem;text-align:center;border:1px solid}
+.sc .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.1rem;font-weight:800;line-height:1;margin-bottom:.2rem}
+.sc .l{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+.sc-r{background:var(--crit-bg);border-color:var(--crit-bd)}.sc-r .n{color:var(--crit)}.sc-r .l{color:var(--crit)}
+.sc-o{background:var(--high-bg);border-color:var(--high-bd)}.sc-o .n{color:var(--high)}.sc-o .l{color:var(--high)}
 
-  .topbar-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.3rem 0.75rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-  }
+/* SECTION HEADER */
+.sh{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.25rem}
+.sh h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);white-space:nowrap}
+.sh::after{content:'';flex:1;height:1px;background:var(--border)}
 
-  .topbar-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--critical); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
+/* ISSUE CARDS — fully open, no JS */
+.issues{display:flex;flex-direction:column;gap:.875rem}
+.ic{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,28,53,.04)}
+.ic.c{border-left:4px solid var(--crit-bar)}
+.ic.h{border-left:4px solid var(--high-bar)}
+.ic.m{border-left:4px solid var(--med-bar)}
+.ic-top{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.4rem 1rem}
+.ic-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:700;flex-shrink:0;margin-top:2px}
+.ic.c .ic-num{background:var(--crit-bg);color:var(--crit);border:1px solid var(--crit-bd)}
+.ic.h .ic-num{background:var(--high-bg);color:var(--high);border:1px solid var(--high-bd)}
+.ic.m .ic-num{background:var(--med-bg);color:var(--med);border:1px solid var(--med-bd)}
+.ic-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:.45rem;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.tag{padding:.13rem .55rem;border-radius:4px;font-size:.64rem;font-weight:700;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;border:1px solid}
+.t-c{background:var(--crit-bg);color:var(--crit);border-color:var(--crit-bd)}
+.t-h{background:var(--high-bg);color:var(--high);border-color:var(--high-bd)}
+.t-m{background:var(--med-bg);color:var(--med);border-color:var(--med-bd)}
+.t-cat{background:var(--surface2);color:var(--muted);border-color:var(--border)}
+.t-imp{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd)}
+.ic-body{margin:0 1.4rem;border-top:1px solid var(--border);padding:1rem 0 1.4rem}
+.ic-desc{font-size:.84rem;color:var(--muted);line-height:1.75}
+.ib{margin-top:.875rem;padding:.8rem 1rem;background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:8px;font-size:.81rem;color:var(--blue);line-height:1.6}
+.ib strong{color:var(--text)}
 
-  .topbar-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text);
-  }
+/* ACTION PLAN */
+.phase{margin-bottom:2rem}
+.pl{display:inline-flex;align-items:center;gap:.45rem;padding:.38rem .9rem;border-radius:7px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.875rem;font-family:'JetBrains Mono',monospace;border:1px solid}
+.pl-1{background:var(--crit-bg);color:var(--crit);border-color:var(--crit-bd)}
+.pl-2{background:var(--high-bg);color:var(--high);border-color:var(--high-bd)}
+.pl-3{background:var(--good-bg);color:var(--good);border-color:var(--good-bd)}
+.at{width:100%;border-collapse:collapse;font-size:.82rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,28,53,.04)}
+.at th{text-align:left;padding:.65rem 1rem;background:var(--surface2);color:var(--muted2);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-weight:700}
+.at td{padding:.8rem 1rem;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;line-height:1.5}
+.at tr:last-child td{border-bottom:none}
+.at tr:hover td{background:var(--surface2)}
+.at td:first-child{color:var(--text);font-weight:600}
+.ep{display:inline-block;padding:.13rem .5rem;border-radius:5px;font-size:.68rem;font-weight:600;background:var(--acc-bg);color:var(--acc);border:1px solid var(--acc-bd);font-family:'JetBrains Mono',monospace;white-space:nowrap}
 
-  .topbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+/* DOC FOOTER */
+.df{margin-top:3.5rem;padding:1.5rem 2rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;text-align:center;font-size:.81rem;color:var(--muted);box-shadow:0 1px 3px rgba(15,28,53,.04)}
+.df a{color:var(--acc);text-decoration:none;font-weight:600}
+.df a:hover{text-decoration:underline}
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    font-family: 'Space Grotesk', sans-serif;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-ghost {
-    background: var(--surface2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-  .btn-ghost:hover { background: var(--surface3); color: var(--text); }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-  }
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
-
-  .btn-live {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: #fff;
-  }
-  .btn-live:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(34,197,94,0.4); }
-
-  /* ── LAYOUT ── */
-  .page-wrap {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 3rem 2rem 6rem;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    margin-bottom: 3rem;
-    padding: 2.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--critical), var(--high), var(--medium), var(--accent));
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(239,68,68,0.1);
-    border: 1px solid rgba(239,68,68,0.3);
-    color: var(--critical);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .hero h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-  }
-
-  .hero h1 span { color: var(--accent); }
-
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
-
-  /* Score cards */
-  .score-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .score-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-    text-align: center;
-  }
-
-  .score-card .score-num {
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .score-card .score-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted2);
-    font-weight: 600;
-  }
-
-  .score-red   .score-num { color: var(--critical); }
-  .score-orange .score-num { color: var(--high); }
-  .score-green  .score-num { color: var(--good); }
-
-  /* ── SECTION HEADER ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2.5rem 0 1.25rem;
-  }
-
-  .section-header h2 {
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-  }
-
-  .section-header::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── ISSUE CARDS ── */
-  .issues-list { display: flex; flex-direction: column; gap: 0.75rem; }
-
-  .issue-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
-  .issue-card:hover { border-color: var(--border2); }
-
-  .issue-card.critical { border-left: 3px solid var(--critical); }
-  .issue-card.high     { border-left: 3px solid var(--high); }
-  .issue-card.medium   { border-left: 3px solid var(--medium); }
-
-  .issue-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.1rem 1.25rem;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .issue-num {
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--muted2);
-    font-family: 'JetBrains Mono', monospace;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .issue-main { flex: 1; }
-
-  .issue-title {
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    line-height: 1.4;
-  }
-
-  .issue-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    padding: 0.15rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .tag-critical { background: var(--critical-bg); color: var(--critical); border: 1px solid var(--critical-border); }
-  .tag-high     { background: var(--high-bg);     color: var(--high);     border: 1px solid var(--high-border); }
-  .tag-medium   { background: var(--medium-bg);   color: var(--medium);   border: 1px solid var(--medium-border); }
-  .tag-cat      { background: var(--surface2);    color: var(--muted);    border: 1px solid var(--border); }
-  .tag-impact   { background: var(--blue-bg);     color: var(--blue);     border: 1px solid #1e3a5f; }
-
-  .issue-chevron {
-    color: var(--muted2);
-    font-size: 1rem;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-    margin-top: 3px;
-  }
-
-  .issue-card.open .issue-chevron { transform: rotate(180deg); }
-
-  .issue-body {
-    display: none;
-    padding: 0 1.25rem 1.25rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .issue-card.open .issue-body { display: block; }
-
-  .issue-desc {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-top: 1rem;
-  }
-
-  .impact-box {
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    background: var(--blue-bg);
-    border: 1px solid #1e3a5f;
-    border-radius: 8px;
-    font-size: 0.82rem;
-    color: var(--blue);
-  }
-
-  .impact-box strong { color: var(--text); }
-
-  /* ── ACTION PLAN ── */
-  .phase-block { margin-bottom: 2rem; }
-
-  .phase-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.9rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .phase-1 { background: rgba(239,68,68,0.12); color: var(--critical); border: 1px solid var(--critical-border); }
-  .phase-2 { background: rgba(249,115,22,0.12); color: var(--high);     border: 1px solid var(--high-border); }
-  .phase-3 { background: rgba(34,197,94,0.12);  color: var(--good);     border: 1px solid var(--good-border); }
-
-  .action-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-
-  .action-table th {
-    text-align: left;
-    padding: 0.6rem 1rem;
-    background: var(--surface2);
-    color: var(--muted2);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid var(--border);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .action-table td {
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--muted);
-    vertical-align: top;
-  }
-
-  .action-table tr:last-child td { border-bottom: none; }
-  .action-table tr:hover td { background: var(--surface2); }
-
-  .action-table td:first-child { color: var(--text); font-weight: 600; }
-
-  .effort-pill {
-    display: inline-block;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    background: var(--surface2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    font-family: 'JetBrains Mono', monospace;
-    white-space: nowrap;
-  }
-
-  /* ── FOOTER NOTE ── */
-  .doc-footer {
-    margin-top: 4rem;
-    padding: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--muted2);
-  }
-
-  .doc-footer a { color: var(--accent); text-decoration: none; }
-  .doc-footer a:hover { text-decoration: underline; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .topbar { padding: 0 1rem; }
-    .topbar-title { display: none; }
-    .page-wrap { padding: 1.5rem 1rem 4rem; }
-    .hero { padding: 1.5rem; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 1.5rem; }
-    .score-grid { grid-template-columns: repeat(2, 1fr); }
-    .action-table { font-size: 0.75rem; }
-    .action-table th, .action-table td { padding: 0.6rem 0.6rem; }
-  }
+@media(max-width:768px){
+  .bar{padding:0 1rem}
+  .bar-title{display:none}
+  .wrap{padding:1.5rem 1rem 4rem}
+  .hero{padding:1.5rem}
+  .hero h1{font-size:1.5rem}
+  .scores{grid-template-columns:repeat(2,1fr)}
+  .at{font-size:.74rem}
+  .at th,.at td{padding:.55rem .65rem}
+  .btn{padding:.32rem .65rem;font-size:.72rem}
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<nav class="topbar">
-  <div class="topbar-left">
-    <div class="topbar-badge">
-      <span class="dot"></span>
-      AUDIT REPORT
-    </div>
-    <span class="topbar-title">GSurf.in — SEO / AEO / GEO Audit · April 2026</span>
+<nav class="bar">
+  <div class="bar-l">
+    <div class="badge"><span class="dot"></span>SEO Audit</div>
+    <span class="bar-title">GSurf.in — SEO / AEO / GEO Audit · April 2026</span>
   </div>
-  <div class="topbar-actions">
-    <a href="../../index.html" class="btn btn-ghost">
-      ← Revamped Site
-    </a>
-    <a href="dev-notes.html" class="btn btn-ghost">
-      Dev Notes →
-    </a>
-    <a href="https://www.gsurf.in" target="_blank" rel="noopener" class="btn btn-live">
-      ⬡ Live Site
-    </a>
+  <div class="bar-r">
+    <a href="../../index.html" class="btn btn-ghost">← Revamped Site</a>
+    <a href="dev-notes.html" class="btn btn-acc">Dev Notes →</a>
+    <a href="https://www.gsurf.in" target="_blank" rel="noopener" class="btn btn-live">⬡ Live Site</a>
   </div>
 </nav>
 
-<!-- PAGE CONTENT -->
-<div class="page-wrap">
+<div class="wrap">
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">⚠ Score: 24 / 100</div>
-        <h1>GSurf.in <span>SEO Audit</span> Report</h1>
-        <div class="hero-meta">
-          <span>📅 April 2026</span>
-          <span>🌐 www.gsurf.in</span>
-          <span>🏢 Prepared by FirstDial</span>
-          <span>⚙ Current Stack: Single-page HTML + Bootstrap 5</span>
-        </div>
-      </div>
+    <div class="eyebrow">⚠ Overall Score: 24 / 100</div>
+    <h1>GSurf.in <span>SEO Audit</span> Report</h1>
+    <div class="hero-meta">
+      <span>📅 April 2026</span>
+      <span>🌐 www.gsurf.in</span>
+      <span>🏢 Prepared by FirstDial</span>
+      <span>⚙ Current Stack: Single-page HTML + Bootstrap 5</span>
     </div>
-
-    <div class="score-grid">
-      <div class="score-card score-red">
-        <div class="score-num">24</div>
-        <div class="score-label">Overall Score</div>
-      </div>
-      <div class="score-card score-red">
-        <div class="score-num">18</div>
-        <div class="score-label">Technical SEO</div>
-      </div>
-      <div class="score-card score-red">
-        <div class="score-num">30</div>
-        <div class="score-label">On-Page SEO</div>
-      </div>
-      <div class="score-card score-red">
-        <div class="score-num">0</div>
-        <div class="score-label">Structured Data</div>
-      </div>
-      <div class="score-card score-orange">
-        <div class="score-num">20</div>
-        <div class="score-label">Local SEO</div>
-      </div>
-      <div class="score-card score-orange">
-        <div class="score-num">35</div>
-        <div class="score-label">Content Quality</div>
-      </div>
+    <div class="scores">
+      <div class="sc sc-r"><div class="n">24</div><div class="l">Overall Score</div></div>
+      <div class="sc sc-r"><div class="n">18</div><div class="l">Technical SEO</div></div>
+      <div class="sc sc-r"><div class="n">30</div><div class="l">On-Page SEO</div></div>
+      <div class="sc sc-r"><div class="n">0</div><div class="l">Structured Data</div></div>
+      <div class="sc sc-o"><div class="n">20</div><div class="l">Local SEO</div></div>
+      <div class="sc sc-o"><div class="n">35</div><div class="l">Content Quality</div></div>
     </div>
   </div>
 
-  <!-- CRITICAL ISSUES -->
-  <div class="section-header"><h2>Critical Issues</h2></div>
-  <div class="issues-list">
+  <div class="sh"><h2>Critical Issues — 7 Found</h2></div>
+  <div class="issues">
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">01</div>
-        <div class="issue-main">
-          <div class="issue-title">No meta description — Google auto-generates random snippet</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">On-Page SEO</span>
-            <span class="tag tag-impact">CTR loss ~20–35%</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">01</div>
+        <div><div class="ic-title">No meta description — Google auto-generates random snippet</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-imp">CTR loss ~20–35%</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">The homepage has zero meta description. Search engines auto-generate one from random page text — usually from the modal popup HTML or unrelated content — which destroys click-through rates from search results. A well-crafted meta description with target keywords, city name, and a CTA directly improves CTR from the SERP.</p>
-        <div class="impact-box"><strong>SEO impact:</strong> Direct CTR ranking factor. Higher CTR = stronger behavioral signal = rankings boost. <strong>AEO impact:</strong> AI answer engines (ChatGPT, Perplexity, Gemini) read meta description as the primary "what is this page about" signal when deciding whether to cite this page.</div>
+      <div class="ic-body">
+        <p class="ic-desc">The homepage has zero meta description. Search engines auto-generate one from random page text — usually from the modal popup HTML — which destroys click-through rates from search results. A well-crafted meta description with target keywords, city name, and a CTA directly improves CTR from the SERP.</p>
+        <div class="ib"><strong>SEO:</strong> Direct CTR ranking factor. Higher CTR = stronger behavioral signal = rankings boost. <strong>AEO:</strong> AI answer engines (ChatGPT, Perplexity, Gemini) read meta description as the primary entity-context signal when deciding whether to cite this page.</div>
       </div>
     </div>
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">02</div>
-        <div class="issue-main">
-          <div class="issue-title">Zero structured data / Schema.org markup — invisible to AI tools</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">Structured Data</span>
-            <span class="tag tag-impact">0/100 Structured Data Score</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">02</div>
+        <div><div class="ic-title">Zero structured data / Schema.org markup — invisible to all AI tools</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Structured Data</span><span class="tag t-imp">0/100 Structured Data Score</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">No Organization, LocalBusiness, FAQPage, BreadcrumbList, or Product schemas exist anywhere on gsurf.in. This is the most critical GEO/AEO failure. When someone asks Perplexity or ChatGPT "what are good fiber broadband providers in Bangalore?" — GSurf cannot be cited because AI tools have no structured, machine-readable data to extract. Schema markup is the foundation of AI citation eligibility.</p>
-        <div class="impact-box"><strong>AEO impact:</strong> This single fix has the highest probability of getting GSurf cited in AI-generated answers. <strong>GEO impact:</strong> LocalBusiness + ServiceArea + areaServed schema is how Google AI Overviews and Gemini determine which ISPs serve which neighborhoods.</div>
+      <div class="ic-body">
+        <p class="ic-desc">No Organization, LocalBusiness, FAQPage, BreadcrumbList, or Product schemas exist anywhere on gsurf.in. This is the most critical GEO/AEO failure. When someone asks Perplexity or ChatGPT "what are good fiber broadband providers in Bangalore?" — GSurf cannot be cited because AI tools have no structured, machine-readable data to extract. Schema markup is the foundation of AI citation eligibility.</p>
+        <div class="ib"><strong>AEO:</strong> This single fix has the highest probability of getting GSurf cited in AI-generated answers. <strong>GEO:</strong> LocalBusiness + ServiceArea + areaServed schema is how Google AI Overviews and Gemini determine which ISPs serve which neighborhoods.</div>
       </div>
     </div>
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">03</div>
-        <div class="issue-main">
-          <div class="issue-title">Single-page architecture — cannot rank for individual service queries</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">1 URL vs 11 ranking opportunities</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">03</div>
+        <div><div class="ic-title">Single-page architecture — cannot rank for individual service queries</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">1 URL vs 21 ranking opportunities</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">The entire website is one HTML file. Home, About, Services, Plans, and Contact are all anchor-linked sections (#home, #plans) on a single URL. Google ranks pages, not sections — so gsurf.in has exactly one URL competing for every possible query: plans, coverage, about, business, Bangalore, HSR Layout, BTM Layout. This is the structural root cause of poor rankings. The revamp to 11 separate pages directly solves this.</p>
-        <div class="impact-box"><strong>SEO impact:</strong> 11 pages = 11 independent ranking opportunities. Each page can target specific queries like "fiber broadband plans Bangalore" or "fiber internet HSR Layout." <strong>GEO impact:</strong> Hyper-local pages (HSR Layout, BTM Layout) can rank for neighborhood-level searches with extremely high conversion intent.</div>
+      <div class="ic-body">
+        <p class="ic-desc">The entire website is one HTML file. Home, About, Services, Plans, and Contact are all anchor-linked sections (#home, #plans) on a single URL. Google ranks pages, not sections — so gsurf.in has exactly one URL competing for every possible query. This is the structural root cause of poor rankings. The revamp to 21 separate pages directly solves this.</p>
+        <div class="ib"><strong>SEO:</strong> 21 pages = 21 independent ranking opportunities. Each page targets specific queries: "fiber broadband plans Bangalore," "fiber internet HSR Layout," "home security broadband." <strong>GEO:</strong> Hyper-local pages (HSR Layout, BTM Layout) can rank for neighbourhood-level queries with extremely high conversion intent.</div>
       </div>
     </div>
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">04</div>
-        <div class="issue-main">
-          <div class="issue-title">Weak title tag — missing city, product keyword, and correct brand casing</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">On-Page SEO</span>
-            <span class="tag tag-impact">Primary ranking signal wasted</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">04</div>
+        <div><div class="ic-title">Weak title tag — missing city, product keyword, and correct brand casing</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-imp">Primary ranking signal wasted</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">Current title: "Gsurf - High-Speed Internet Service Provider | Enterprise Broadband." Problems: (1) Brand misspelled "Gsurf" not "GSurf." (2) No city name — "Bangalore" and "Whitefield" are the #1 local modifiers users add to broadband searches. (3) Missing "fiber" and "FTTH" — the actual product keywords with search volume. (4) "Enterprise Broadband" is misleading — plans start at ₹900/mo which is residential pricing. Title tag is Google's #1 on-page ranking signal.</p>
-        <div class="impact-box"><strong>Fix:</strong> "GSurf Fiber Broadband Bangalore | FTTH Plans from ₹900/month | Whitefield" — includes brand, product, city, and price anchor within 60 characters.</div>
+      <div class="ic-body">
+        <p class="ic-desc">Current title: "Gsurf - High-Speed Internet Service Provider | Enterprise Broadband." Problems: (1) Brand misspelled "Gsurf" not "GSurf." (2) No city name — "Bangalore" and "Whitefield" are the #1 local modifiers users add to broadband searches. (3) Missing "fiber" and "FTTH." (4) "Enterprise Broadband" is misleading — plans start at ₹900/mo which is residential pricing. Title tag is Google's #1 on-page ranking signal.</p>
+        <div class="ib"><strong>Fix:</strong> "GSurf Fiber Broadband Bangalore | FTTH Plans from ₹900/month | Whitefield" — brand, product, city, and price anchor within 60 characters.</div>
       </div>
     </div>
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">05</div>
-        <div class="issue-main">
-          <div class="issue-title">No canonical tag — PageRank split across HTTP/HTTPS/www/non-www variants</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">Index dilution</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">05</div>
+        <div><div class="ic-title">No canonical tag — PageRank split across HTTP/HTTPS/www/non-www variants</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">Index dilution</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">Without a canonical tag, Google may index gsurf.in, www.gsurf.in, http://gsurf.in, and http://www.gsurf.in as separate pages, splitting the ranking power of any backlinks across all variants. Every page in the revamp needs a self-referencing canonical tag. This is required infrastructure for any production website.</p>
-        <div class="impact-box"><strong>Fix:</strong> Add &lt;link rel="canonical" href="https://www.gsurf.in/"&gt; in the &lt;head&gt; of every page. Each page's canonical must point to its own absolute URL.</div>
+      <div class="ic-body">
+        <p class="ic-desc">Without a canonical tag, Google may index gsurf.in, www.gsurf.in, http://gsurf.in, and http://www.gsurf.in as separate pages, splitting the ranking power of any backlinks across all variants. Every page in the revamp needs a self-referencing canonical tag. This is required infrastructure for any production website.</p>
+        <div class="ib"><strong>Fix:</strong> Add &lt;link rel="canonical" href="https://www.gsurf.in/"&gt; in the &lt;head&gt; of every page. Each page's canonical must point to its own absolute URL.</div>
       </div>
     </div>
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">06</div>
-        <div class="issue-main">
-          <div class="issue-title">Two H1 tags on same page + H1 contains no keywords</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">On-Page SEO</span>
-            <span class="tag tag-impact">Primary keyword signal wasted</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">06</div>
+        <div><div class="ic-title">Three H1 tags on same page — H1 contains no searchable keywords</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-imp">Primary keyword signal wasted</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">The page has three H1 tags: "Ultra Fast Internet! Better Service!!" (hero), "We Provide Unlimited Network For You" (about), and "Enterprise Broadband Plans" (plans section). One page must have exactly one H1. Additionally, "Ultra Fast Internet! Better Service!!" contains zero searchable keywords — nobody searches for this phrase. Google uses H1 as the strongest on-page content signal after the title tag.</p>
-        <div class="impact-box"><strong>Fix:</strong> One H1 per page, keyword-rich. Hero H1 → "High-Speed Fiber Broadband in Bangalore &amp; Whitefield." All section titles → H2. Sub-sections → H3.</div>
+      <div class="ic-body">
+        <p class="ic-desc">The page has three H1 tags: "Ultra Fast Internet! Better Service!!" (hero), "We Provide Unlimited Network For You" (about), and "Enterprise Broadband Plans" (plans section). One page must have exactly one H1. "Ultra Fast Internet! Better Service!!" contains zero searchable keywords. Google uses H1 as the strongest on-page content signal after the title tag.</p>
+        <div class="ib"><strong>Fix:</strong> One H1 per page, keyword-rich. Hero H1 → "High-Speed Fiber Broadband in Bangalore &amp; Whitefield." All section titles → H2. Sub-sections → H3.</div>
       </div>
     </div>
 
-    <div class="issue-card critical">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">07</div>
-        <div class="issue-main">
-          <div class="issue-title">NAP inconsistency — brand name appears 4 different ways across one page</div>
-          <div class="issue-tags">
-            <span class="tag tag-critical">CRITICAL</span>
-            <span class="tag tag-cat">Local SEO</span>
-            <span class="tag tag-impact">Local Pack ineligibility</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic c">
+      <div class="ic-top">
+        <div class="ic-num">07</div>
+        <div><div class="ic-title">NAP inconsistency — brand name appears 4 different ways on one page</div>
+        <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Local SEO</span><span class="tag t-imp">Local Pack ineligibility</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">On a single page, the business is referred to as: "Gsurf" (title tag), "GSurf" (body text), "Netrun Fibernet" (logo alt text), and "GAXIOM NETWORKING SOLUTIONS PRIVATE LIMITED" (footer). Google's Knowledge Graph builds entity profiles from consistent NAP signals. Inconsistency directly prevents Local Pack rankings and reduces AI citation confidence.</p>
-        <div class="impact-box"><strong>Rule:</strong> Brand name = "GSurf" everywhere. Legal name = "Gaxiom Networking Solutions Private Limited" in footer/schema. Never "Gsurf", "GAXIOM", or "Netrun Fibernet."</div>
+      <div class="ic-body">
+        <p class="ic-desc">On a single page the business appears as: "Gsurf" (title tag), "GSurf" (body text), "Netrun Fibernet" (logo alt text), and "GAXIOM NETWORKING SOLUTIONS PRIVATE LIMITED" (footer). Google's Knowledge Graph builds entity profiles from consistent NAP signals. Inconsistency directly prevents Local Pack rankings and reduces AI citation confidence.</p>
+        <div class="ib"><strong>Rule:</strong> Brand = "GSurf" everywhere. Legal = "Gaxiom Networking Solutions Private Limited" in footer/schema. Never "Gsurf," "GAXIOM," or "Netrun Fibernet."</div>
       </div>
     </div>
 
-  </div><!-- /critical -->
+  </div>
 
-  <!-- HIGH ISSUES -->
-  <div class="section-header"><h2>High Priority Issues</h2></div>
-  <div class="issues-list">
+  <div class="sh"><h2>High Priority Issues — 8 Found</h2></div>
+  <div class="issues">
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">08</div>
-        <div class="issue-main">
-          <div class="issue-title">Logo alt text says "Netrun Fibernet" — wrong brand entity</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">On-Page SEO</span>
-            <span class="tag tag-impact">E-E-A-T brand signal</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">08</div>
+        <div><div class="ic-title">Logo alt text says "Netrun Fibernet" — wrong brand entity</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-imp">E-E-A-T brand signal</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">The navbar logo has alt="Netrun Fibernet" and the about section image has alt="About Netrun." "Netrun Fibernet" appears to be a previous brand or white-label. Google reads image alt text as an entity signal — if the logo says one brand and the page text says another, it creates an E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) penalty. AI tools cannot build a confident entity profile for a business with contradictory identity signals.</p>
+      <div class="ic-body">
+        <p class="ic-desc">The navbar logo has alt="Netrun Fibernet" and the about section image has alt="About Netrun." Google reads image alt text as an entity signal — if the logo says one brand and the page text says another, it creates an E-E-A-T penalty. AI tools cannot build a confident entity profile for a business with contradictory identity signals.</p>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">09</div>
-        <div class="issue-main">
-          <div class="issue-title">No robots.txt or XML sitemap — crawl budget wasted</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">Index coverage</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">09</div>
+        <div><div class="ic-title">No robots.txt or XML sitemap — crawl budget wasted</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">Index coverage</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">Both files return 404 on gsurf.in. Without robots.txt, Google wastes crawl budget on modal HTML, form elements, and the portal.gaxiom.in redirect link. Without sitemap.xml, new pages from the revamp (especially deeper pages like /pages/hsr-layout/) may take weeks or months to be discovered and indexed. With 11 pages in the revamp, sitemap submission via Google Search Console is mandatory on launch day.</p>
+      <div class="ic-body">
+        <p class="ic-desc">Both files return 404 on gsurf.in. Without robots.txt, Google wastes crawl budget on modal HTML, form elements, and the portal.gaxiom.in redirect link. Without sitemap.xml, new pages from the revamp (especially deeper pages like /pages/hsr-layout/) may take weeks to be discovered and indexed. With 21 pages in the revamp, sitemap submission via Google Search Console is mandatory on launch day.</p>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">10</div>
-        <div class="issue-main">
-          <div class="issue-title">No Open Graph / Twitter Card meta tags — blank social previews</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">Social + AEO signals</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">10</div>
+        <div><div class="ic-title">No Open Graph / Twitter Card meta tags — blank social previews</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">Social + AEO signals</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">When anyone shares gsurf.in on WhatsApp, Facebook, LinkedIn, or Twitter/X, they get a completely blank preview — no image, no title, no description. This kills social sharing CTR. Additionally, Perplexity.ai, Bing AI, and ChatGPT's browsing mode read og:description and og:title as entity description sources. og:locale="en_IN" signals to AI tools that this is an India-specific resource.</p>
+      <div class="ic-body">
+        <p class="ic-desc">When anyone shares gsurf.in on WhatsApp, Facebook, LinkedIn, or Twitter/X they get a completely blank preview — no image, no title, no description. This kills social sharing CTR. Additionally, Perplexity.ai, Bing AI, and ChatGPT's browsing mode read og:description and og:title as entity description sources. og:locale="en_IN" signals to AI tools that this is an India-specific resource.</p>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">11</div>
-        <div class="issue-main">
-          <div class="issue-title">All social media links are href="#" — dead links damaging brand entity</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">On-Page SEO</span>
-            <span class="tag tag-impact">Entity association</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">11</div>
+        <div><div class="ic-title">All social media links are href="#" — dead links damaging brand entity</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-imp">Entity association</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">Instagram, Twitter, Facebook, and YouTube icons all link to "#". Google uses social profile links as entity signals for the Knowledge Graph — they connect the website entity to social entities. Without live social links, GSurf's entity profile remains incomplete. Requires client to provide actual social profile URLs.</p>
+      <div class="ic-body">
+        <p class="ic-desc">Instagram, Twitter, Facebook, and YouTube icons all link to "#". Google uses social profile links as entity signals for the Knowledge Graph — they connect the website entity to social entities. Without live social links, GSurf's entity profile remains incomplete. Requires client to provide actual social profile URLs.</p>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">12</div>
-        <div class="issue-main">
-          <div class="issue-title">Email addresses hidden by Cloudflare — not crawlable by AI or Google</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">Contact data invisible</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">12</div>
+        <div><div class="ic-title">Emails hidden by Cloudflare — not crawlable by AI or Google</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">Contact data invisible</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">support@gaxiom.in and bd@gaxiom.in appear as [email protected] in the HTML source via Cloudflare's email obfuscation. While this protects from spam scrapers, it means AI crawlers and some search bots cannot extract the contact information. The fix is to add email addresses to the JSON-LD schema markup (schema is not obfuscated) so bots can still find contact details.</p>
+      <div class="ic-body">
+        <p class="ic-desc">support@gaxiom.in and bd@gaxiom.in appear as [email&#160;protected] in the HTML source via Cloudflare's email obfuscation. While this protects from spam scrapers, it means AI crawlers and some search bots cannot extract the contact information. The fix is to add email addresses to the JSON-LD schema markup — schema is not obfuscated.</p>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">13</div>
-        <div class="issue-main">
-          <div class="issue-title">No FAQ content or AEO-optimized copy — zero AI citation probability</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">AEO / GEO</span>
-            <span class="tag tag-impact">AI citation probability</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">13</div>
+        <div><div class="ic-title">No FAQ content or AEO-optimized copy — zero AI citation probability</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">AEO / GEO</span><span class="tag t-imp">AI citation probability: 0%</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">There is no FAQ section on any page. AEO (Answer Engine Optimization) requires content structured as natural language Q&A that AI tools can extract and present as answers. When someone asks ChatGPT "How much does GSurf broadband cost?" or Perplexity "Is GSurf available in Whitefield?" — there is nothing structured on the site to cite. FAQPage schema + visible Q&A content is the minimum required for AI citation eligibility.</p>
-        <div class="impact-box"><strong>SEO bonus:</strong> FAQ schema generates expandable FAQ rich results in Google SERPs, taking up 3× more space and getting 20–30% more clicks than plain blue links.</div>
+      <div class="ic-body">
+        <p class="ic-desc">There is no FAQ section on any page. AEO (Answer Engine Optimization) requires content structured as natural language Q&amp;A that AI tools can extract. When someone asks ChatGPT "How much does GSurf broadband cost?" — there is nothing structured on the site to cite. FAQPage schema + visible Q&amp;A content is the minimum required for AI citation eligibility.</p>
+        <div class="ib"><strong>SEO bonus:</strong> FAQ schema generates expandable FAQ rich results in Google SERPs, taking up 3× more space and getting 20–30% more clicks than plain blue links.</div>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">14</div>
-        <div class="issue-main">
-          <div class="issue-title">Plans mislabeled "Enterprise Broadband" — wrong intent targeting</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">Content</span>
-            <span class="tag tag-impact">Residential audience missed</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">14</div>
+        <div><div class="ic-title">Plans mislabeled "Enterprise Broadband" — wrong intent targeting</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Content</span><span class="tag t-imp">Residential audience missed</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">Plans starting at ₹900/month for 50 Mbps are clearly residential pricing, but the section is labeled "Enterprise Broadband Plans." This creates intent mismatch — residential searchers looking for "home fiber broadband Bangalore" find enterprise copy and bounce. The revamp should clearly separate Home Plans and Business Plans with distinct pages and appropriate copy for each audience.</p>
+      <div class="ic-body">
+        <p class="ic-desc">Plans starting at ₹900/month for 50 Mbps are clearly residential pricing, but the section is labeled "Enterprise Broadband Plans." This creates intent mismatch — residential searchers looking for "home fiber broadband Bangalore" find enterprise copy and bounce. The revamp clearly separates Home Plans and Enterprise Plans with distinct dedicated pages.</p>
       </div>
     </div>
 
-    <div class="issue-card high">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">15</div>
-        <div class="issue-main">
-          <div class="issue-title">No GeoCoordinates or ServiceArea schema — AI cannot determine coverage area</div>
-          <div class="issue-tags">
-            <span class="tag tag-high">HIGH</span>
-            <span class="tag tag-cat">Local SEO / GEO</span>
-            <span class="tag tag-impact">AI local answer eligibility</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic h">
+      <div class="ic-top">
+        <div class="ic-num">15</div>
+        <div><div class="ic-title">No GeoCoordinates or ServiceArea schema — AI cannot determine coverage</div>
+        <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Local SEO / GEO</span><span class="tag t-imp">AI local answer eligibility</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">No GeoCoordinates, ServiceArea, or areaServed schema exists. Google AI Overviews and Gemini determine which ISPs serve which neighborhoods using structured geographic data. Without this schema, GSurf cannot appear in AI-generated answers to queries like "fiber broadband providers in HSR Layout" or "best ISP near Whitefield Bangalore" — even if the company physically operates there.</p>
-        <div class="impact-box"><strong>Fix:</strong> Add areaServed with city names + GeoCoordinates of the office + ServiceArea schema listing all served pincodes (560066, 560102, etc.).</div>
+      <div class="ic-body">
+        <p class="ic-desc">No GeoCoordinates, ServiceArea, or areaServed schema exists. Google AI Overviews and Gemini determine which ISPs serve which neighbourhoods using structured geographic data. Without this schema, GSurf cannot appear in AI-generated answers to queries like "fiber broadband providers in HSR Layout" even if the company physically operates there.</p>
+        <div class="ib"><strong>Fix:</strong> Add areaServed with city names + GeoCoordinates of the office + ServiceArea schema listing all served pincodes (560066, 560076, 560102, etc.).</div>
       </div>
     </div>
 
-  </div><!-- /high -->
+  </div>
 
-  <!-- MEDIUM ISSUES -->
-  <div class="section-header"><h2>Medium Priority Issues</h2></div>
-  <div class="issues-list">
+  <div class="sh"><h2>Medium Priority Issues — 3 Found</h2></div>
+  <div class="issues">
 
-    <div class="issue-card medium">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">16</div>
-        <div class="issue-main">
-          <div class="issue-title">No BreadcrumbList schema — missing breadcrumb rich results</div>
-          <div class="issue-tags">
-            <span class="tag tag-medium">MEDIUM</span>
-            <span class="tag tag-cat">Structured Data</span>
-            <span class="tag tag-impact">SERP real estate</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic m">
+      <div class="ic-top">
+        <div class="ic-num">16</div>
+        <div><div class="ic-title">No BreadcrumbList schema — missing breadcrumb rich results</div>
+        <div class="tags"><span class="tag t-m">MEDIUM</span><span class="tag t-cat">Structured Data</span><span class="tag t-imp">SERP real estate</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">With the multi-page hierarchy (Bangalore → HSR Layout, Bangalore → BTM Layout), BreadcrumbList schema enables the breadcrumb trail to appear directly in Google search results under the page title. This increases SERP trust and CTR. Required on all city and area pages.</p>
+      <div class="ic-body">
+        <p class="ic-desc">With the multi-page hierarchy (Bangalore → HSR Layout, Bangalore → BTM Layout), BreadcrumbList schema enables the breadcrumb trail to appear directly in Google search results under the page title. This increases SERP trust and CTR. Required on all city and area pages.</p>
       </div>
     </div>
 
-    <div class="issue-card medium">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">17</div>
-        <div class="issue-main">
-          <div class="issue-title">Core Web Vitals unknown — Bootstrap CDN likely causing LCP delay</div>
-          <div class="issue-tags">
-            <span class="tag tag-medium">MEDIUM</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">Ranking factor + UX</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic m">
+      <div class="ic-top">
+        <div class="ic-num">17</div>
+        <div><div class="ic-title">Core Web Vitals unknown — Bootstrap CDN causing LCP delay</div>
+        <div class="tags"><span class="tag t-m">MEDIUM</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">Ranking factor + UX</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">Bootstrap 5 CDN and Font Awesome 6 CDN are loaded synchronously in the &lt;head&gt;, which blocks rendering until both files download. This likely causes LCP (Largest Contentful Paint) to exceed the 2.5s threshold. Google uses Core Web Vitals (LCP, CLS, FID) as a ranking factor. A PageSpeed Insights audit should be run immediately after the revamp goes live.</p>
+      <div class="ic-body">
+        <p class="ic-desc">Bootstrap 5 CDN and Font Awesome 6 CDN are loaded synchronously in the &lt;head&gt;, which blocks rendering until both files download. This likely causes LCP (Largest Contentful Paint) to exceed the 2.5s threshold. Google uses Core Web Vitals (LCP, CLS, FID) as a ranking factor. A PageSpeed Insights audit should be run immediately after the revamp goes live.</p>
       </div>
     </div>
 
-    <div class="issue-card medium">
-      <div class="issue-header" onclick="toggle(this)">
-        <div class="issue-num">18</div>
-        <div class="issue-main">
-          <div class="issue-title">No hreflang or geo-targeting configuration for India</div>
-          <div class="issue-tags">
-            <span class="tag tag-medium">MEDIUM</span>
-            <span class="tag tag-cat">Technical SEO</span>
-            <span class="tag tag-impact">Local intent signal</span>
-          </div>
-        </div>
-        <span class="issue-chevron">▾</span>
+    <div class="ic m">
+      <div class="ic-top">
+        <div class="ic-num">18</div>
+        <div><div class="ic-title">No hreflang or geo-targeting configuration for India</div>
+        <div class="tags"><span class="tag t-m">MEDIUM</span><span class="tag t-cat">Technical SEO</span><span class="tag t-imp">Local intent signal</span></div></div>
       </div>
-      <div class="issue-body">
-        <p class="issue-desc">For a regional ISP targeting Indian cities, geo-targeting should be configured in Google Search Console (country targeting = India) and og:locale="en_IN" should be added to all pages. This strengthens local intent matching and helps Google understand this is a regional service, not a global one.</p>
+      <div class="ic-body">
+        <p class="ic-desc">For a regional ISP targeting Indian cities, geo-targeting should be configured in Google Search Console (country targeting = India) and og:locale="en_IN" should be added to all pages. This strengthens local intent matching and helps Google understand this is a regional service, not a global one.</p>
       </div>
     </div>
 
-  </div><!-- /medium -->
+  </div>
 
-  <!-- ACTION PLAN -->
-  <div class="section-header"><h2>Action Plan</h2></div>
+  <div class="sh"><h2>Action Plan</h2></div>
 
-  <div class="phase-block">
-    <div class="phase-label phase-1">⚡ Phase 1 — Before Go-Live (Same Day)</div>
-    <table class="action-table">
-      <thead>
-        <tr>
-          <th>Action</th>
-          <th>Who</th>
-          <th>Effort</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
+  <div class="phase">
+    <div class="pl pl-1">⚡ Phase 1 — Before Go-Live (Same Day)</div>
+    <table class="at">
+      <thead><tr><th>Action</th><th>Who</th><th>Effort</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td>Add meta description to all 11 pages</td><td>Developer</td><td><span class="effort-pill">30 min</span></td><td>150–155 chars · include city + price + "fiber"</td></tr>
-        <tr><td>Fix title tags on all 11 pages</td><td>Developer</td><td><span class="effort-pill">1 hr</span></td><td>Include Bangalore/Whitefield, "fiber", GSurf, ≤60 chars</td></tr>
-        <tr><td>Add canonical tag to every page</td><td>Developer</td><td><span class="effort-pill">30 min</span></td><td>Self-referencing canonical on all 11 pages</td></tr>
-        <tr><td>Fix all image alt texts — remove "Netrun Fibernet"</td><td>Developer</td><td><span class="effort-pill">30 min</span></td><td>Use "GSurf" consistently across all images</td></tr>
-        <tr><td>Fix heading hierarchy — one H1 per page</td><td>Developer</td><td><span class="effort-pill">1 hr</span></td><td>Hero = H1 (keyword-rich), sections = H2, sub = H3</td></tr>
-        <tr><td>Add Open Graph + Twitter Card meta tags</td><td>Developer</td><td><span class="effort-pill">45 min</span></td><td>Same template for all pages. See Dev Notes for code.</td></tr>
-        <tr><td>Fix social media links (all href="#")</td><td>Client</td><td><span class="effort-pill">15 min</span></td><td>Client to provide actual social profile URLs</td></tr>
-        <tr><td>Create robots.txt</td><td>Developer</td><td><span class="effort-pill">15 min</span></td><td>Disallow: /cdn-cgi/ · Include sitemap URL</td></tr>
+        <tr><td>Add meta description to all 21 pages</td><td>Developer</td><td><span class="ep">30 min</span></td><td>150–155 chars · city + price + "fiber"</td></tr>
+        <tr><td>Fix title tags on all 21 pages</td><td>Developer</td><td><span class="ep">1 hr</span></td><td>Bangalore/Whitefield, "fiber", GSurf, ≤60 chars</td></tr>
+        <tr><td>Add canonical tag to every page</td><td>Developer</td><td><span class="ep">30 min</span></td><td>Self-referencing canonical — absolute URL per page</td></tr>
+        <tr><td>Fix all image alt texts — remove "Netrun Fibernet"</td><td>Developer</td><td><span class="ep">30 min</span></td><td>Use "GSurf" consistently across all images</td></tr>
+        <tr><td>Fix heading hierarchy — one H1 per page</td><td>Developer</td><td><span class="ep">1 hr</span></td><td>Hero = H1 (keyword-rich), sections = H2, sub = H3</td></tr>
+        <tr><td>Add Open Graph + Twitter Card meta tags</td><td>Developer</td><td><span class="ep">45 min</span></td><td>Same template all pages · See Dev Notes for exact code</td></tr>
+        <tr><td>Fix social media links (all href="#")</td><td>Client</td><td><span class="ep">15 min</span></td><td>Client to provide actual social profile URLs</td></tr>
+        <tr><td>Create robots.txt</td><td>Developer</td><td><span class="ep">15 min</span></td><td>Disallow: /cdn-cgi/ · Include sitemap URL</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="phase-block">
-    <div class="phase-label phase-2">🔧 Phase 2 — Within 1 Week of Launch</div>
-    <table class="action-table">
-      <thead>
-        <tr><th>Action</th><th>Who</th><th>Effort</th><th>Notes</th></tr>
-      </thead>
+  <div class="phase">
+    <div class="pl pl-2">🔧 Phase 2 — Within 1 Week of Launch</div>
+    <table class="at">
+      <thead><tr><th>Action</th><th>Who</th><th>Effort</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td>Add JSON-LD Organization + LocalBusiness schema</td><td>Developer</td><td><span class="effort-pill">2 hr</span></td><td>All pages · consistent NAP matching GBP exactly</td></tr>
-        <tr><td>Add FAQPage schema on homepage + plans page</td><td>Developer</td><td><span class="effort-pill">2 hr</span></td><td>Min 5 Q&As · match visible FAQ section on page</td></tr>
-        <tr><td>Create FAQ content section on homepage</td><td>Content</td><td><span class="effort-pill">3 hr</span></td><td>5–8 natural language Q&As on pricing, coverage, speed</td></tr>
-        <tr><td>Create XML sitemap + submit to GSC</td><td>Developer</td><td><span class="effort-pill">1 hr</span></td><td>All 11 URLs · submit via Google Search Console on launch day</td></tr>
-        <tr><td>Verify GBP NAP matches website exactly</td><td>Client</td><td><span class="effort-pill">30 min</span></td><td>Name, Address, Phone must be character-identical</td></tr>
-        <tr><td>Add BreadcrumbList schema on city/area pages</td><td>Developer</td><td><span class="effort-pill">1 hr</span></td><td>Bangalore → HSR Layout, Bangalore → BTM Layout</td></tr>
-        <tr><td>Fix email obfuscation — add emails to schema</td><td>Developer</td><td><span class="effort-pill">30 min</span></td><td>Add email to JSON-LD schema (schema is not obfuscated)</td></tr>
+        <tr><td>Add JSON-LD Organization + LocalBusiness schema</td><td>Developer</td><td><span class="ep">2 hr</span></td><td>All pages · consistent NAP matching GBP exactly</td></tr>
+        <tr><td>Add FAQPage schema on homepage + plans page</td><td>Developer</td><td><span class="ep">2 hr</span></td><td>Min 5 Q&amp;As · match visible FAQ section on page</td></tr>
+        <tr><td>Create FAQ content section on homepage</td><td>Content</td><td><span class="ep">3 hr</span></td><td>5–8 natural language Q&amp;As on pricing, coverage, speed</td></tr>
+        <tr><td>Create XML sitemap + submit to GSC</td><td>Developer</td><td><span class="ep">1 hr</span></td><td>All 21 URLs · submit via Google Search Console on launch day</td></tr>
+        <tr><td>Verify GBP NAP matches website exactly</td><td>Client</td><td><span class="ep">30 min</span></td><td>Name, Address, Phone must be character-identical</td></tr>
+        <tr><td>Add BreadcrumbList schema on city/area pages</td><td>Developer</td><td><span class="ep">1 hr</span></td><td>Bangalore → HSR Layout, Bangalore → BTM Layout</td></tr>
+        <tr><td>Fix email obfuscation — add emails to schema</td><td>Developer</td><td><span class="ep">30 min</span></td><td>Add email to JSON-LD schema — not obfuscated by Cloudflare</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="phase-block">
-    <div class="phase-label phase-3">🚀 Phase 3 — Within 1 Month</div>
-    <table class="action-table">
-      <thead>
-        <tr><th>Action</th><th>Who</th><th>Effort</th><th>Notes</th></tr>
-      </thead>
+  <div class="phase">
+    <div class="pl pl-3">🚀 Phase 3 — Within 1 Month</div>
+    <table class="at">
+      <thead><tr><th>Action</th><th>Who</th><th>Effort</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td>Add GeoCoordinates + ServiceArea schema</td><td>Developer</td><td><span class="effort-pill">2 hr</span></td><td>Lat/long of office + served pincodes list</td></tr>
-        <tr><td>Create unique content for HSR Layout + BTM Layout pages</td><td>Content</td><td><span class="effort-pill">4 hr</span></td><td>Local landmarks, local FAQs, neighborhood-specific copy</td></tr>
-        <tr><td>Run Google PageSpeed Insights — fix CWV</td><td>Developer</td><td><span class="effort-pill">Varies</span></td><td>Target LCP &lt;2.5s, CLS &lt;0.1, FID &lt;100ms · lazy-load images</td></tr>
-        <tr><td>Separate residential vs business plan pages</td><td>Dev + Content</td><td><span class="effort-pill">4 hr</span></td><td>Current "Enterprise Plans" label confuses ₹900 customers</td></tr>
-        <tr><td>Set up Google Search Console</td><td>Client</td><td><span class="effort-pill">30 min</span></td><td>Verify domain ownership · monitor index coverage weekly</td></tr>
-        <tr><td>Build backlink strategy — ISP directories</td><td>Marketing</td><td><span class="effort-pill">Ongoing</span></td><td>JustDial, Sulekha, IndiaBroadband.net, TRAI ISP listing, local news</td></tr>
+        <tr><td>Add GeoCoordinates + ServiceArea schema</td><td>Developer</td><td><span class="ep">2 hr</span></td><td>Lat/long of office + served pincodes list</td></tr>
+        <tr><td>Create unique content for HSR Layout + BTM Layout</td><td>Content</td><td><span class="ep">4 hr</span></td><td>Local landmarks, local FAQs, neighbourhood-specific copy</td></tr>
+        <tr><td>Run Google PageSpeed Insights — fix CWV</td><td>Developer</td><td><span class="ep">Varies</span></td><td>Target LCP &lt;2.5s, CLS &lt;0.1, FID &lt;100ms · lazy-load images</td></tr>
+        <tr><td>Set up Google Search Console</td><td>Client</td><td><span class="ep">30 min</span></td><td>Verify domain ownership · monitor index coverage weekly</td></tr>
+        <tr><td>Build backlink strategy — ISP directories</td><td>Marketing</td><td><span class="ep">Ongoing</span></td><td>JustDial, Sulekha, IndiaBroadband.net, TRAI ISP listing, local news</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- FOOTER NOTE -->
-  <div class="doc-footer">
+  <div class="df">
     <p>Prepared by <strong>FirstDial</strong> for GSurf (Gaxiom Networking Solutions Pvt Ltd) · April 2026</p>
-    <p style="margin-top:0.5rem;">View companion document: <a href="dev-notes.html">Developer Implementation Notes →</a></p>
+    <p style="margin-top:.5rem">View companion document: <a href="dev-notes.html">Developer Implementation Notes →</a></p>
   </div>
 
-</div><!-- /page-wrap -->
-
-<script>
-function toggle(header) {
-  const card = header.parentElement;
-  card.classList.toggle('open');
-}
-</script>
+</div>
 </body>
 </html>

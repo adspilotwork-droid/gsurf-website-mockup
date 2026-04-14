@@ -4,432 +4,159 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GSurf Developer Notes — SEO Implementation Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #09090b;
-    --surface: #111113;
-    --surface2: #18181b;
-    --surface3: #1f1f23;
-    --border: #27272a;
-    --border2: #3f3f46;
-    --text: #fafafa;
-    --muted: #a1a1aa;
-    --muted2: #71717a;
-    --critical: #ef4444;
-    --critical-bg: #1a0a0a;
-    --critical-border: #7f1d1d;
-    --high: #f97316;
-    --high-bg: #1a0e04;
-    --high-border: #7c2d12;
-    --medium: #eab308;
-    --good: #22c55e;
-    --good-bg: #051a0d;
-    --good-border: #14532d;
-    --blue: #3b82f6;
-    --accent: #6366f1;
-    --accent2: #8b5cf6;
-    --code-old-bg: #1a0a0a;
-    --code-old-text: #fca5a5;
-    --code-new-bg: #051a0d;
-    --code-new-text: #86efac;
-    --code-comment: #52525b;
-  }
+:root {
+  --bg:#f4f6fb;--surface:#fff;--surface2:#f0f3fa;--surface3:#e6ebf5;
+  --border:#dde3ef;--border2:#c5cfe0;
+  --text:#0f1c35;--muted:#4a5873;--muted2:#8e9bb5;
+  --crit:#c92020;--crit-bg:#fff1f1;--crit-bd:#fbd5d5;
+  --high:#c4500a;--high-bg:#fff8f0;--high-bd:#fddcbb;
+  --med:#9a6c00;--med-bg:#fffceb;--med-bd:#fde99a;
+  --good:#166534;--good-bg:#f0fdf4;--good-bd:#bbf7d0;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bd:#bfdbfe;
+  --acc:#4338ca;--acc-bg:#eef2ff;--acc-bd:#c7d2fe;
+  --purple:#7c3aed;--purple-bg:#f5f3ff;--purple-bd:#ddd6fe;
+  /* code panels */
+  --old-bg:#fef2f2;--old-bd:#fecaca;--old-hd:#fee2e2;--old-txt:#991b1b;--old-code:#7f1d1d;
+  --new-bg:#f0fdf4;--new-bd:#bbf7d0;--new-hd:#dcfce7;--new-txt:#166534;--new-code:#14532d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;min-height:100vh}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* TOP BAR */
+.bar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;box-shadow:0 1px 4px rgba(15,28,53,.06)}
+.bar-l{display:flex;align-items:center;gap:.875rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--acc-bg);border:1px solid var(--acc-bd);border-radius:6px;padding:.25rem .7rem;font-size:.68rem;font-weight:700;color:var(--acc);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--good);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.bar-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--muted)}
+.bar-r{display:flex;align-items:center;gap:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .85rem;border-radius:7px;font-size:.76rem;font-weight:600;text-decoration:none;transition:all .15s;border:1px solid;white-space:nowrap;font-family:'Inter',sans-serif}
+.btn-ghost{background:var(--surface);color:var(--muted);border-color:var(--border)}
+.btn-ghost:hover{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+.btn-acc{background:var(--acc-bg);color:var(--acc);border-color:var(--acc-bd)}
+.btn-acc:hover{background:var(--acc);color:#fff}
+.btn-live{background:var(--good-bg);color:var(--good);border-color:var(--good-bd)}
+.btn-live:hover{background:var(--good);color:#fff}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+/* LAYOUT */
+.wrap{max-width:1280px;margin:0 auto;padding:2.5rem 2rem 5rem}
 
-  /* ── TOP BAR ── */
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(9,9,11,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
+/* HERO */
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(15,28,53,.05)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--acc),var(--good),var(--blue))}
+.eyebrow{display:inline-flex;align-items:center;gap:.4rem;background:var(--acc-bg);border:1px solid var(--acc-bd);color:var(--acc);padding:.22rem .7rem;border-radius:5px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.875rem;font-family:'JetBrains Mono',monospace}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:800;color:var(--text);margin-bottom:.5rem;line-height:1.2}
+.hero h1 span{color:var(--good)}
+.hero-sub{font-size:.9rem;color:var(--muted);max-width:680px;line-height:1.7;margin-bottom:1.25rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:.78rem;color:var(--muted)}
 
-  .topbar-left { display: flex; align-items: center; gap: 1rem; }
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--muted)}
+.ld{width:12px;height:12px;border-radius:3px;border:1px solid}
+.ld-old{background:var(--old-hd);border-color:var(--old-bd)}
+.ld-new{background:var(--new-hd);border-color:var(--new-bd)}
+.ld-seo{background:var(--blue-bg);border-color:var(--blue-bd)}
+.ld-aeo{background:var(--purple-bg);border-color:var(--purple-bd)}
+.ld-geo{background:var(--good-bg);border-color:var(--good-bd)}
 
-  .topbar-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.3rem 0.75rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-  }
+/* SECTION HEADER */
+.sh{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.5rem}
+.sh h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);white-space:nowrap}
+.sh::after{content:'';flex:1;height:1px;background:var(--border)}
 
-  .topbar-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--good); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
+/* CHANGE CARDS */
+.changes{display:flex;flex-direction:column;gap:2rem}
 
-  .topbar-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.cc{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(15,28,53,.05)}
 
-  .topbar-actions { display: flex; align-items: center; gap: 0.75rem; }
+/* Card header strip */
+.cc-head{display:flex;align-items:flex-start;gap:1rem;padding:1.4rem 1.5rem;border-bottom:1px solid var(--border);background:var(--surface2)}
+.cc-num{width:34px;height:34px;border-radius:9px;background:var(--acc-bg);border:1px solid var(--acc-bd);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;color:var(--acc);flex-shrink:0}
+.cc-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;line-height:1.35}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{padding:.13rem .55rem;border-radius:4px;font-size:.64rem;font-weight:700;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;border:1px solid}
+.t-c{background:var(--crit-bg);color:var(--crit);border-color:var(--crit-bd)}
+.t-h{background:var(--high-bg);color:var(--high);border-color:var(--high-bd)}
+.t-cat{background:var(--surface3);color:var(--muted);border-color:var(--border2)}
+.t-good{background:var(--good-bg);color:var(--good);border-color:var(--good-bd)}
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    font-family: 'Space Grotesk', sans-serif;
-    cursor: pointer;
-    border: none;
-  }
+/* Two column: left = explanation, right = code split */
+.cc-body{display:grid;grid-template-columns:340px 1fr}
 
-  .btn-ghost { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
-  .btn-ghost:hover { background: var(--surface3); color: var(--text); }
-  .btn-accent { background: var(--accent); color: #fff; }
-  .btn-accent:hover { background: var(--accent2); transform: translateY(-1px); }
-  .btn-live { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; }
-  .btn-live:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(34,197,94,0.4); }
+/* LEFT PANEL */
+.left{padding:1.5rem;border-right:1px solid var(--border)}
+.ls{margin-bottom:1.25rem}
+.ls-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);font-family:'JetBrains Mono',monospace;margin-bottom:.5rem}
+.ls p{font-size:.84rem;color:var(--muted);line-height:1.72}
+.benefits{display:flex;flex-direction:column;gap:.5rem}
+.benefit{display:flex;align-items:flex-start;gap:.55rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.6rem .75rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.bicon{font-size:.62rem;font-weight:800;font-family:'JetBrains Mono',monospace;padding:.12rem .4rem;border-radius:3px;flex-shrink:0;margin-top:1px}
+.bi-seo{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd)}
+.bi-aeo{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd)}
+.bi-geo{background:var(--good-bg);color:var(--good);border:1px solid var(--good-bd)}
+.impact{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;border-radius:6px;font-size:.72rem;font-weight:700;font-family:'JetBrains Mono',monospace;margin-top:.875rem;border:1px solid}
+.imp-c{background:var(--crit-bg);color:var(--crit);border-color:var(--crit-bd)}
+.imp-h{background:var(--high-bg);color:var(--high);border-color:var(--high-bd)}
 
-  /* ── LAYOUT ── */
-  .page-wrap { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+/* RIGHT PANEL: two code blocks side by side */
+.code-split{display:grid;grid-template-columns:1fr 1fr}
+.cp{overflow:hidden}
+.cp-head{display:flex;align-items:center;gap:.5rem;padding:.55rem 1rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:'JetBrains Mono',monospace;border-bottom:1px solid}
+.cp-old .cp-head{background:var(--old-hd);color:var(--old-txt);border-color:var(--old-bd)}
+.cp-new .cp-head{background:var(--new-hd);color:var(--new-txt);border-color:var(--new-bd)}
+.cp-old{border-right:1px solid var(--border)}
+pre{padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.75;overflow-x:auto;white-space:pre-wrap;word-break:break-word;height:100%;min-height:220px}
+.cp-old pre{background:var(--old-bg);color:var(--old-code)}
+.cp-new pre{background:var(--new-bg);color:var(--new-code)}
+pre .cm{color:#9ca3af}
+pre .kw{color:#1d4ed8}
+pre .vl{color:#b45309}
+pre .ok{color:#166534;font-weight:700}
 
-  /* ── HERO ── */
-  .hero {
-    margin-bottom: 3rem;
-    padding: 2.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-  }
+/* DOC FOOTER */
+.df{margin-top:3.5rem;padding:1.5rem 2rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;text-align:center;font-size:.81rem;color:var(--muted);box-shadow:0 1px 3px rgba(15,28,53,.04)}
+.df a{color:var(--acc);text-decoration:none;font-weight:600}
+.df a:hover{text-decoration:underline}
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--good), var(--blue));
-  }
-
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(99,102,241,0.1);
-    border: 1px solid rgba(99,102,241,0.3);
-    color: var(--accent);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .hero h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.75rem; }
-  .hero h1 span { color: var(--good); }
-
-  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.8rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-top: 1rem; }
-
-  .legend {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.78rem;
-    color: var(--muted);
-  }
-
-  .legend-dot {
-    width: 10px; height: 10px;
-    border-radius: 2px;
-  }
-
-  /* ── SECTION HEADER ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 3rem 0 1.5rem;
-  }
-
-  .section-header h2 {
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted2);
-    white-space: nowrap;
-  }
-
-  .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-  /* ── CHANGE CARDS ── */
-  .change-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-  }
-
-  .change-card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
-
-  .change-card-header:hover { background: var(--surface2); }
-
-  .change-num {
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; font-weight: 700;
-    color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
-    flex-shrink: 0;
-  }
-
-  .change-header-main { flex: 1; }
-
-  .change-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
-
-  .change-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-  .tag {
-    padding: 0.15rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .tag-critical { background: var(--critical-bg); color: var(--critical); border: 1px solid var(--critical-border); }
-  .tag-high     { background: var(--high-bg);     color: var(--high);     border: 1px solid var(--high-border); }
-  .tag-medium   { background: rgba(234,179,8,0.1); color: var(--medium);   border: 1px solid #713f12; }
-  .tag-cat      { background: var(--surface2);    color: var(--muted);    border: 1px solid var(--border); }
-  .tag-benefit  { background: rgba(34,197,94,0.08); color: var(--good);   border: 1px solid var(--good-border); }
-
-  .change-chevron { color: var(--muted2); font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; margin-top: 4px; }
-  .change-card.open .change-chevron { transform: rotate(180deg); }
-
-  /* ── CARD BODY ── */
-  .change-body { display: none; }
-  .change-card.open .change-body { display: block; }
-
-  /* Left / Right split */
-  .change-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .split-left {
-    padding: 1.5rem;
-    border-right: 1px solid var(--border);
-  }
-
-  .split-right { display: grid; grid-template-columns: 1fr 1fr; }
-
-  .code-panel { overflow: hidden; }
-
-  .code-panel-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1rem;
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-family: 'JetBrains Mono', monospace;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .code-panel-old .code-panel-header {
-    background: rgba(239,68,68,0.08);
-    color: var(--critical);
-    border-color: var(--critical-border);
-  }
-
-  .code-panel-new .code-panel-header {
-    background: rgba(34,197,94,0.08);
-    color: var(--good);
-    border-color: var(--good-border);
-  }
-
-  .code-panel-old { border-right: 1px solid var(--border); }
-
-  pre {
-    padding: 1rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    line-height: 1.7;
-    overflow-x: auto;
-    height: 100%;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-
-  .code-panel-old pre { background: var(--code-old-bg); color: var(--code-old-text); }
-  .code-panel-new pre { background: var(--code-new-bg); color: var(--code-new-text); }
-
-  pre .comment { color: var(--code-comment); }
-  pre .keyword { color: #93c5fd; }
-  pre .value   { color: #fcd34d; }
-
-  /* Left panel content */
-  .left-section { margin-bottom: 1.25rem; }
-
-  .left-section h4 {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 700;
-    color: var(--muted2);
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 0.5rem;
-  }
-
-  .left-section p {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .benefit-pills { display: flex; flex-direction: column; gap: 0.5rem; }
-
-  .benefit-pill {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.6rem 0.75rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  .benefit-pill-icon {
-    font-size: 0.75rem;
-    font-weight: 800;
-    font-family: 'JetBrains Mono', monospace;
-    padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .seo-icon  { background: rgba(59,130,246,0.15); color: #60a5fa; }
-  .aeo-icon  { background: rgba(168,85,247,0.15); color: #c084fc; }
-  .geo-icon  { background: rgba(34,197,94,0.15);  color: #4ade80; }
-
-  .impact-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-    margin-top: 0.75rem;
-  }
-
-  .impact-critical { background: var(--critical-bg); color: var(--critical); border: 1px solid var(--critical-border); }
-  .impact-high     { background: var(--high-bg);     color: var(--high);     border: 1px solid var(--high-border); }
-
-  /* ── DOC FOOTER ── */
-  .doc-footer {
-    margin-top: 4rem;
-    padding: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--muted2);
-  }
-
-  .doc-footer a { color: var(--accent); text-decoration: none; }
-  .doc-footer a:hover { text-decoration: underline; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .change-split { grid-template-columns: 1fr; }
-    .split-left { border-right: none; border-bottom: 1px solid var(--border); }
-    .split-right { grid-template-columns: 1fr; }
-    .code-panel-old { border-right: none; border-bottom: 1px solid var(--border); }
-    .topbar-title { display: none; }
-    .page-wrap { padding: 1.5rem 1rem 4rem; }
-    .hero { padding: 1.5rem; }
-    .hero h1 { font-size: 1.5rem; }
-  }
+@media(max-width:1024px){
+  .cc-body{grid-template-columns:1fr}
+  .left{border-right:none;border-bottom:1px solid var(--border)}
+  .code-split{grid-template-columns:1fr}
+  .cp-old{border-right:none;border-bottom:1px solid var(--border)}
+}
+@media(max-width:768px){
+  .bar{padding:0 1rem}
+  .bar-title{display:none}
+  .wrap{padding:1.5rem 1rem 4rem}
+  .hero{padding:1.5rem}
+  .hero h1{font-size:1.5rem}
+  .btn{padding:.32rem .65rem;font-size:.72rem}
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<nav class="topbar">
-  <div class="topbar-left">
-    <div class="topbar-badge">
-      <span class="dot"></span>
-      DEV NOTES
-    </div>
-    <span class="topbar-title">GSurf.in — SEO Implementation Guide · April 2026</span>
+<nav class="bar">
+  <div class="bar-l">
+    <div class="badge"><span class="dot"></span>Dev Notes</div>
+    <span class="bar-title">GSurf.in — SEO Implementation Guide · April 2026</span>
   </div>
-  <div class="topbar-actions">
+  <div class="bar-r">
     <a href="../../index.html" class="btn btn-ghost">← Revamped Site</a>
-    <a href="seo-audit.html" class="btn btn-ghost">SEO Audit</a>
+    <a href="seo-audit.html" class="btn btn-acc">SEO Audit</a>
     <a href="https://www.gsurf.in" target="_blank" rel="noopener" class="btn btn-live">⬡ Live Site</a>
   </div>
 </nav>
 
-<!-- PAGE CONTENT -->
-<div class="page-wrap">
+<div class="wrap">
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-eyebrow">📋 Implementation Reference</div>
+    <div class="eyebrow">📋 Implementation Reference</div>
     <h1>Developer <span>Notes</span></h1>
-    <p style="color:var(--muted);font-size:0.9rem;max-width:680px;">Every SEO change in the revamp is documented here with full justification and before/after code. Left panel explains what changed and why. Right panel shows existing code vs updated code.</p>
+    <p class="hero-sub">Every SEO change in the revamp documented with full justification and before/after code. Left panel: what changed and why. Right panel: existing code vs updated code.</p>
     <div class="hero-meta">
       <span>📅 April 2026</span>
       <span>🌐 www.gsurf.in</span>
@@ -437,926 +164,831 @@
       <span>📄 11 changes documented</span>
     </div>
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:var(--critical-bg);border:1px solid var(--critical-border);"></div>Existing code</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--good-bg);border:1px solid var(--good-border);"></div>Updated code</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(59,130,246,0.2);border:1px solid #1e3a5f;"></div>SEO benefit</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(168,85,247,0.2);border:1px solid #4c1d95;"></div>AEO benefit</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(34,197,94,0.2);border:1px solid var(--good-border);"></div>GEO benefit</div>
+      <div class="legend-item"><div class="ld ld-old"></div>Existing code (current live site)</div>
+      <div class="legend-item"><div class="ld ld-new"></div>Updated code (revamped design)</div>
+      <div class="legend-item"><div class="ld ld-seo"></div>SEO benefit</div>
+      <div class="legend-item"><div class="ld ld-aeo"></div>AEO benefit</div>
+      <div class="legend-item"><div class="ld ld-geo"></div>GEO benefit</div>
     </div>
   </div>
 
-  <!-- CHANGE 1 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">01</div>
-      <div class="change-header-main">
-        <div class="change-title">Meta Description Added to All Pages</div>
-        <div class="change-tags">
-          <span class="tag tag-critical">CRITICAL</span>
-          <span class="tag tag-cat">On-Page SEO</span>
-          <span class="tag tag-benefit">CTR +20–35%</span>
+  <div class="sh"><h2>All 11 Changes Documented</h2></div>
+  <div class="changes">
+
+    <!-- 01 META DESCRIPTION -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">01</div>
+        <div>
+          <div class="cc-title">Meta Description Added to All Pages</div>
+          <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-good">CTR +20–35%</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>A meta description is the short summary paragraph that appears under your website title in Google search results. The current gsurf.in has none — so Google generates one automatically from random page text (usually from the modal popup HTML), which always looks unprofessional and irrelevant to users.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>A meta description is the short paragraph under your website title in Google search results. gsurf.in has none — so Google generates one from random page text (often the modal popup HTML), which looks unprofessional and irrelevant to users searching for broadband.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Meta description is a direct CTR ranking factor. Higher CTR = stronger behavioral signal = rankings boost over time.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>AI answer engines (ChatGPT, Perplexity, Gemini) read meta description as the primary "what is this page about" signal when deciding whether to cite this page in answers.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>City name in meta description reinforces geographic relevance for Bangalore/Whitefield local queries.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Meta description is a direct CTR ranking factor. Higher CTR sends a stronger behavioral signal to Google, which compounds into ranking improvements over time.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>AI answer engines (ChatGPT, Perplexity, Gemini) read meta description as the primary "what is this page about" signal when deciding whether to cite this page in an answer.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>City name in meta description reinforces geographic relevance for Bangalore/Whitefield local queries — a direct geo signal for local intent matching.</div>
             </div>
           </div>
-          <div class="impact-badge impact-critical">🔴 CRITICAL · CTR impact: ~20–35%</div>
+          <div class="impact imp-c">🔴 CRITICAL · CTR impact: ~20–35%</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code (Current Live Site)</div>
-            <pre><span class="comment">&lt;!-- No meta description exists --&gt;
-&lt;!-- Google auto-generates random text --&gt;</span>
-&lt;<span class="keyword">head</span>&gt;
-  &lt;<span class="keyword">meta</span> charset=<span class="value">"UTF-8"</span>&gt;
-  &lt;<span class="keyword">meta</span> name=<span class="value">"viewport"</span>
-    content=<span class="value">"width=device-width,
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code — Current Live Site</div>
+            <pre><span class="cm">&lt;!-- No meta description exists --&gt;
+&lt;!-- Google auto-generates random --&gt;
+&lt;!-- text from modal popup HTML  --&gt;</span>
+
+&lt;<span class="kw">head</span>&gt;
+  &lt;<span class="kw">meta</span> charset=<span class="vl">"UTF-8"</span>&gt;
+  &lt;<span class="kw">meta</span> name=<span class="vl">"viewport"</span>
+    content=<span class="vl">"width=device-width,
     initial-scale=1.0"</span>&gt;
-  &lt;<span class="keyword">title</span>&gt;Gsurf - High-Speed Internet
-    Service Provider |
-    Enterprise Broadband&lt;/<span class="keyword">title</span>&gt;
-  <span class="comment">&lt;!-- NO meta description tag --&gt;
-  &lt;!-- NO canonical tag --&gt;
-  &lt;!-- NO OG tags --&gt;</span>
-&lt;/<span class="keyword">head</span>&gt;</pre>
+  &lt;<span class="kw">title</span>&gt;Gsurf - High-Speed
+    Internet Service Provider |
+    Enterprise Broadband&lt;/<span class="kw">title</span>&gt;
+  <span class="cm">&lt;!-- NO meta description --&gt;
+  &lt;!-- NO canonical tag      --&gt;
+  &lt;!-- NO OG tags            --&gt;</span>
+&lt;/<span class="kw">head</span>&gt;</pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code (Revamped Design)</div>
-            <pre>&lt;<span class="keyword">head</span>&gt;
-  &lt;<span class="keyword">meta</span> charset=<span class="value">"UTF-8"</span>&gt;
-  &lt;<span class="keyword">meta</span> name=<span class="value">"viewport"</span>
-    content=<span class="value">"width=device-width,
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code — Revamped Design</div>
+            <pre>&lt;<span class="kw">head</span>&gt;
+  &lt;<span class="kw">meta</span> charset=<span class="vl">"UTF-8"</span>&gt;
+  &lt;<span class="kw">meta</span> name=<span class="vl">"viewport"</span>
+    content=<span class="vl">"width=device-width,
     initial-scale=1.0"</span>&gt;
-  &lt;<span class="keyword">title</span>&gt;GSurf Fiber Broadband
+  &lt;<span class="kw">title</span>&gt;GSurf Fiber Broadband
     Bangalore | FTTH Plans from
-    ₹900/month | Whitefield&lt;/<span class="keyword">title</span>&gt;
-  &lt;<span class="keyword">meta</span> name=<span class="value">"description"</span>
-    content=<span class="value">"GSurf by Gaxiom offers
+    ₹900/month | Whitefield
+  &lt;/<span class="kw">title</span>&gt;
+  &lt;<span class="kw">meta</span> name=<span class="vl">"description"</span>
+    content=<span class="vl">"GSurf by Gaxiom offers
     high-speed fiber broadband in
-    Bangalore &amp; Whitefield. Plans
-    from ₹900/month. 99.9% uptime,
-    speeds up to 1 Gbps. FTTH for
-    homes &amp; businesses."</span>&gt;
-  &lt;<span class="keyword">link</span> rel=<span class="value">"canonical"</span>
-    href=<span class="value">"https://www.gsurf.in/"</span>&gt;
-&lt;/<span class="keyword">head</span>&gt;</pre>
+    Bangalore. Plans from ₹900/mo.
+    99.9% uptime, up to 1 Gbps.
+    FTTH for homes &amp; businesses."</span>&gt;
+  &lt;<span class="kw">link</span> rel=<span class="vl">"canonical"</span>
+    href=<span class="vl">"https://www.gsurf.in/"</span>&gt;
+&lt;/<span class="kw">head</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 2 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">02</div>
-      <div class="change-header-main">
-        <div class="change-title">Structured Data (JSON-LD Schema) Added — Organization + LocalBusiness</div>
-        <div class="change-tags">
-          <span class="tag tag-critical">CRITICAL</span>
-          <span class="tag tag-cat">Structured Data</span>
-          <span class="tag tag-benefit">AI citation eligibility</span>
+    <!-- 02 SCHEMA -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">02</div>
+        <div>
+          <div class="cc-title">Structured Data (JSON-LD Schema) — Organization + LocalBusiness + FAQ</div>
+          <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Structured Data</span><span class="tag t-good">AI citation eligibility</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>Schema markup is code added to the HTML that tells search engines and AI tools exactly what type of business this is, where it operates, what it offers, and who to contact. Currently zero schema exists on gsurf.in — the site is completely invisible to AI tools.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>Schema markup is code that tells search engines and AI tools exactly what type of business this is, where it operates, what it offers, and who to contact. Currently zero schema exists on gsurf.in — the site is completely invisible to AI tools and ineligible for rich results.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Schema enables rich results — FAQ boxes, LocalBusiness cards, breadcrumbs. Rich results get 20–30% more clicks than plain blue links.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>This is the #1 AEO fix. AI engines like Perplexity and ChatGPT use structured data to extract factual information for their answers. Without schema, GSurf cannot be cited by AI tools.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>LocalBusiness + ServiceArea + areaServed schema is how Google AI Overviews and Gemini determine which ISPs serve which neighborhoods.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Schema enables rich results — FAQ boxes, LocalBusiness cards, breadcrumbs. Rich results get 20–30% more clicks than plain blue links.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>The #1 AEO fix. AI engines like Perplexity and ChatGPT use structured data to extract factual information for their answers. Without schema, GSurf cannot be cited by any AI tool.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>LocalBusiness + ServiceArea + areaServed schema is how Google AI Overviews and Gemini determine which ISPs serve which neighbourhoods.</div>
             </div>
           </div>
-          <div class="impact-badge impact-critical">🔴 CRITICAL · AI invisibility without this</div>
+          <div class="impact imp-c">🔴 CRITICAL · AI invisibility without this</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre><span class="comment">&lt;!-- CURRENT: Zero schema markup --&gt;
-&lt;!-- Google has to guess: --&gt;
-&lt;!-- - What type of business? --&gt;
-&lt;!-- - Where does it operate? --&gt;
-&lt;!-- - What are the plans/prices? --&gt;
-&lt;!-- - Who should they call? --&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- CURRENT: Zero schema markup --&gt;
+&lt;!-- Google has to guess:         --&gt;
+&lt;!--   What type of business?     --&gt;
+&lt;!--   Where does it operate?     --&gt;
+&lt;!--   What are the plans?        --&gt;
+&lt;!--   Who should they call?      --&gt;
 
-&lt;!-- Result: --&gt;
-&lt;!-- No rich results --&gt;
-&lt;!-- No AI citations --&gt;
-&lt;!-- No Local Pack from site --&gt;</span></pre>
+&lt;!-- Result:                      --&gt;
+&lt;!--   No rich results            --&gt;
+&lt;!--   No AI citations            --&gt;
+&lt;!--   No Local Pack from site    --&gt;</span></pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code</div>
-            <pre>&lt;<span class="keyword">script</span> type=<span class="value">"application/ld+json"</span>&gt;
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code</div>
+            <pre>&lt;<span class="kw">script</span> type=<span class="vl">"application/ld+json"</span>&gt;
 {
   "@context": "https://schema.org",
   "@graph": [
   {
-    "@type": [
-      "Organization",
-      "LocalBusiness"
-    ],
-    "name": <span class="value">"GSurf"</span>,
-    "legalName": <span class="value">"Gaxiom Networking
+    "@type": ["Organization",
+              "LocalBusiness"],
+    "name": <span class="vl">"GSurf"</span>,
+    "legalName": <span class="vl">"Gaxiom Networking
       Solutions Pvt Ltd"</span>,
-    "url": <span class="value">"https://www.gsurf.in"</span>,
-    "telephone": <span class="value">"+917338685258"</span>,
-    "email": <span class="value">"support@gaxiom.in"</span>,
+    "url": <span class="vl">"https://www.gsurf.in"</span>,
+    "telephone": <span class="vl">"+917338685258"</span>,
+    "email": <span class="vl">"support@gaxiom.in"</span>,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress":
-        <span class="value">"No.8 Whitely Layout,
-         Whitefield Main Road"</span>,
-      "addressLocality": <span class="value">"Whitefield"</span>,
-      "addressRegion": <span class="value">"Karnataka"</span>,
-      "postalCode": <span class="value">"560066"</span>,
-      "addressCountry": <span class="value">"IN"</span>
+      "addressLocality": <span class="vl">"Whitefield"</span>,
+      "addressRegion": <span class="vl">"Karnataka"</span>,
+      "postalCode": <span class="vl">"560066"</span>,
+      "addressCountry": <span class="vl">"IN"</span>
     },
     "areaServed": [
       {"@type":"City",
-       "name":"Bangalore"},
-      {"@type":"City",
-       "name":"Whitefield"}
+       "name":"Bangalore"}
     ],
-    "priceRange": <span class="value">"₹₹"</span>
+    "priceRange": <span class="vl">"₹₹"</span>
   }]
 }
-&lt;/<span class="keyword">script</span>&gt;</pre>
+&lt;/<span class="kw">script</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 3 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">03</div>
-      <div class="change-header-main">
-        <div class="change-title">Heading Hierarchy Fixed — One H1 per Page, Keyword-Rich</div>
-        <div class="change-tags">
-          <span class="tag tag-critical">CRITICAL</span>
-          <span class="tag tag-cat">On-Page SEO</span>
-          <span class="tag tag-benefit">Primary keyword signal</span>
+    <!-- 03 H1 -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">03</div>
+        <div>
+          <div class="cc-title">Heading Hierarchy Fixed — One Keyword-Rich H1 Per Page</div>
+          <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-good">Primary keyword signal</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>The current page has three H1 tags and none of them contain a searchable keyword. "Ultra Fast Internet! Better Service!!" has zero keyword value. "We Provide Unlimited Network For You" is marketing fluff. "Enterprise Broadband Plans" inside a div is structurally wrong. Google uses H1 as the strongest on-page content signal after the title tag. One keyword-rich H1 per page is a fundamental SEO rule.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>The page has three H1 tags and none contain searchable keywords. "Ultra Fast Internet! Better Service!!" has zero keyword value. "We Provide Unlimited Network For You" is marketing fluff. "Enterprise Broadband Plans" inside a div is structurally wrong. One keyword-rich H1 per page is a fundamental SEO rule — Google uses it as the strongest on-page content signal after the title tag.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>H1 = primary topic declaration to Google. Must contain the target keyword. Multiple H1s signal low-quality content.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>AI tools use heading structure to understand page topic. A clear H1 helps AI extract the right entity and subject matter for citation.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>City/area pages (HSR Layout, BTM Layout) must have location in H1: "Fiber Broadband in HSR Layout, Bangalore" = direct geo-signal.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>H1 = primary topic declaration to Google. Must contain the main target keyword. Multiple H1s signal disorganized, low-quality content.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>AI tools use heading structure to understand page topic. A clear keyword-rich H1 helps AI extract the right entity description for citation.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>City/area pages (HSR Layout, BTM Layout) must include location in H1: "Fiber Broadband in HSR Layout, Bangalore" — this is a direct geo-relevance signal.</div>
             </div>
           </div>
-          <div class="impact-badge impact-critical">🔴 CRITICAL · Core ranking signal</div>
+          <div class="impact imp-c">🔴 CRITICAL · Core ranking signal</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre><span class="comment">&lt;!-- H1 #1 — no keywords --&gt;</span>
-&lt;<span class="keyword">h1</span> class=<span class="value">"hero-title"</span>&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- H1 #1 — hero, no keywords --&gt;</span>
+&lt;<span class="kw">h1</span> class=<span class="vl">"hero-title"</span>&gt;
   Ultra Fast Internet !
   Better Service !!
-&lt;/<span class="keyword">h1</span>&gt;
+&lt;/<span class="kw">h1</span>&gt;
 
-<span class="comment">&lt;!-- H2 used correctly here --&gt;</span>
-&lt;<span class="keyword">h2</span>&gt;About Us&lt;/<span class="keyword">h2</span>&gt;
-
-<span class="comment">&lt;!-- H1 #2 — WRONG, inside about --&gt;</span>
-&lt;<span class="keyword">h1</span> style=<span class="value">"font-size:3.2rem"</span>&gt;
+<span class="cm">&lt;!-- H1 #2 — WRONG, about section --&gt;</span>
+&lt;<span class="kw">h1</span> style=<span class="vl">"font-size:3.2rem"</span>&gt;
   We Provide Unlimited
   Network For You.
-&lt;/<span class="keyword">h1</span>&gt;
+&lt;/<span class="kw">h1</span>&gt;
 
-<span class="comment">&lt;!-- H1 #3 — WRONG, plans section --&gt;</span>
-&lt;<span class="keyword">h1</span>&gt;Enterprise Broadband
-  &lt;<span class="keyword">span</span>&gt;Plans&lt;/<span class="keyword">span</span>&gt;
-&lt;/<span class="keyword">h1</span>&gt;</pre>
+<span class="cm">&lt;!-- H1 #3 — WRONG, plans section --&gt;</span>
+&lt;<span class="kw">h1</span>&gt;Enterprise Broadband
+  &lt;<span class="kw">span</span>&gt;Plans&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">h1</span>&gt;</pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code</div>
-            <pre><span class="comment">&lt;!-- ONE H1 — keyword + geo --&gt;</span>
-&lt;<span class="keyword">h1</span> class=<span class="value">"hero-title"</span>&gt;
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code</div>
+            <pre><span class="cm">&lt;!-- ONE H1 — geo + keyword --&gt;</span>
+&lt;<span class="kw">h1</span> class=<span class="vl">"hero-title"</span>&gt;
   High-Speed Fiber Broadband
   in Bangalore &amp; Whitefield
-&lt;/<span class="keyword">h1</span>&gt;
-<span class="comment">&lt;!-- Subtitle as paragraph --&gt;</span>
-&lt;<span class="keyword">p</span> class=<span class="value">"hero-subtitle"</span>&gt;
-  Trusted FTTH Provider — Plans
-  from ₹900/month | 99.9% Uptime
-&lt;/<span class="keyword">p</span>&gt;
+&lt;/<span class="kw">h1</span>&gt;
+<span class="cm">&lt;!-- Subtitle as &lt;p&gt;, not heading --&gt;</span>
+&lt;<span class="kw">p</span> class=<span class="vl">"hero-subtitle"</span>&gt;
+  Trusted FTTH Provider —
+  Plans from ₹900/month |
+  99.9% Uptime
+&lt;/<span class="kw">p</span>&gt;
 
-<span class="comment">&lt;!-- All sections now use H2 --&gt;</span>
-&lt;<span class="keyword">h2</span>&gt;About GSurf&lt;/<span class="keyword">h2</span>&gt;
+<span class="cm">&lt;!-- All sections now use H2 --&gt;</span>
+&lt;<span class="kw">h2</span>&gt;About GSurf&lt;/<span class="kw">h2</span>&gt;
+&lt;<span class="kw">h2</span>&gt;Broadband Plans
+  in Bangalore&lt;/<span class="kw">h2</span>&gt;
 
-&lt;<span class="keyword">h2</span>&gt;We Provide Unlimited Fiber
-  Network For You&lt;/<span class="keyword">h2</span>&gt;
-
-&lt;<span class="keyword">h2</span>&gt;Broadband Plans
-  in Bangalore&lt;/<span class="keyword">h2</span>&gt;
-
-<span class="comment">&lt;!-- Sub-sections use H3 --&gt;</span>
-&lt;<span class="keyword">h3</span>&gt;Our Services&lt;/<span class="keyword">h3</span>&gt;</pre>
+<span class="cm">&lt;!-- Sub-sections use H3 --&gt;</span>
+&lt;<span class="kw">h3</span>&gt;Our Services&lt;/<span class="kw">h3</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 4 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">04</div>
-      <div class="change-header-main">
-        <div class="change-title">Logo & Image Alt Text Corrected — Brand Entity Consistency</div>
-        <div class="change-tags">
-          <span class="tag tag-high">HIGH</span>
-          <span class="tag tag-cat">On-Page SEO</span>
-          <span class="tag tag-benefit">E-E-A-T signal</span>
+    <!-- 04 ALT TEXT -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">04</div>
+        <div>
+          <div class="cc-title">Logo &amp; Image Alt Text Corrected — Brand Entity Consistency</div>
+          <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">On-Page SEO</span><span class="tag t-good">E-E-A-T signal</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>The navbar logo has alt="Netrun Fibernet" and the about section image has alt="About Netrun." Netrun Fibernet appears to be a previous or white-label brand. On a single page, the business appears as: "Gsurf" (title), "GSurf" (body), "Netrun Fibernet" (logo alt), "GAXIOM" (footer). This is four different entity names on one page.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>The navbar logo has alt="Netrun Fibernet" and the about section image has alt="About Netrun." On a single page the business appears as: "Gsurf" (title), "GSurf" (body), "Netrun Fibernet" (logo alt), "GAXIOM" (footer). Four different entity names on one page creates an entity mismatch that damages E-E-A-T scoring and AI citation confidence.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Alt text is used for image search AND as a supplementary entity signal. Wrong brand = entity mismatch = E-E-A-T trust penalty.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>AI tools encounter "Netrun Fibernet" in the logo and "GSurf" in text — cannot confidently assign facts to one entity. Reduces AI citation probability significantly.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>Google's Local Knowledge Panel requires consistent entity identity across GBP, website, schema, title tag, and alt text — all must say "GSurf."</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Alt text is used for image search AND as a supplementary entity signal. Wrong brand name = entity mismatch = E-E-A-T trust penalty.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>AI encounters "Netrun Fibernet" in the logo and "GSurf" in text — cannot confidently assign facts to one entity. Directly reduces AI citation probability.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>Google's Local Knowledge Panel requires consistent entity identity across GBP, website, schema, title, and alt text — all must say "GSurf."</div>
             </div>
           </div>
-          <div class="impact-badge impact-high">🟠 HIGH · E-E-A-T + brand entity</div>
+          <div class="impact imp-h">🟠 HIGH · E-E-A-T + brand entity</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre><span class="comment">&lt;!-- Logo — WRONG brand name --&gt;</span>
-&lt;<span class="keyword">a</span> class=<span class="value">"navbar-brand"</span> href=<span class="value">"#"</span>&gt;
-  &lt;<span class="keyword">img</span> src=<span class="value">"images/logo.jpeg"</span>
-    alt=<span class="value">"Netrun Fibernet"</span>&gt;
-&lt;/<span class="keyword">a</span>&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- Logo — WRONG brand name --&gt;</span>
+&lt;<span class="kw">a</span> class=<span class="vl">"navbar-brand"</span>
+   href=<span class="vl">"#"</span>&gt;
+  &lt;<span class="kw">img</span>
+    src=<span class="vl">"images/logo.jpeg"</span>
+    alt=<span class="vl">"Netrun Fibernet"</span>&gt;
+&lt;/<span class="kw">a</span>&gt;
 
-<span class="comment">&lt;!-- About image — WRONG brand --&gt;</span>
-&lt;<span class="keyword">img</span> src=<span class="value">"images/about.png"</span>
-  alt=<span class="value">"About Netrun"</span>
-  class=<span class="value">"img-fluid"</span>&gt;
+<span class="cm">&lt;!-- About image — WRONG brand --&gt;</span>
+&lt;<span class="kw">img</span>
+  src=<span class="vl">"images/about.png"</span>
+  alt=<span class="vl">"About Netrun"</span>
+  class=<span class="vl">"img-fluid"</span>&gt;
 
-<span class="comment">&lt;!-- Hero image — generic only --&gt;</span>
-&lt;<span class="keyword">img</span> src=<span class="value">"images/hero.png"</span>
-  alt=<span class="value">"Internet Service"</span>
-  class=<span class="value">"img-fluid"</span>&gt;</pre>
+<span class="cm">&lt;!-- Hero image — generic only --&gt;</span>
+&lt;<span class="kw">img</span>
+  src=<span class="vl">"images/hero.png"</span>
+  alt=<span class="vl">"Internet Service"</span>
+  class=<span class="vl">"img-fluid"</span>&gt;</pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code</div>
-            <pre><span class="comment">&lt;!-- Logo — correct entity --&gt;</span>
-&lt;<span class="keyword">a</span> href=<span class="value">"/"</span> class=<span class="value">"flex items-center"</span>&gt;
-  &lt;<span class="keyword">img</span> src=<span class="value">"images/logo.jpeg"</span>
-    alt=<span class="value">"GSurf Fiber Broadband
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code</div>
+            <pre><span class="cm">&lt;!-- Logo — correct entity --&gt;</span>
+&lt;<span class="kw">a</span> href=<span class="vl">"/"</span>
+   class=<span class="vl">"flex items-center"</span>&gt;
+  &lt;<span class="kw">img</span>
+    src=<span class="vl">"images/logo.jpeg"</span>
+    alt=<span class="vl">"GSurf Fiber Broadband
       Logo — Gaxiom Networking
       Solutions Pvt Ltd"</span>
-    style=<span class="value">"height:44px"</span>&gt;
-&lt;/<span class="keyword">a</span>&gt;
+    style=<span class="vl">"height:44px"</span>&gt;
+&lt;/<span class="kw">a</span>&gt;
 
-<span class="comment">&lt;!-- About image — descriptive --&gt;</span>
-&lt;<span class="keyword">img</span>
-  src=<span class="value">"images/about-gsurf.jpg"</span>
-  alt=<span class="value">"GSurf fiber broadband
-    installation team in Bangalore
-    — Gaxiom Networking Solutions"</span>
-  class=<span class="value">"img-fluid rounded"</span>&gt;
+<span class="cm">&lt;!-- About — descriptive alt --&gt;</span>
+&lt;<span class="kw">img</span>
+  src=<span class="vl">"images/about-gsurf.jpg"</span>
+  alt=<span class="vl">"GSurf fiber broadband
+    installation team in
+    Bangalore, Whitefield"</span>&gt;
 
-<span class="comment">&lt;!-- Hero — keyword-rich alt --&gt;</span>
-&lt;<span class="keyword">img</span> src=<span class="value">"images/ftth-home.png"</span>
-  alt=<span class="value">"High-speed fiber broadband
+<span class="cm">&lt;!-- Hero — keyword-rich alt --&gt;</span>
+&lt;<span class="kw">img</span>
+  src=<span class="vl">"images/ftth-home.png"</span>
+  alt=<span class="vl">"High-speed fiber broadband
     home connection — GSurf FTTH
-    Bangalore Whitefield"</span>
-  class=<span class="value">"img-fluid"</span>&gt;</pre>
+    Bangalore Whitefield"</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 5 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">05</div>
-      <div class="change-header-main">
-        <div class="change-title">Open Graph + Twitter Card Meta Tags Added</div>
-        <div class="change-tags">
-          <span class="tag tag-high">HIGH</span>
-          <span class="tag tag-cat">Technical SEO</span>
-          <span class="tag tag-benefit">Social + AI signals</span>
+    <!-- 05 OG TAGS -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">05</div>
+        <div>
+          <div class="cc-title">Open Graph + Twitter Card Meta Tags Added</div>
+          <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Technical SEO</span><span class="tag t-good">Social + AI signals</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>Open Graph tags control how your website appears when shared on WhatsApp, Facebook, LinkedIn, and Twitter/X. Currently when anyone shares gsurf.in on any platform, they get a completely blank preview — no image, no title, no description. This prevents the social sharing that drives branded search volume.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>Open Graph tags control how the website appears when shared on WhatsApp, Facebook, LinkedIn, and Twitter/X. Currently when anyone shares gsurf.in on any platform, they get a blank preview — no image, no title, no description. This prevents the social sharing that drives branded search volume.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Rich social previews drive sharing → sharing drives traffic → traffic drives branded search → branded search is a strong ranking signal.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>Perplexity.ai and ChatGPT's browsing mode read og:description and og:title as entity description sources — same weight as meta description but with brand context via og:site_name.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>og:locale="en_IN" signals to AI tools this is an India-specific resource. Combined with address schema, strengthens local geo-relevance.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Rich social previews drive sharing → sharing drives traffic → traffic drives branded search → branded search is a strong ranking signal that compounds.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>Perplexity.ai and ChatGPT browsing mode read og:description and og:title as entity description sources — same weight as meta description but with brand context via og:site_name.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>og:locale="en_IN" signals to AI tools this is an India-specific resource. Combined with address schema, strengthens local geo-relevance significantly.</div>
             </div>
           </div>
-          <div class="impact-badge impact-high">🟠 HIGH · Social + AI entity signals</div>
+          <div class="impact imp-h">🟠 HIGH · Social + AI entity signals</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre><span class="comment">&lt;!-- No OG or Twitter tags exist --&gt;
-&lt;!-- WhatsApp share = blank card --&gt;
-&lt;!-- Facebook share = no image --&gt;
-&lt;!-- LinkedIn = random text --&gt;
-&lt;!-- AI crawlers: no entity context --&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- No OG or Twitter tags exist --&gt;
+&lt;!-- WhatsApp share = blank card  --&gt;
+&lt;!-- Facebook share = no image    --&gt;
+&lt;!-- LinkedIn = random text       --&gt;
+&lt;!-- AI: no entity context        --&gt;
 
-&lt;!-- Only these exist in head: --&gt;</span>
-&lt;<span class="keyword">meta</span> charset=<span class="value">"UTF-8"</span>&gt;
-&lt;<span class="keyword">meta</span> name=<span class="value">"viewport"</span>
-  content=<span class="value">"..."</span>&gt;
-&lt;<span class="keyword">title</span>&gt;Gsurf - High-Speed...
-&lt;/<span class="keyword">title</span>&gt;</pre>
+&lt;!-- Only these in head: --&gt;</span>
+&lt;<span class="kw">meta</span> charset=<span class="vl">"UTF-8"</span>&gt;
+&lt;<span class="kw">meta</span> name=<span class="vl">"viewport"</span>
+  content=<span class="vl">"..."</span>&gt;
+&lt;<span class="kw">title</span>&gt;Gsurf - High-Speed...
+&lt;/<span class="kw">title</span>&gt;</pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code</div>
-            <pre><span class="comment">&lt;!-- Open Graph --&gt;</span>
-&lt;<span class="keyword">meta</span> property=<span class="value">"og:type"</span>
-  content=<span class="value">"website"</span>&gt;
-&lt;<span class="keyword">meta</span> property=<span class="value">"og:site_name"</span>
-  content=<span class="value">"GSurf Fiber Broadband"</span>&gt;
-&lt;<span class="keyword">meta</span> property=<span class="value">"og:title"</span>
-  content=<span class="value">"GSurf — Fiber Broadband
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code</div>
+            <pre><span class="cm">&lt;!-- Open Graph --&gt;</span>
+&lt;<span class="kw">meta</span> property=<span class="vl">"og:type"</span>
+  content=<span class="vl">"website"</span>&gt;
+&lt;<span class="kw">meta</span> property=<span class="vl">"og:site_name"</span>
+  content=<span class="vl">"GSurf Fiber Broadband"</span>&gt;
+&lt;<span class="kw">meta</span> property=<span class="vl">"og:title"</span>
+  content=<span class="vl">"GSurf — Fiber Broadband
   Bangalore | From ₹900/mo"</span>&gt;
-&lt;<span class="keyword">meta</span> property=<span class="value">"og:description"</span>
-  content=<span class="value">"FTTH fiber internet for
+&lt;<span class="kw">meta</span> property=<span class="vl">"og:description"</span>
+  content=<span class="vl">"FTTH fiber internet for
   homes &amp; businesses. Plans from
-  ₹900/month. 99.9% uptime, up
-  to 1 Gbps. Serving Bangalore
-  &amp; Whitefield."</span>&gt;
-&lt;<span class="keyword">meta</span> property=<span class="value">"og:url"</span>
-  content=<span class="value">"https://www.gsurf.in/"</span>&gt;
-&lt;<span class="keyword">meta</span> property=<span class="value">"og:locale"</span>
-  content=<span class="value">"en_IN"</span>&gt;
-<span class="comment">&lt;!-- Twitter Card --&gt;</span>
-&lt;<span class="keyword">meta</span> name=<span class="value">"twitter:card"</span>
-  content=<span class="value">"summary_large_image"</span>&gt;
-&lt;<span class="keyword">meta</span> name=<span class="value">"twitter:title"</span>
-  content=<span class="value">"GSurf Fiber Bangalore
+  ₹900/mo. 99.9% uptime, 1 Gbps.
+  Serving Bangalore."</span>&gt;
+&lt;<span class="kw">meta</span> property=<span class="vl">"og:locale"</span>
+  content=<span class="vl">"en_IN"</span>&gt;
+<span class="cm">&lt;!-- Twitter Card --&gt;</span>
+&lt;<span class="kw">meta</span> name=<span class="vl">"twitter:card"</span>
+  content=<span class="vl">"summary_large_image"</span>&gt;
+&lt;<span class="kw">meta</span> name=<span class="vl">"twitter:title"</span>
+  content=<span class="vl">"GSurf Fiber Bangalore
   — Plans from ₹900/mo"</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 6 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">06</div>
-      <div class="change-header-main">
-        <div class="change-title">Multi-Page Architecture — 11 Separate Rankable URLs</div>
-        <div class="change-tags">
-          <span class="tag tag-critical">CRITICAL</span>
-          <span class="tag tag-cat">Technical SEO</span>
-          <span class="tag tag-benefit">Structural foundation</span>
+    <!-- 06 MULTI-PAGE -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">06</div>
+        <div>
+          <div class="cc-title">Multi-Page Architecture — 21 Separate Rankable URLs</div>
+          <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Technical SEO</span><span class="tag t-good">Structural foundation</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>The entire website was one HTML file with anchor links (#home, #plans, #contact). Google ranks pages, not sections. The revamp creates 11 separate pages each with a unique URL, each targetable for different search queries. This is the most important structural change in the entire project.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>The entire website was one HTML file with anchor links (#home, #plans, #contact). Google ranks pages, not sections. The revamp creates 21 separate pages each with a unique URL, each targetable for different search queries. This is the most important structural change in the entire project.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>11 pages = 11 independent ranking opportunities vs. 1. Each page can target a specific query: "fiber broadband plans Bangalore," "fiber internet HSR Layout," "business broadband Whitefield."</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>AI tools cite specific URLs, not websites. A page dedicated to "GSurf Bangalore fiber plans" is cited by AI answering "best fiber broadband in Bangalore." A homepage section never is.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>Area pages (HSR Layout, BTM Layout) can rank for neighborhood-level queries with high conversion intent that a homepage can never compete for.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>21 pages = 21 independent ranking opportunities vs 1. Each page can target a specific query: "fiber broadband plans Bangalore," "fiber internet HSR Layout," "business broadband Whitefield."</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>AI tools cite specific URLs, not websites. A page dedicated to "GSurf Bangalore fiber plans" is cited by AI answering "best fiber broadband in Bangalore." A homepage section never is.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>Area pages (HSR Layout, BTM Layout) rank for neighbourhood-level queries with high conversion intent that a homepage can never compete for.</div>
             </div>
           </div>
-          <div class="impact-badge impact-critical">🔴 CRITICAL · Root structural fix</div>
+          <div class="impact imp-c">🔴 CRITICAL · Root structural fix</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Structure</div>
-            <pre><span class="comment">&lt;!-- ALL content in one file --&gt;
-&lt;!-- One URL: www.gsurf.in --&gt;</span>
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Structure</div>
+            <pre><span class="cm">&lt;!-- ALL content in one file --&gt;
+&lt;!-- One URL: www.gsurf.in   --&gt;</span>
 
-&lt;<span class="keyword">nav</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#home"</span>&gt;Home&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#about"</span>&gt;About&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#services"</span>&gt;Services&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#plans"</span>&gt;Plans&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#contact"</span>&gt;Contact&lt;/<span class="keyword">a</span>&gt;
-&lt;/<span class="keyword">nav</span>&gt;
+&lt;<span class="kw">nav</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#home"</span>&gt;Home&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#about"</span>&gt;About&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#services"</span>&gt;Services&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#plans"</span>&gt;Plans&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#contact"</span>&gt;Contact&lt;/<span class="kw">a</span>&gt;
+&lt;/<span class="kw">nav</span>&gt;
 
-<span class="comment">&lt;!-- Cannot rank for: --&gt;
+<span class="cm">&lt;!-- Cannot rank for: --&gt;
 &lt;!-- "plans bangalore" --&gt;
 &lt;!-- "fiber internet adyar" --&gt;
 &lt;!-- "business broadband ISP" --&gt;</span></pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Structure</div>
-            <pre><span class="comment">&lt;!-- 11 separate rankable URLs --&gt;</span>
-
-&lt;<span class="keyword">nav</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"/pages/plans.html"</span>&gt;
-    Fiber Plans&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"/pages/business.html"</span>&gt;
-    Business&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"/pages/coverage.html"</span>&gt;
-    Coverage&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"/pages/bangalore/"</span>&gt;
-    Bangalore&lt;/<span class="keyword">a</span>&gt;
-&lt;/<span class="keyword">nav</span>&gt;
-
-<span class="comment">&lt;!-- URLs now ranking for: --&gt;
-&lt;!-- / → homepage brand queries --&gt;
-&lt;!-- /pages/plans.html → plan queries --&gt;
-&lt;!-- /pages/bangalore/ → city queries --&gt;
-&lt;!-- /pages/hsr-layout/ → area queries--&gt;
-&lt;!-- /pages/btm-layout/ → area queries--&gt;</span></pre>
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated — 21 Separate URLs</div>
+            <pre><span class="cm">&lt;!-- Dedicated rankable pages --&gt;</span>
+<span class="ok">/</span>                 <span class="cm">← homepage</span>
+<span class="ok">/pages/plans.html</span> <span class="cm">← fiber plans</span>
+<span class="ok">/pages/business.html</span>
+<span class="ok">/pages/coverage.html</span>
+<span class="ok">/pages/about.html</span>
+<span class="ok">/pages/contact.html</span>
+<span class="ok">/pages/bangalore/</span> <span class="cm">← city page</span>
+<span class="ok">/pages/hsr-layout/</span> <span class="cm">← area page</span>
+<span class="ok">/pages/btm-layout/</span> <span class="cm">← area page</span>
+<span class="ok">/pages/services/home-broadband.html</span>
+<span class="ok">/pages/services/office-broadband.html</span>
+<span class="ok">/pages/services/leased-lines.html</span>
+<span class="ok">/pages/services/download-1gbps.html</span>
+<span class="ok">/pages/services/enterprise-plans.html</span>
+<span class="cm">... + 7 more service pages</span></pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 7 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">07</div>
-      <div class="change-header-main">
-        <div class="change-title">robots.txt + XML Sitemap Created</div>
-        <div class="change-tags">
-          <span class="tag tag-high">HIGH</span>
-          <span class="tag tag-cat">Technical SEO</span>
-          <span class="tag tag-benefit">Index coverage</span>
+    <!-- 07 ROBOTS + SITEMAP -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">07</div>
+        <div>
+          <div class="cc-title">robots.txt + XML Sitemap Created</div>
+          <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Technical SEO</span><span class="tag t-good">Index coverage</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>Both files returned 404 on the live site. robots.txt tells bots which pages to crawl (and skip). Without it, Google wastes crawl budget on modal HTML, form elements, and the portal.gaxiom.in redirect. sitemap.xml lists all 11 revamped pages — without it, deeper pages like /pages/hsr-layout/ may take weeks to be discovered.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>Both files returned 404 on the live site. robots.txt tells bots which pages to crawl. Without it, Google wastes crawl budget on modal HTML, form elements, and the portal.gaxiom.in redirect. sitemap.xml lists all 21 revamped pages — without it, deeper pages like /pages/hsr-layout/ may take weeks to be discovered.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Sitemap ensures all 11 pages get crawled quickly after deployment. Submit to Google Search Console on launch day.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>Bing's crawler (used by Perplexity and Copilot) respects robots.txt and uses sitemap.xml to discover pages. Pages not in sitemap = not indexed by AI tools.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>Location pages (/pages/bangalore/, /pages/hsr-layout/) must appear in sitemap to rank for local searches.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Sitemap ensures all 21 pages get crawled quickly. Submit to Google Search Console on launch day to guarantee rapid indexing.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>Bing's crawler (used by Perplexity and Copilot) respects robots.txt and uses sitemap.xml to discover pages. Pages not in sitemap are rarely indexed by AI tools.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>Location pages (/pages/bangalore/, /pages/hsr-layout/) must appear in sitemap to rank for local neighbourhood queries.</div>
             </div>
           </div>
-          <div class="impact-badge impact-high">🟠 HIGH · Required infrastructure</div>
+          <div class="impact imp-h">🟠 HIGH · Required infrastructure</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing (Missing Files)</div>
-            <pre><span class="comment"># robots.txt → 404 Not Found
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing (Missing Files)</div>
+            <pre><span class="cm"># robots.txt → 404 Not Found
 # sitemap.xml → 404 Not Found
 
-# Result:
+# Consequences:
 # - Google crawls everything
 # - Modal HTML gets indexed
 # - Crawl budget wasted on:
-#   portal.gaxiom.in redirect
-#   form hidden fields
-#   Bootstrap CSS classes
-
-# New pages (after revamp) will
-# take weeks to be discovered</span></pre>
+#     portal.gaxiom.in redirect
+#     form hidden fields
+#     Bootstrap CSS classes
+#
+# New pages take weeks to be
+# discovered after revamp launch</span></pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated (New Files)</div>
-            <pre><span class="comment"># /robots.txt</span>
-User-agent: *
-Allow: /
-Disallow: /cdn-cgi/
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated (New Files)</div>
+            <pre><span class="cm"># /robots.txt</span>
+<span class="ok">User-agent: *</span>
+<span class="ok">Allow: /</span>
+<span class="ok">Disallow: /cdn-cgi/</span>
+<span class="ok">Sitemap: https://www.gsurf.in/
+         sitemap.xml</span>
 
-Sitemap: https://www.gsurf.in/
-         sitemap.xml
-
-<span class="comment">&lt;!-- /sitemap.xml --&gt;</span>
-&lt;<span class="keyword">urlset</span> xmlns=<span class="value">"http://www.
-  sitemaps.org/schemas/sitemap/
-  0.9"</span>&gt;
-  &lt;<span class="keyword">url</span>&gt;
-    &lt;<span class="keyword">loc</span>&gt;https://www.gsurf.in/
-    &lt;/<span class="keyword">loc</span>&gt;
-    &lt;<span class="keyword">priority</span>&gt;1.0&lt;/<span class="keyword">priority</span>&gt;
-  &lt;/<span class="keyword">url</span>&gt;
-  &lt;<span class="keyword">url</span>&gt;
-    &lt;<span class="keyword">loc</span>&gt;https://www.gsurf.in/
-      pages/bangalore/&lt;/<span class="keyword">loc</span>&gt;
-    &lt;<span class="keyword">priority</span>&gt;0.9&lt;/<span class="keyword">priority</span>&gt;
-  &lt;/<span class="keyword">url</span>&gt;
-  <span class="comment">&lt;!-- + 9 more pages --&gt;</span>
-&lt;/<span class="keyword">urlset</span>&gt;</pre>
+<span class="cm">&lt;!-- /sitemap.xml --&gt;</span>
+&lt;<span class="kw">urlset</span>&gt;
+  &lt;<span class="kw">url</span>&gt;
+    &lt;<span class="kw">loc</span>&gt;https://www.gsurf.in/
+    &lt;/<span class="kw">loc</span>&gt;
+    &lt;<span class="kw">priority</span>&gt;1.0&lt;/<span class="kw">priority</span>&gt;
+  &lt;/<span class="kw">url</span>&gt;
+  &lt;<span class="kw">url</span>&gt;
+    &lt;<span class="kw">loc</span>&gt;https://www.gsurf.in/
+      pages/bangalore/&lt;/<span class="kw">loc</span>&gt;
+    &lt;<span class="kw">priority</span>&gt;0.9&lt;/<span class="kw">priority</span>&gt;
+  &lt;/<span class="kw">url</span>&gt;
+  <span class="cm">&lt;!-- + 19 more pages --&gt;</span>
+&lt;/<span class="kw">urlset</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 8 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">08</div>
-      <div class="change-header-main">
-        <div class="change-title">NAP Consistency — Structured Contact Markup</div>
-        <div class="change-tags">
-          <span class="tag tag-critical">CRITICAL</span>
-          <span class="tag tag-cat">Local SEO</span>
-          <span class="tag tag-benefit">Local Pack eligibility</span>
+    <!-- 08 NAP -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">08</div>
+        <div>
+          <div class="cc-title">NAP Consistency — Structured Contact Markup</div>
+          <div class="tags"><span class="tag t-c">CRITICAL</span><span class="tag t-cat">Local SEO</span><span class="tag t-good">Local Pack eligibility</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>NAP = Name, Address, Phone. Currently inconsistent across the page (4 brand names) and completely unstructured (plain text, not schema). Contact emails are obfuscated by Cloudflare and invisible to crawlers. The fix applies consistent brand identity and wraps NAP in machine-readable schema + HTML microdata.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>NAP = Name, Address, Phone. Currently inconsistent across the page (4 brand names) and completely unstructured (plain text, no schema). Contact emails are obfuscated by Cloudflare and invisible to crawlers. The fix applies consistent brand identity and wraps NAP in machine-readable schema + HTML microdata.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>NAP consistency across website + GBP + directories is the #1 local ranking factor for Local Pack positions.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>AI tools build entity knowledge from consistent NAP. Inconsistency = AI cannot build a reliable entity profile = no citation.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>This is the foundation of GEO. AI-powered local answers pull business data from structured, consistent NAP signals to determine who serves which area.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>NAP consistency across website + GBP + directories is the #1 local ranking factor for Local Pack positions.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>AI tools build entity knowledge from consistent NAP. Inconsistency = AI cannot build a reliable entity profile = no citation in AI-generated answers.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>This is the foundation of GEO. AI-powered local answers pull business data from structured, consistent NAP signals to determine who serves which area.</div>
             </div>
           </div>
-          <div class="impact-badge impact-critical">🔴 CRITICAL · Local Pack eligibility</div>
+          <div class="impact imp-c">🔴 CRITICAL · Local Pack eligibility</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre><span class="comment">&lt;!-- Plain text, no structure --&gt;</span>
-&lt;<span class="keyword">p</span> class=<span class="value">"lead-address"</span>&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- Plain text, no structure --&gt;</span>
+&lt;<span class="kw">p</span> class=<span class="vl">"lead-address"</span>&gt;
   No.8 Whitely Layout,
-  Whitefield Main Road,
-  Bangalore - 560066
-&lt;/<span class="keyword">p</span>&gt;
+  Whitefield, Bangalore-560066
+&lt;/<span class="kw">p</span>&gt;
 
-<span class="comment">&lt;!-- Email hidden by Cloudflare --&gt;</span>
-&lt;<span class="keyword">span</span> class=<span class="value">"__cf_email__"</span>
-  data-cfemail=<span class="value">"..."</span>&gt;
-  [email&#160;protected]
-&lt;/<span class="keyword">span</span>&gt;
+<span class="cm">&lt;!-- Email hidden by Cloudflare --&gt;</span>
+&lt;<span class="kw">span</span> class=<span class="vl">"__cf_email__"</span>
+  data-cfemail=<span class="vl">"..."</span>&gt;
+  [email protected]
+&lt;/<span class="kw">span</span>&gt;
 
-<span class="comment">&lt;!-- Brand inconsistency: --&gt;
-&lt;!-- Title: "Gsurf" --&gt;
-&lt;!-- Body: "GSurf" --&gt;
-&lt;!-- Logo: "Netrun Fibernet" --&gt;
-&lt;!-- Footer: "GAXIOM" --&gt;</span></pre>
+<span class="cm">&lt;!-- Brand inconsistency: --&gt;
+&lt;!-- Title:  "Gsurf"         --&gt;
+&lt;!-- Body:   "GSurf"         --&gt;
+&lt;!-- Logo:   "Netrun Fibernet"--&gt;
+&lt;!-- Footer: "GAXIOM"        --&gt;</span></pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code</div>
-            <pre"><span class="comment">&lt;!-- In &lt;head&gt; — JSON-LD schema --&gt;</span>
-"name": <span class="value">"GSurf"</span>,
-"legalName": <span class="value">"Gaxiom Networking
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code</div>
+            <pre"><span class="cm">&lt;!-- JSON-LD schema in &lt;head&gt; --&gt;</span>
+"name": <span class="vl">"GSurf"</span>,
+"legalName": <span class="vl">"Gaxiom Networking
   Solutions Private Limited"</span>,
-"telephone": <span class="value">"+917338685258"</span>,
-"email": <span class="value">"support@gaxiom.in"</span>,
+"telephone": <span class="vl">"+917338685258"</span>,
+"email": <span class="vl">"support@gaxiom.in"</span>,
 
-<span class="comment">&lt;!-- HTML — microdata + visible --&gt;</span>
-&lt;<span class="keyword">address</span> itemscope itemtype=<span class="value">"
-  https://schema.org/
-  PostalAddress"</span>&gt;
-  &lt;<span class="keyword">strong</span>&gt;GSurf&lt;/<span class="keyword">strong</span>&gt;
+<span class="cm">&lt;!-- HTML — visible + microdata --&gt;</span>
+&lt;<span class="kw">address</span> itemscope
+  itemtype=<span class="vl">"https://schema.org/
+            PostalAddress"</span>&gt;
+  &lt;<span class="kw">strong</span>&gt;GSurf&lt;/<span class="kw">strong</span>&gt;
   (Gaxiom Networking Solutions
-  Private Limited)&lt;<span class="keyword">br</span>&gt;
+  Private Limited)&lt;<span class="kw">br</span>&gt;
   No.8 Whitely Layout,
-  Whitefield Main Road,
-  Bangalore — 560066&lt;<span class="keyword">br</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"tel:+917338685258"</span>&gt;
-    +91 73386 85258&lt;/<span class="keyword">a</span>&gt;&lt;<span class="keyword">br</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"mailto:support@gaxiom.in"</span>&gt;
-    support@gaxiom.in&lt;/<span class="keyword">a</span>&gt;
-&lt;/<span class="keyword">address</span>&gt;</pre>
+  Whitefield, Bangalore — 560066
+  &lt;<span class="kw">br</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"tel:+917338685258"</span>&gt;
+    +91 73386 85258&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">br</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"mailto:support@gaxiom.in"</span>&gt;
+    support@gaxiom.in&lt;/<span class="kw">a</span>&gt;
+&lt;/<span class="kw">address</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 9 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">09</div>
-      <div class="change-header-main">
-        <div class="change-title">FAQPage Schema + FAQ Content Section — AEO Implementation</div>
-        <div class="change-tags">
-          <span class="tag tag-high">HIGH</span>
-          <span class="tag tag-cat">AEO / GEO</span>
-          <span class="tag tag-benefit">AI citation + rich results</span>
+    <!-- 09 FAQ AEO -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">09</div>
+        <div>
+          <div class="cc-title">FAQPage Schema + FAQ Content Section — AEO Implementation</div>
+          <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">AEO / GEO</span><span class="tag t-good">AI citation + rich results</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>Zero FAQ content exists on any page. AEO requires content structured as natural language Q&A so AI tools can extract and present it as answers. When someone asks "How much does GSurf cost?" or "Is GSurf available in HSR Layout?" — there is nothing on the current site structured for AI to cite. Both visible FAQ HTML and FAQPage JSON-LD schema are required.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>Zero FAQ content existed on any page. AEO requires content structured as natural language Q&amp;A so AI tools can extract and present it as answers. When someone asks "How much does GSurf cost?" or "Is GSurf in HSR Layout?" — there was nothing on the site structured for AI to cite. Both visible FAQ HTML and FAQPage JSON-LD schema are required.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>FAQPage schema generates expandable FAQ rich results in Google SERPs — takes up 3× more space, gets 20–30% more clicks than plain results.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>This is pure AEO. Perplexity, ChatGPT, Gemini all extract from FAQ-formatted content. A Q&A answering "How much does GSurf cost?" = GSurf gets cited in AI answers about pricing.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>Location-specific FAQs ("Is GSurf in HSR Layout?") train AI on geographic coverage, making GSurf appear in neighborhood-specific AI answers.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>FAQPage schema generates expandable FAQ rich results in Google SERPs — takes up 3× more SERP space, gets 20–30% more clicks than plain results.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>Pure AEO. Perplexity, ChatGPT, Gemini extract from FAQ-formatted content. A Q&amp;A answering "How much does GSurf cost?" = GSurf gets cited in AI answers about pricing.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>Location-specific FAQs ("Is GSurf in HSR Layout?") train AI on geographic coverage, making GSurf appear in neighbourhood-specific AI answers.</div>
             </div>
           </div>
-          <div class="impact-badge impact-high">🟠 HIGH · AI citation probability</div>
+          <div class="impact imp-h">🟠 HIGH · AI citation probability</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre"><span class="comment">&lt;!-- No FAQ section exists --&gt;
-&lt;!-- No Q&A format content --&gt;
-&lt;!-- No FAQPage schema --&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- No FAQ section exists     --&gt;
+&lt;!-- No Q&amp;A format content     --&gt;
+&lt;!-- No FAQPage schema         --&gt;
 
-&lt;!-- Plans shown as a grid --&gt;
-&lt;!-- with speed + price only --&gt;
-&lt;!-- No explanatory copy --&gt;
-&lt;!-- No common questions --&gt;
+&lt;!-- Plans shown as price grid --&gt;
+&lt;!-- with speed + price only   --&gt;
+&lt;!-- No explanatory copy       --&gt;
+&lt;!-- No common questions       --&gt;
 
-&lt;!-- AI tools have nothing to --&gt;
+&lt;!-- AI tools have nothing to  --&gt;
 &lt;!-- cite when users ask about --&gt;
-&lt;!-- GSurf plans or coverage --&gt;</span></pre>
+&lt;!-- GSurf plans or coverage   --&gt;</span></pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code</div>
-            <pre"><span class="comment">&lt;!-- JSON-LD in &lt;head&gt; --&gt;</span>
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code</div>
+            <pre><span class="cm">&lt;!-- JSON-LD FAQPage schema --&gt;</span>
 {
-  "@type": <span class="value">"FAQPage"</span>,
+  "@type": <span class="vl">"FAQPage"</span>,
   "mainEntity": [{
-    "@type": <span class="value">"Question"</span>,
-    "name": <span class="value">"How much does GSurf
-      cost in Bangalore?"</span>,
+    "@type": <span class="vl">"Question"</span>,
+    "name": <span class="vl">"How much does GSurf
+      broadband cost in
+      Bangalore?"</span>,
     "acceptedAnswer": {
-      "@type": <span class="value">"Answer"</span>,
-      "text": <span class="value">"Plans start at
+      "@type": <span class="vl">"Answer"</span>,
+      "text": <span class="vl">"Plans start at
         ₹900/month for 50 Mbps,
-        up to ₹13,500/month for
-        1000 Mbps Ultra."</span>
+        up to ₹13,500 for 1 Gbps
+        Ultra."</span>
     }
   }]
 }
 
-<span class="comment">&lt;!-- Visible HTML FAQ section --&gt;</span>
-&lt;<span class="keyword">section</span> id=<span class="value">"faq"</span>&gt;
-  &lt;<span class="keyword">h2</span>&gt;Common Questions&lt;/<span class="keyword">h2</span>&gt;
-  &lt;<span class="keyword">div</span> itemscope
-    itemtype=<span class="value">"schema.org/Question"</span>&gt;
-    &lt;<span class="keyword">h3</span> itemprop=<span class="value">"name"</span>&gt;
-      Is GSurf available in
-      Whitefield, Bangalore?
-    &lt;/<span class="keyword">h3</span>&gt;
-    &lt;<span class="keyword">p</span> itemprop=<span class="value">"acceptedAnswer"</span>&gt;
+<span class="cm">&lt;!-- Visible HTML section --&gt;</span>
+&lt;<span class="kw">section</span> id=<span class="vl">"faq"</span>&gt;
+  &lt;<span class="kw">h2</span>&gt;Common Questions&lt;/<span class="kw">h2</span>&gt;
+  &lt;<span class="kw">div</span> itemscope
+    itemtype=<span class="vl">"schema.org/Question"</span>&gt;
+    &lt;<span class="kw">h3</span> itemprop=<span class="vl">"name"</span>&gt;
+      Is GSurf in Whitefield,
+      Bangalore?
+    &lt;/<span class="kw">h3</span>&gt;
+    &lt;<span class="kw">p</span> itemprop=<span class="vl">"acceptedAnswer"</span>&gt;
       Yes, GSurf's office is in
-      Whitefield. We provide FTTH
-      across Whitefield, HSR Layout
-      and BTM Layout.
-    &lt;/<span class="keyword">p</span>&gt;
-  &lt;/<span class="keyword">div</span>&gt;
-&lt;/<span class="keyword">section</span>&gt;</pre>
+      Whitefield. We serve FTTH
+      across Whitefield, HSR
+      Layout and BTM Layout.
+    &lt;/<span class="kw">p</span>&gt;
+  &lt;/<span class="kw">div</span>&gt;
+&lt;/<span class="kw">section</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 10 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">10</div>
-      <div class="change-header-main">
-        <div class="change-title">BreadcrumbList Schema — City > Area Hierarchy in SERPs</div>
-        <div class="change-tags">
-          <span class="tag tag-high">HIGH</span>
-          <span class="tag tag-cat">Structured Data</span>
-          <span class="tag tag-benefit">SERP real estate</span>
+    <!-- 10 BREADCRUMB -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">10</div>
+        <div>
+          <div class="cc-title">BreadcrumbList Schema — City &gt; Area Hierarchy in SERPs</div>
+          <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Structured Data</span><span class="tag t-good">SERP real estate</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
             <p>With the multi-page hierarchy (Bangalore → HSR Layout, Bangalore → BTM Layout), BreadcrumbList schema enables the breadcrumb trail to appear directly in Google search results below the page URL — showing "GSurf › Bangalore › HSR Layout" before users even click. Required on all city and area drilldown pages.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Breadcrumb rich results increase SERP click-through rates by showing site structure. Users trust hierarchical results more than standalone URLs.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>Breadcrumb schema helps AI tools understand the content hierarchy — that HSR Layout is a sub-location of Bangalore — strengthening geographic entity relationships.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>The Bangalore > HSR Layout relationship in schema teaches AI tools the geographic hierarchy used for local search and recommendation queries.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Breadcrumb rich results increase SERP click-through rates by showing site structure. Users trust hierarchical results more than standalone URLs.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>Breadcrumb schema helps AI tools understand the content hierarchy — that HSR Layout is a sub-location of Bangalore — strengthening geographic entity relationships.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>The Bangalore › HSR Layout relationship in schema teaches AI tools the geographic hierarchy used for local search and recommendation queries.</div>
             </div>
           </div>
-          <div class="impact-badge impact-high">🟠 HIGH · SERP + hierarchy signals</div>
+          <div class="impact imp-h">🟠 HIGH · SERP hierarchy signals</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Code</div>
-            <pre"><span class="comment">&lt;!-- No breadcrumb schema --&gt;
-&lt;!-- No breadcrumb HTML --&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Code</div>
+            <pre><span class="cm">&lt;!-- No breadcrumb schema  --&gt;
+&lt;!-- No breadcrumb HTML   --&gt;
 
-&lt;!-- In search results: --&gt;
-&lt;!-- www.gsurf.in --&gt;
-&lt;!-- ↓ --&gt;
-&lt;!-- Gsurf - High-Speed Internet --&gt;
-&lt;!-- Service Provider | Enterprise --&gt;
-&lt;!-- (no location context) --&gt;
-&lt;!-- (no site hierarchy visible) --&gt;</span></pre>
+&lt;!-- Result in search:    --&gt;
+&lt;!-- www.gsurf.in         --&gt;
+&lt;!-- ↓                    --&gt;
+&lt;!-- Gsurf - High-Speed Internet--&gt;
+&lt;!-- (no location context)--&gt;
+&lt;!-- (no hierarchy shown) --&gt;</span></pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Code (Area Pages)</div>
-            <pre"><span class="comment">&lt;!-- On HSR Layout page head --&gt;</span>
-{
-  "@type": <span class="value">"BreadcrumbList"</span>,
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Code (Area Pages)</div>
+            <pre>{
+  "@type": <span class="vl">"BreadcrumbList"</span>,
   "itemListElement": [
     {
-      "@type": <span class="value">"ListItem"</span>,
+      "@type": <span class="vl">"ListItem"</span>,
       "position": 1,
-      "name": <span class="value">"Home"</span>,
+      "name": <span class="vl">"Home"</span>,
       "item":
-        <span class="value">"https://www.gsurf.in/"</span>
+        <span class="vl">"https://www.gsurf.in/"</span>
     },
     {
-      "@type": <span class="value">"ListItem"</span>,
+      "@type": <span class="vl">"ListItem"</span>,
       "position": 2,
-      "name": <span class="value">"Bangalore"</span>,
-      "item": <span class="value">"https://www.gsurf.in/
+      "name": <span class="vl">"Bangalore"</span>,
+      "item": <span class="vl">"https://www.gsurf.in/
         pages/bangalore/"</span>
     },
     {
-      "@type": <span class="value">"ListItem"</span>,
+      "@type": <span class="vl">"ListItem"</span>,
       "position": 3,
-      "name": <span class="value">"HSR Layout"</span>,
-      "item": <span class="value">"https://www.gsurf.in/
+      "name": <span class="vl">"HSR Layout"</span>,
+      "item": <span class="vl">"https://www.gsurf.in/
         pages/hsr-layout/"</span>
     }
   ]
 }
-<span class="comment">&lt;!-- Result in SERP: --&gt;
-&lt;!-- GSurf › Bangalore › HSR Layout --&gt;</span></pre>
+<span class="cm">// Result in SERP:
+// GSurf › Bangalore › HSR Layout</span></pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHANGE 11 -->
-  <div class="change-card">
-    <div class="change-card-header" onclick="toggle(this)">
-      <div class="change-num">11</div>
-      <div class="change-header-main">
-        <div class="change-title">Footer Navigation Updated — SEO + Audit Docs Linked</div>
-        <div class="change-tags">
-          <span class="tag tag-high">HIGH</span>
-          <span class="tag tag-cat">Internal Linking</span>
-          <span class="tag tag-benefit">PageRank flow + discoverability</span>
+    <!-- 11 FOOTER NAV -->
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-num">11</div>
+        <div>
+          <div class="cc-title">Footer Navigation — Full Internal Linking + SEO Docs Button</div>
+          <div class="tags"><span class="tag t-h">HIGH</span><span class="tag t-cat">Internal Linking</span><span class="tag t-good">PageRank flow + discoverability</span></div>
         </div>
       </div>
-      <span class="change-chevron">▾</span>
-    </div>
-    <div class="change-body">
-      <div class="change-split">
-        <div class="split-left">
-          <div class="left-section">
-            <h4>What Changed</h4>
-            <p>The old footer had all links pointing to href="#" — zero actual navigation. The revamp implements a full footer with proper internal links to all 11 pages, a highlighted SEO Audit & Developer Notes button for the client/developer audience, and correct relative paths for all depth levels. Internal links pass PageRank between pages and help Google understand site hierarchy.</p>
+      <div class="cc-body">
+        <div class="left">
+          <div class="ls">
+            <div class="ls-label">What Changed</div>
+            <p>The old footer had all links pointing to href="#" — zero actual navigation. The revamp implements a full footer with proper internal links to all 21 pages, correct relative paths for every depth level, and a highlighted SEO Audit &amp; Developer Notes button for client/developer reference.</p>
           </div>
-          <div class="left-section">
-            <h4>Why It Matters</h4>
-            <div class="benefit-pills">
-              <div class="benefit-pill"><span class="benefit-pill-icon seo-icon">SEO</span>Footer links on every page pass internal PageRank to all 11 URLs. Area pages (HSR Layout, BTM Layout) especially benefit from footer links since they are deeper in the hierarchy.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon aeo-icon">AEO</span>Internal links help AI crawlers discover all pages in a single crawl session. A well-linked site structure increases the chance all pages are indexed for AI citation.</div>
-              <div class="benefit-pill"><span class="benefit-pill-icon geo-icon">GEO</span>Linking Bangalore → HSR Layout → BTM Layout in footer reinforces the geographic hierarchy and ensures crawlers understand the location relationship between pages.</div>
+          <div class="ls">
+            <div class="ls-label">Why It Matters</div>
+            <div class="benefits">
+              <div class="benefit"><span class="bicon bi-seo">SEO</span>Footer links on every page pass internal PageRank to all 21 URLs. Area pages (HSR Layout, BTM Layout) especially benefit from footer links since they are deeper in the hierarchy.</div>
+              <div class="benefit"><span class="bicon bi-aeo">AEO</span>Internal links help AI crawlers discover all pages in a single crawl session. A well-linked site structure increases the chance all pages are indexed for AI citation.</div>
+              <div class="benefit"><span class="bicon bi-geo">GEO</span>Linking Bangalore → HSR Layout → BTM Layout in footer reinforces the geographic hierarchy and ensures crawlers understand location relationships between pages.</div>
             </div>
           </div>
-          <div class="impact-badge impact-high">🟠 HIGH · Internal linking foundation</div>
+          <div class="impact imp-h">🟠 HIGH · Internal linking foundation</div>
         </div>
-        <div class="split-right">
-          <div class="code-panel code-panel-old">
-            <div class="code-panel-header">✗ Existing Footer</div>
-            <pre"><span class="comment">&lt;!-- All dead links --&gt;</span>
-&lt;<span class="keyword">footer</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#"</span>&gt;Privacy Policy&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#"</span>&gt;Terms of Service&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#"</span>&gt;Legal&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#"</span>&gt;Contact Us&lt;/<span class="keyword">a</span>&gt;
+        <div class="code-split">
+          <div class="cp cp-old">
+            <div class="cp-head">✕ Existing Footer</div>
+            <pre><span class="cm">&lt;!-- All dead links --&gt;</span>
+&lt;<span class="kw">footer</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#"</span>&gt;Privacy Policy&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#"</span>&gt;Terms of Service&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#"</span>&gt;Legal&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#"</span>&gt;Contact Us&lt;/<span class="kw">a</span>&gt;
 
-  <span class="comment">&lt;!-- Social links also dead --&gt;</span>
-  &lt;<span class="keyword">a</span> href=<span class="value">"#"</span>&gt;Instagram&lt;/<span class="keyword">a</span>&gt;
-  &lt;<span class="keyword">a</span> href=<span class="value">"#"</span>&gt;Facebook&lt;/<span class="keyword">a</span>&gt;
+  <span class="cm">&lt;!-- Social links also dead --&gt;</span>
+  &lt;<span class="kw">a</span> href=<span class="vl">"#"</span>&gt;Instagram&lt;/<span class="kw">a</span>&gt;
+  &lt;<span class="kw">a</span> href=<span class="vl">"#"</span>&gt;Facebook&lt;/<span class="kw">a</span>&gt;
 
-  <span class="comment">&lt;!-- Zero navigation links --&gt;
+  <span class="cm">&lt;!-- Zero navigation links --&gt;
   &lt;!-- Zero internal PageRank --&gt;</span>
-&lt;/<span class="keyword">footer</span>&gt;</pre>
+&lt;/<span class="kw">footer</span>&gt;</pre>
           </div>
-          <div class="code-panel code-panel-new">
-            <div class="code-panel-header">✓ Updated Footer</div>
-            <pre"><span class="comment">&lt;!-- Full nav + highlighted docs --&gt;</span>
-&lt;<span class="keyword">footer</span>&gt;
-  &lt;<span class="keyword">nav</span>&gt;
-    &lt;<span class="keyword">a</span> href=<span class="value">"pages/plans.html"</span>&gt;
-      Fiber Plans&lt;/<span class="keyword">a</span>&gt;
-    &lt;<span class="keyword">a</span> href=<span class="value">"pages/bangalore/"</span>&gt;
-      Bangalore&lt;/<span class="keyword">a</span>&gt;
-    &lt;<span class="keyword">a</span> href=<span class="value">"pages/hsr-layout/"</span>&gt;
-      HSR Layout&lt;/<span class="keyword">a</span>&gt;
-    &lt;<span class="keyword">a</span> href=<span class="value">"pages/btm-layout/"</span>&gt;
-      BTM Layout&lt;/<span class="keyword">a</span>&gt;
-    &lt;<span class="keyword">a</span> href=<span class="value">"pages/about.html"</span>&gt;
-      About Us&lt;/<span class="keyword">a</span>&gt;
-    &lt;<span class="keyword">a</span> href=<span class="value">"pages/contact.html"</span>&gt;
-      Contact&lt;/<span class="keyword">a</span>&gt;
-  &lt;/<span class="keyword">nav</span>&gt;
+          <div class="cp cp-new">
+            <div class="cp-head">✓ Updated Footer</div>
+            <pre>&lt;<span class="kw">footer</span>&gt;
+  &lt;<span class="kw">nav</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/plans.html"</span>&gt;
+      Fiber Plans&lt;/<span class="kw">a</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/business.html"</span>&gt;
+      Business&lt;/<span class="kw">a</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/bangalore/"</span>&gt;
+      Bangalore&lt;/<span class="kw">a</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/hsr-layout/"</span>&gt;
+      HSR Layout&lt;/<span class="kw">a</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/btm-layout/"</span>&gt;
+      BTM Layout&lt;/<span class="kw">a</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/about.html"</span>&gt;
+      About Us&lt;/<span class="kw">a</span>&gt;
+    &lt;<span class="kw">a</span> href=<span class="vl">"pages/contact.html"</span>&gt;
+      Contact&lt;/<span class="kw">a</span>&gt;
+  &lt;/<span class="kw">nav</span>&gt;
 
-  <span class="comment">&lt;!-- Highlighted docs button --&gt;</span>
-  &lt;<span class="keyword">a</span> href=<span class="value">"pages/docs/seo-audit.html"</span>
-    class=<span class="value">"seo-docs-btn"</span>&gt;
+  <span class="cm">&lt;!-- Highlighted docs button --&gt;</span>
+  &lt;<span class="kw">a</span> href=<span class="vl">"pages/docs/seo-audit.html"</span>
+    class=<span class="vl">"seo-docs-btn"</span>&gt;
     📊 SEO Audit &amp; Dev Notes
-  &lt;/<span class="keyword">a</span>&gt;
-&lt;/<span class="keyword">footer</span>&gt;</pre>
+  &lt;/<span class="kw">a</span>&gt;
+&lt;/<span class="kw">footer</span>&gt;</pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- DOC FOOTER -->
-  <div class="doc-footer">
+  </div><!-- /changes -->
+
+  <div class="df">
     <p>Prepared by <strong>FirstDial</strong> for GSurf (Gaxiom Networking Solutions Pvt Ltd) · April 2026</p>
-    <p style="margin-top:0.5rem;">View companion document: <a href="seo-audit.html">← SEO Audit Report</a></p>
+    <p style="margin-top:.5rem">View companion document: <a href="seo-audit.html">← SEO Audit Report</a></p>
   </div>
 
-</div><!-- /page-wrap -->
-
-<script>
-function toggle(header) {
-  const card = header.closest('.change-card');
-  card.classList.toggle('open');
-}
-</script>
+</div>
 </body>
 </html>
