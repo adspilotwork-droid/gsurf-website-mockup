@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727783",
+                    "secondary-fixed-dim": "#b8c5f1",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e2e7ff",
+                    "primary-container": "#0061b4",
+                    "on-secondary-fixed": "#0a1a3c",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#dae2ff",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-secondary-container": "#4d5a81",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c1c6d3",
+                    "surface": "#faf8ff",
+                    "tertiary-fixed-dim": "#ffb59e",
+                    "tertiary": "#892500",
+                    "inverse-primary": "#a6c8ff",
+                    "on-primary-container": "#caddff",
+                    "secondary": "#505d84",
+                    "surface-container": "#eaedff",
+                    "primary": "#00498a",
+                    "on-background": "#0a1a3c",
+                    "primary-fixed": "#d5e3ff",
+                    "on-secondary-fixed-variant": "#38466a",
+                    "inverse-on-surface": "#eef0ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#852400",
+                    "secondary-container": "#c6d3ff",
+                    "surface-dim": "#ced9ff",
+                    "background": "#faf8ff",
+                    "tertiary-container": "#b23300",
+                    "surface-bright": "#faf8ff",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-tertiary-fixed": "#3a0b00",
+                    "inverse-surface": "#212f53",
+                    "on-primary-fixed": "#001c3b",
+                    "surface-variant": "#dae2ff",
+                    "on-surface": "#0a1a3c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#414752",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dae2ff",
+                    "surface-container-low": "#f2f3ff",
+                    "surface-tint": "#005fb0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#004786",
+                    "on-tertiary-container": "#ffd2c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
+<div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-50 font-headline">GSurf</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-headline font-bold tracking-tight text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Fiber Plans</a>
+<a class="font-headline font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Business</a>
+<a class="font-headline font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Coverage</a>
+<a class="font-headline font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant font-headline font-bold px-4 py-2 hover:text-primary transition-colors">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-headline font-bold scale-95 active:scale-90 transition-transform hover:shadow-lg">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Portal Quick Access) -->
+<aside class="hidden lg:flex flex-col p-4 space-y-6 bg-[#ffffff] dark:bg-[#0a1a3c] rounded-l-2xl fixed right-0 top-1/2 -translate-y-1/2 shadow-2xl z-40 font-['Inter'] text-sm">
+<div class="flex flex-col items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-primary text-2xl">account_circle</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PORTAL</span>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex flex-col items-center p-3 rounded-xl text-[#414752] hover:bg-[#f2f3ff] dark:hover:bg-[#1a2a4c] hover:translate-x-[-4px] transition-transform">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] mt-1 font-medium">Quick Pay</span>
+</button>
+<button class="flex flex-col items-center p-3 rounded-xl bg-[#eaedff] text-[#00498a] font-semibold hover:translate-x-[-4px] transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-[10px] mt-1">Recharge</span>
+</button>
+</div>
+</aside>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto flex-grow">
+<!-- Hero Section -->
+<header class="text-center mb-16">
+<span class="text-primary font-headline font-bold tracking-widest uppercase text-sm mb-4 block">Fiber Optic Technology</span>
+<h1 class="text-5xl md:text-6xl font-headline font-extrabold text-on-background tracking-tight mb-6">Ultra-Fast Broadband <br/><span class="text-primary-container">For Your Home</span></h1>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg leading-relaxed">Experience seamless streaming, lag-free gaming, and lightning-fast downloads with GSurf's next-generation fiber connectivity.</p>
+</header>
+<!-- Plans Filter / Toggle -->
+<div class="flex justify-center mb-12">
+<div class="bg-surface-container p-1.5 rounded-full flex gap-1">
+<button class="px-8 py-2.5 rounded-full bg-surface-container-lowest text-primary font-bold shadow-sm transition-all">Monthly</button>
+<button class="px-8 py-2.5 rounded-full text-on-surface-variant font-medium hover:text-on-surface transition-all">Annual (Save 15%)</button>
+</div>
+</div>
+<!-- Plans Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Plan 1: Starter -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_20px_40px_rgba(10,26,60,0.04)] ring-1 ring-outline-variant/10 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
+<div class="mb-8">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">speed</span>
+</div>
+<h3 class="text-2xl font-headline font-extrabold text-on-background">50 Mbps</h3>
+<p class="text-on-surface-variant text-sm mt-1">Starter Fiber</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Unlimited Data (3300GB FUP)</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Free Wi-Fi Router</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">24/7 Priority Support</span>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10">
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-3xl font-headline font-extrabold text-on-background">₹499</span>
+<span class="text-on-surface-variant text-sm">/ month</span>
+</div>
+<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹5,389*</p>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-headline font-bold hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">Buy Now</button>
+</div>
+</div>
+<!-- Plan 2: Value -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_20px_40px_rgba(10,26,60,0.04)] ring-1 ring-outline-variant/10 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
+<div class="mb-8">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<h3 class="text-2xl font-headline font-extrabold text-on-background">150 Mbps</h3>
+<p class="text-on-surface-variant text-sm mt-1">Value Plus</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Unlimited Data (3300GB FUP)</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Free Wi-Fi Router</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">OTT Subscriptions Included</span>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10">
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-3xl font-headline font-extrabold text-on-background">₹799</span>
+<span class="text-on-surface-variant text-sm">/ month</span>
+</div>
+<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹8,629*</p>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-headline font-bold hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">Buy Now</button>
+</div>
+</div>
+<!-- Plan 3: Popular -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_30px_60px_rgba(10,26,60,0.12)] ring-2 ring-primary flex flex-col hover:shadow-2xl transition-all relative overflow-hidden scale-105 z-10">
+<div class="absolute top-0 right-0 bg-primary text-on-primary px-6 py-2 rounded-bl-2xl font-headline font-bold text-xs uppercase tracking-widest">Popular</div>
+<div class="mb-8">
+<div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h3 class="text-2xl font-headline font-extrabold text-on-background">300 Mbps</h3>
+<p class="text-primary font-bold text-sm mt-1">Elite Gamer</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm font-semibold">Unlimited Data (3300GB FUP)</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Dual-Band Gigabit Router</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">All OTT Premium Access</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">No Lag Gaming Engine</span>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/20">
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-4xl font-headline font-extrabold text-on-background">₹999</span>
+<span class="text-on-surface-variant text-sm font-medium">/ month</span>
+</div>
+<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹10,789*</p>
+<button class="w-full py-4 rounded-xl bg-tertiary-container text-on-tertiary font-headline font-bold hover:opacity-90 transition-all shadow-lg shadow-tertiary-container/30">Buy Now</button>
+</div>
+</div>
+<!-- Plan 4: Ultimate -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_20px_40px_rgba(10,26,60,0.04)] ring-1 ring-outline-variant/10 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
+<div class="mb-8">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">public</span>
+</div>
+<h3 class="text-2xl font-headline font-extrabold text-on-background">1000 Mbps</h3>
+<p class="text-on-surface-variant text-sm mt-1">GigaForce</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Unlimited Data (3300GB FUP)</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Premium Mesh Router Set</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-sm">Personal Relationship Manager</span>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10">
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-3xl font-headline font-extrabold text-on-background">₹2,499</span>
+<span class="text-on-surface-variant text-sm">/ month</span>
+</div>
+<p class="text-xs text-on-surface-variant/80 mb-6 italic">Annual Price: ₹26,989*</p>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-headline font-bold hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">Buy Now</button>
+</div>
+</div>
+</div>
+<!-- Secondary Banner Section -->
+<section class="mt-24 bg-surface-container rounded-[3rem] p-12 relative overflow-hidden flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2 z-10 text-center md:text-left">
+<h2 class="text-3xl md:text-4xl font-headline font-extrabold text-on-background mb-6 leading-tight">Switch to GSurf Fiber and experience the difference</h2>
+<ul class="space-y-4 mb-8 inline-block text-left">
+<li class="flex items-center gap-3">
+<div class="p-1 rounded-full bg-primary text-on-primary">
+<span class="material-symbols-outlined text-sm">done</span>
+</div>
+<span class="font-medium">99.9% Network Uptime Guaranteed</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="p-1 rounded-full bg-primary text-on-primary">
+<span class="material-symbols-outlined text-sm">done</span>
+</div>
+<span class="font-medium">Free Installation on Annual Plans</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="p-1 rounded-full bg-primary text-on-primary">
+<span class="material-symbols-outlined text-sm">done</span>
+</div>
+<span class="font-medium">Secure Firewall &amp; Parental Controls</span>
+</li>
+</ul>
+<button class="bg-primary-container text-on-primary px-8 py-4 rounded-2xl font-headline font-bold hover:shadow-xl transition-all">Check Eligibility In Your Area</button>
+</div>
+<div class="md:w-1/2 relative">
+<div class="aspect-square w-full rounded-[2rem] overflow-hidden shadow-2xl">
+<img alt="Modern server room with blue glowing lights and optical fiber cables in a professional data center setting" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5C7bogPoJrwA7NX3L2cxA4YrWCEs4aDqqfGt2DmmDOzwZv_PzFUiRVrbeKjBRAqT66MDmK3N8AIiXJuU7Bqht0gjWVh0-qq85LRTMqYxR2hLtS9ohKLVmap3_oZHzP_tQumbct891iaiCifuqiolZTkGDCJnVsS4RBy6k8AvZtKNa-ZmGldG4ymVShAz-e8Ddv5GrtIpXoqB8lfYpYQoIHLujMhqDJCnrmNBXyZaLp7lyjskpYFSA4K3TnFTEPHNYImZfRKnrf0"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-slate-50 dark:bg-slate-900 font-['Inter'] text-sm text-slate-500 dark:text-slate-400">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<span class="text-lg font-bold text-blue-900 dark:text-blue-100">GSurf</span>
+<div class="flex items-center gap-6">
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Legal</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Contact Us</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<p>© 2024 GSurf Velocity Fiber. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

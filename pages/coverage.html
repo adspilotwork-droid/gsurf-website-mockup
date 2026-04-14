@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GSurf Fiber - Find Coverage in Your City</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "secondary-container": "#c6d3ff",
+                      "primary": "#00498a",
+                      "on-surface-variant": "#414752",
+                      "inverse-surface": "#212f53",
+                      "primary-container": "#0061b4",
+                      "surface-container-highest": "#dae2ff",
+                      "surface-container-low": "#f2f3ff",
+                      "primary-fixed": "#d5e3ff",
+                      "tertiary-fixed": "#ffdbd0",
+                      "on-primary-fixed-variant": "#004786",
+                      "tertiary-fixed-dim": "#ffb59e",
+                      "on-tertiary-fixed-variant": "#852400",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#faf8ff",
+                      "secondary-fixed": "#dae2ff",
+                      "tertiary-container": "#b23300",
+                      "on-secondary-container": "#4d5a81",
+                      "secondary-fixed-dim": "#b8c5f1",
+                      "outline-variant": "#c1c6d3",
+                      "on-secondary-fixed": "#0a1a3c",
+                      "inverse-primary": "#a6c8ff",
+                      "background": "#faf8ff",
+                      "surface-container": "#eaedff",
+                      "surface-variant": "#dae2ff",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface": "#faf8ff",
+                      "on-tertiary-fixed": "#3a0b00",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#e2e7ff",
+                      "on-primary-fixed": "#001c3b",
+                      "on-primary-container": "#caddff",
+                      "outline": "#727783",
+                      "on-tertiary-container": "#ffd2c5",
+                      "on-background": "#0a1a3c",
+                      "surface-dim": "#ced9ff",
+                      "secondary": "#505d84",
+                      "surface-tint": "#005fb0",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#38466a",
+                      "tertiary": "#892500",
+                      "on-surface": "#0a1a3c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift { transition: background-color 0.3s ease; }
+        .tonal-shift-surface-container-low { transition: background-color 0.3s ease; }
+        .tonal-shift-from-surface { transition: background-color 0.3s ease; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-white flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)] tonal-shift-surface-container-low">
+<nav class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-50 font-['Plus_Jakarta_Sans']">GSurf</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-['Plus_Jakarta_Sans'] font-bold tracking-tight hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Fiber Plans</a>
+<a class="text-slate-600 dark:text-slate-400 font-['Plus_Jakarta_Sans'] font-bold tracking-tight hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Business</a>
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="#">Coverage</a>
+<a class="text-slate-600 dark:text-slate-400 font-['Plus_Jakarta_Sans'] font-bold tracking-tight hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Support</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-6 py-2 rounded-full font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 transition-transform scale-95 active:scale-90">Login</button>
+<button class="px-6 py-2 rounded-full font-['Plus_Jakarta_Sans'] font-bold tracking-tight bg-blue-700 text-white hover:bg-blue-800 transition-transform scale-95 active:scale-90 shadow-sm">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 flex-grow">
+<!-- Hero Section -->
+<section class="relative min-h-[614px] flex flex-col items-center justify-center text-center px-6 py-20 overflow-hidden">
+<div class="absolute inset-0 z-0 bg-gradient-to-br from-surface to-surface-container-high opacity-50"></div>
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-tertiary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary bg-secondary-fixed/30 rounded-full uppercase font-label">Network Status: Expanding</span>
+<h1 class="text-5xl md:text-7xl font-extrabold text-on-background font-headline tracking-tight mb-8 leading-tight">Find GSurf in Your City</h1>
+<p class="text-lg text-on-surface-variant mb-12 max-w-2xl mx-auto leading-relaxed">Experience ultra-fast fiber connectivity. Enter your details below to see if our high-speed lines have reached your doorstep.</p>
+<!-- Search Bar -->
+<div class="relative group max-w-2xl mx-auto">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-25 group-focus-within:opacity-50 transition duration-1000"></div>
+<div class="relative flex items-center bg-white rounded-full shadow-xl p-2">
+<span class="material-symbols-outlined ml-6 text-outline">search</span>
+<input class="w-full px-6 py-4 bg-transparent border-none focus:ring-0 text-on-surface font-medium text-lg placeholder:text-outline/60" placeholder="Search by City or Pincode" type="text"/>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-10 py-4 rounded-full font-bold transition-all shadow-lg active:scale-95">
+                            Check Availability
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Cities Grid -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<h2 class="text-3xl font-extrabold font-headline text-on-background mb-4">Popular Hubs</h2>
+<p class="text-on-surface-variant leading-relaxed">Our fiber backbone is strongest in these metropolitan centers, offering speeds up to 1Gbps with zero latency.</p>
+</div>
+<div class="flex items-center space-x-2 text-primary font-bold cursor-pointer group">
+<span>View all locations</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<!-- City Card: Chennai -->
+<div class="group relative aspect-[4/5] rounded-full overflow-hidden shadow-xl cursor-pointer hover:-translate-y-2 transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Coastal city view of Chennai skyline with modern glass buildings and vibrant blue ocean in the background during golden hour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqd5apPnZth60Wx_tLbUDlqshMsy0f7QB7RhE6u-qilobe1PAig2RXVMLJ81JBrWraQmEzD2M1cEJQD3NuJvfgKpy-M8F653M8eGvMujXKrmVb4PJDEYxfwVTuFZKXUQgSW9kovVL5zLTk8D5vJKqt7sdZGTIbHkuN-hjNZH8wgxwLFKFzUlhE2p_Az4UnaMA0h3Qg9n4vJqXSrDAbK7Y8n6vnnj2fCDb0yKYR2e5PZlKWZNp7X9Am7wR3m3TS4DNIsT_Oh1lJly8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="text-2xl font-bold text-white font-headline">Chennai</h3>
+<p class="text-white/70 text-sm mt-1">100% Coverage</p>
+</div>
+</div>
+<!-- City Card: Bangalore -->
+<div class="group relative aspect-[4/5] rounded-full overflow-hidden shadow-xl cursor-pointer hover:-translate-y-2 transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="High-tech cityscape of Bangalore with lush green parks and modern glass skyscrapers under a clear blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHWit7PSZOsUGJCbcu4_VBEy98w2FZR1Rj0WLBuDKEAFpmekMlG0oIINXsg5KxdA_tfoLR7AMsMx6jeIBnUbrnTEDZhljc7llO8AAfivBPhyB8Zsy4iqlCGPnMKgI-TMdaGLZOTYSKBwbjCyXJhbJKifixP0D8u6bpIcFmTWEBQEurUpqERnt5rdnMP-oJKToyWrG-LpSxHxES0kEJH6i_3HjYEvvdTDd95v5eDh-UbMhxhkSOeUG14SesU1uNlRS0FaNgMjf43tE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="text-2xl font-bold text-white font-headline">Bangalore</h3>
+<p class="text-white/70 text-sm mt-1">98% Coverage</p>
+</div>
+</div>
+<!-- City Card: Mumbai -->
+<div class="group relative aspect-[4/5] rounded-full overflow-hidden shadow-xl cursor-pointer hover:-translate-y-2 transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Iconic Marine Drive curve in Mumbai with city lights reflecting on the Arabian Sea at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7RFJ2hbXY5gR1qEsPuXC6ThChJjeVAxE-gRjJGKG3Coe46eA_q_B-8emoqpN465Z1DfIPjV44SYhyJU9pDI-DcFLX4zZ5MDbLEQPqk9W0uAN0pdzoP9OPC2TD3YA5rPYD1WGWd0eDKyyH_snFB1OnnYCJhJ43Www1qlhsE95ajP755y4ahYw_yh3-4g5CjFItVLcwId4j716CrYCjFNM4_hG4fHxgM9yDgKe7wU4TTbXx_5qu7s_43jfrOR1G71VSANvOuwQGoZ0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="text-2xl font-bold text-white font-headline">Mumbai</h3>
+<p class="text-white/70 text-sm mt-1">Coming Soon: Bandra</p>
+</div>
+</div>
+<!-- City Card: Delhi -->
+<div class="group relative aspect-[4/5] rounded-full overflow-hidden shadow-xl cursor-pointer hover:-translate-y-2 transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Aerial view of Connaught Place in Delhi showing grand architecture and wide boulevards with vibrant urban energy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOE0n6I_FtvBq8fcZaVyXjaXq67xGO1I43xKhPcIaMesdgHeabazIOC7B3Z8kOg01zgzP1eMZVB7St-7msCIipdJA6nk09IKRH3w80F2Lhiar1wa1wFb60aaYnwBXDVK74Y0T97LY9XbMHrVZ6AFQWFK4f3uOJg1KQemgTmVjbkJ_c_HDbA9RH7e8vPT8Mc6g7U-SPCVfj6svpIOHfGjq_zxe57c9IO7DnKs8XBB5kIF3Qh7FgkVxhV71feNWuJE50R4l7SHDamnw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="text-2xl font-bold text-white font-headline">Delhi</h3>
+<p class="text-white/70 text-sm mt-1">High Speed Ready</p>
+</div>
+</div>
+<!-- City Card: Hyderabad -->
+<div class="group relative aspect-[4/5] rounded-full overflow-hidden shadow-xl cursor-pointer hover:-translate-y-2 transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Illuminated Charminar at night with modern cityscape of Hyderabad in the soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtU5E_ZRAi0Uffn7AuN65DSxDRNk8CukOxFhGI9DR713maPBBM55f_lmfuZwFMZoZfV1ptqYCHusIKc5ncPWNcDs1UPLg6x9ZY5gQidPUMbTAtMOB5GIRr6l0SQwtRMe_kaHg5OCeCh9kK93TKXQGbqVqHOJEE6CxZOdtGMecKoVD_XYJ4TDt83xrrBsLz-fJ7U9d-lm2LDFXKBpV4jBTjZmjB3bo6jFRjkq-XfXr5RP5PyaVyr6_Hnge_YKcGwPAtzYNeKLlvbIc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="text-2xl font-bold text-white font-headline">Hyderabad</h3>
+<p class="text-white/70 text-sm mt-1">IT Corridor Active</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Full Coverage List -->
+<section class="bg-surface-container py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-3xl font-extrabold font-headline text-on-background mb-4">Complete Coverage Index</h2>
+<p class="text-on-surface-variant">Explore our full list of active service areas across India.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- State Column -->
+<div>
+<h4 class="font-bold font-headline text-primary mb-6 border-b border-outline-variant/30 pb-2">Tamil Nadu</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Chennai</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Coimbatore</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Madurai</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Tiruchirappalli</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Salem</li>
+</ul>
+</div>
+<!-- State Column -->
+<div>
+<h4 class="font-bold font-headline text-primary mb-6 border-b border-outline-variant/30 pb-2">Karnataka</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Bangalore</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Mysore</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Mangalore</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Hubli-Dharwad</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Belgaum</li>
+</ul>
+</div>
+<!-- State Column -->
+<div>
+<h4 class="font-bold font-headline text-primary mb-6 border-b border-outline-variant/30 pb-2">Maharashtra</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Mumbai</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Pune</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Nagpur</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Nashik</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Thane</li>
+</ul>
+</div>
+<!-- State Column -->
+<div>
+<h4 class="font-bold font-headline text-primary mb-6 border-b border-outline-variant/30 pb-2">Telangana &amp; NCR</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Hyderabad</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Warangal</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> New Delhi</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Gurugram</li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Noida</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Coming Soon -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="bg-primary rounded-full p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between text-on-primary">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+<div class="relative z-10 md:w-2/3">
+<h2 class="text-3xl font-extrabold font-headline mb-4">Fiber is Laying: Coming Soon</h2>
+<p class="text-primary-fixed mb-8 leading-relaxed">We're expanding rapidly. Our teams are currently installing high-speed infrastructure in: <br/><strong class="text-white">Kochi, Ahmedabad, Lucknow, and Jaipur.</strong></p>
+<div class="flex flex-wrap gap-4">
+<div class="bg-primary-container/30 px-6 py-3 rounded-xl border border-white/10">
+<span class="text-sm font-semibold uppercase tracking-widest block text-white/60 mb-1">Ahmedabad</span>
+<span class="font-bold">Live in 12 Days</span>
+</div>
+<div class="bg-primary-container/30 px-6 py-3 rounded-xl border border-white/10">
+<span class="text-sm font-semibold uppercase tracking-widest block text-white/60 mb-1">Kochi</span>
+<span class="font-bold">Live in 24 Days</span>
+</div>
+</div>
+</div>
+<div class="relative z-10 mt-12 md:mt-0">
+<span class="material-symbols-outlined text-[120px] opacity-20">rocket_launch</span>
+</div>
+</div>
+</section>
+<!-- Request GSurf Form -->
+<section class="py-24 px-8 bg-surface">
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-extrabold font-headline text-on-background mb-6 leading-tight">Can't Find Your City?</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">We prioritize expansion based on demand. Let us know where you need GSurf Fiber, and we'll notify you as soon as we start laying cables in your neighborhood.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">priority_high</span>
+</div>
+<p class="font-medium">Priority installation for requested areas</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+</div>
+<p class="font-medium">Early-bird discounts on launch</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-full shadow-2xl shadow-primary/5 border border-outline-variant/15">
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant font-headline uppercase tracking-wider">Full Name</label>
+<input class="w-full px-6 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary transition-all placeholder:text-outline/40" placeholder="Enter your name" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant font-headline uppercase tracking-wider">City</label>
+<input class="w-full px-6 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary transition-all placeholder:text-outline/40" placeholder="e.g. Surat" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant font-headline uppercase tracking-wider">Pincode</label>
+<input class="w-full px-6 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary transition-all placeholder:text-outline/40" placeholder="123456" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant font-headline uppercase tracking-wider">Mobile Number</label>
+<input class="w-full px-6 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary transition-all placeholder:text-outline/40" placeholder="+91 00000 00000" type="tel"/>
+</div>
+<button class="w-full py-5 bg-tertiary-container text-on-tertiary font-bold rounded-xl hover:brightness-110 transition-all shadow-lg active:scale-[0.98]" type="submit">Request Fiber Rollout</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-slate-50 dark:bg-slate-900 tonal-shift-from-surface">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100 font-['Inter']">GSurf</div>
+<div class="flex flex-wrap justify-center gap-8 font-['Inter'] text-sm text-slate-500 dark:text-slate-400">
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Legal</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Contact Us</a>
+</div>
+<div class="font-['Inter'] text-sm text-slate-500 dark:text-slate-400 opacity-80">
+                © 2024 GSurf Velocity Fiber. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

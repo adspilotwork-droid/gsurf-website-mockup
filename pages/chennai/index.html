@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GSurf Chennai | Blazing Fast Fiber Internet</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#c6d3ff",
+                        "background": "#faf8ff",
+                        "inverse-surface": "#212f53",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-surface": "#0a1a3c",
+                        "outline-variant": "#c1c6d3",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#727783",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#3a0b00",
+                        "tertiary-fixed": "#ffdbd0",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#dae2ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-variant": "#dae2ff",
+                        "surface-tint": "#005fb0",
+                        "surface-container-high": "#e2e7ff",
+                        "on-secondary-fixed-variant": "#38466a",
+                        "tertiary": "#892500",
+                        "on-tertiary-fixed-variant": "#852400",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-container": "#eaedff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001c3b",
+                        "surface-dim": "#ced9ff",
+                        "surface-bright": "#faf8ff",
+                        "surface": "#faf8ff",
+                        "primary": "#00498a",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#414752",
+                        "on-secondary-container": "#4d5a81",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-background": "#0a1a3c",
+                        "secondary": "#505d84",
+                        "on-primary-container": "#caddff",
+                        "on-secondary-fixed": "#0a1a3c",
+                        "inverse-primary": "#a6c8ff",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "secondary-fixed-dim": "#b8c5f1",
+                        "on-tertiary-container": "#ffd2c5",
+                        "tertiary-container": "#b23300",
+                        "primary-fixed": "#d5e3ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dae2ff",
+                        "primary-container": "#0061b4",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
+<div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-50 font-['Plus_Jakarta_Sans']">GSurf</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors duration-300" href="#">Fiber Plans</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Business</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Coverage</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors">Login</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-xl font-semibold hover:opacity-90 active:scale-90 transition-transform">
+                Get Started
+            </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-surface">
+<div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+<div class="space-y-8">
+<div>
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-primary text-sm font-semibold tracking-wide mb-6 uppercase">Connectivity Redefined</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-on-background leading-tight tracking-tight">
+                    Experience Blazing Fast Fiber Internet in <span class="text-primary">Chennai</span>
+</h1>
+</div>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                Unleash the power of gigabit speeds. GSurf brings world-class fiber connectivity to the heart of Chennai with zero lag and maximum reliability.
+            </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-tertiary-container text-on-tertiary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:brightness-110 transition-all">Check Availability</button>
+<button class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-sm border border-outline-variant/20 hover:bg-surface-container-low transition-all">View Plans</button>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgvnEvRJJfB_xtnfYUBRvujYHI1AM7vY2uISHVnNkbU11hk-6reS0cx5EYZYJcVvX3E9HyI7fFguvN5j6UcndN9nSTnA9ULu_tdqqKMy7a3KeHdWbsPa4NdM1bXszhfwig6wLOgb1BAu3VVZQA2YuZEhnZ19WNFvjUNVrKWi2tAmKvkoCcF7CRhlAKNh8g6SKJ86_MHNMXEN__fH1dnem7RNNmbxIkd3tykd1j_pBPSM9G44DWnTlONdcjBJ-ZvtGkelsRtYqQnus"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7PuVS3BceDo2fY6g4SXdwfUfChvZm3ZurXUwPwCYa_6LLQt82cWO7ML_0GigCWFl39HRTM1VeHhylccId5CvdIyzm1KT5S9OcBs_n2Qa9LeOtsvjU9yl9_0ftRg3Rzh6SJZJLPagl2Ns7LnxQ5LljdBHOBIfPMgZM-kTtHw6Ws9demZLirFHi4xS1M0nMr6-X0Y6ceeUBeZHVKV3RuVx88tm1ZFRQy7tSSDrnBv6AegsT8svntdAizCmXtMTzkjOVapf1pTDAJ38"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR8_4fna_nrXbY70_uwHj7QvsdjzUP1RcAwbZ9jv87_qxjWsbp-XBqAhnRuba7jn2I4JHlJdfo45pCIkgvigqbgvy_VCGorAte8RMYKf-g3nCoubnHWJDfFoMRrQfcsRQ4kX8aJ8gJgGn2jk4fDd2BpvyiZPQgoSwQ0NUXbDQ5C3PB6heh8NpILwSDlgrmejK4ZObXMxjWKvj2u0u-Jf4vJcnuC-BWHS5bEa9y0Q4TA5VYy3yRMy2M4ffq0VRfQm7Jug3L9z8YfEM"/>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Joined by 10,000+ homes in Chennai</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-primary-container/10 blur-3xl rounded-full"></div>
+<img alt="Chennai Skyline" class="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcBjC5MNMRCmc7nsVQLC1Q-5zXvDZddz3PMHqJC4UmO-kzgE8o-ix61bf_OtXtGhufr2qPEzKrcZ1hUNcT-jt-z-SxmdQvHzEPau6mfiGQQJ2pNcAyFpmUXW-niYulGuW4HHhqX-ojoJVuIzquchO_Hk5o6cwVnywcDnZ3hv-brtV4lVKXL8ZaAicTCZ8FCB9oYHa1AUuLpznFlxe57c7ebSSkF6A2j5Z0rMV073VaeY21Bdl37gEN9kiKKl5Wjh1z_UyccFLUMYc"/>
+<!-- Quick Contact Sticky Widget -->
+<div class="lg:absolute lg:-bottom-12 lg:-left-12 z-20 bg-surface-container-lowest p-8 rounded-2xl shadow-[0_20px_40px_rgba(10,26,60,0.1)] max-w-sm w-full border border-outline-variant/10 mt-8 lg:mt-0">
+<h3 class="text-xl font-headline font-bold mb-4">Request a Callback</h3>
+<form class="space-y-4">
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary transition-all" placeholder="Your Name" type="text"/>
+<div class="flex gap-2">
+<span class="bg-surface-container-low px-3 py-3 rounded-xl flex items-center text-on-surface-variant font-medium">+91</span>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary transition-all" placeholder="Mobile Number" type="tel"/>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:brightness-110 transition-all" type="submit">Contact Me</button>
+</form>
+</div>
+</div>
+</div>
+</header>
+<!-- Why GSurf Section -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-headline font-bold text-on-background mb-4">Why GSurf is Chennai's Choice</h2>
+<div class="h-1 w-24 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-3xl shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+</div>
+<h3 class="text-3xl font-headline font-bold">Unmatched Speed</h3>
+<p class="text-on-surface-variant text-lg">99.9% uptime guaranteed with our dedicated fiber-to-the-home (FTTH) network infrastructure across Chennai.</p>
+</div>
+<div class="hidden md:block">
+<img class="w-48 h-48 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyIG6ApWeSyfQomOxgCCvHwX0FO4BF9WydH-M9a1kNPkGUCTqYSnJnNo3r2eV_7AZuXsR1Pe1xGQLCpQvp8exp0LiCK-YL50phirTGu-PshL6BSr27HCTL9gEqO08FcttbxVzwDfe_-acbQkiYXy0V21gd2zFHylb_pBRaa9mB3cC4wZCbnI58pfJP1AOZIfdu2-wa5WXDQZzUyEiL7ZDCLHdz8P8Md37eYY69eNkyUMOp5RNNn4MY3OT4fVrhP7AeKvV7LWgcymk"/>
+</div>
+</div>
+</div>
+<div class="bg-primary p-10 rounded-3xl shadow-sm text-on-primary flex flex-col justify-between">
+<div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-3xl">support_agent</span>
+</div>
+<div>
+<h3 class="text-2xl font-headline font-bold mb-2">24/7 Local Support</h3>
+<p class="opacity-90">Our Chennai-based technical team is available around the clock to ensure you're never offline.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-2">10k+ Happy Homes</h3>
+<p class="text-on-surface-variant">Proudly serving families and businesses across Chennai with seamless connectivity.</p>
+</div>
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="space-y-4">
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">router</span>
+</div>
+<h3 class="text-2xl font-headline font-bold">Free Dual-Band Router</h3>
+<p class="text-on-surface-variant">Get the latest technology for wider coverage and stable connections in every room.</p>
+</div>
+<img class="h-40 object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3a5GOLtAPYY0Q50K2uwcC8zqJNKDolmQrezRWOotu1-ViChfzag8MjriP5XoyEiMJ7gG6Ystot4VKtI75dE71sURxuecQ1D4ciS7GSZ5XBCrvUdG8smPUpmEvx9nTGbYYZqZNVDrUiB2I1if-JCbqIJ-gKmsMls-WDOyJtiDetqz2eX6H_8-43ghdm3FL0Aou_HLGEQ1DzudqE0lGHXljgDtVU6coAIYn_ZZpytNf9njBmRjbw1D6vG9QFqSixwr75PmukKIwB8s"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Localized Plans Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<span class="text-primary font-bold tracking-widest text-sm uppercase">Plans &amp; Pricing</span>
+<h2 class="text-4xl font-headline font-bold text-on-background mt-2">Best Sellers in Chennai</h2>
+</div>
+<div class="bg-surface-container p-1 rounded-full inline-flex">
+<button class="px-6 py-2 rounded-full bg-surface-container-lowest text-primary font-bold shadow-sm">Monthly</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant font-medium">Yearly (Save 20%)</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 flex flex-col hover:scale-105 transition-transform duration-300">
+<h3 class="text-xl font-bold mb-1">Starter Fiber</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-headline font-bold text-on-background">50</span>
+<span class="text-on-surface-variant font-medium">Mbps</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Unlimited Data
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Standard Router
+                    </li>
+</ul>
+<div class="text-2xl font-bold mb-6">₹599<span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">Select Plan</button>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-3xl border-2 border-primary flex flex-col relative scale-105 shadow-xl shadow-primary/5">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Chennai Favorite</div>
+<h3 class="text-xl font-bold mb-1">Pro Connect</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-headline font-bold text-on-background">150</span>
+<span class="text-on-surface-variant font-medium">Mbps</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Unlimited Data
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Dual-Band Router
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Free Installation
+                    </li>
+</ul>
+<div class="text-2xl font-bold mb-6">₹899<span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<button class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold hover:brightness-110 transition-all">Select Plan</button>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 flex flex-col hover:scale-105 transition-transform duration-300">
+<h3 class="text-xl font-bold mb-1">Ultra Speed</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-headline font-bold text-on-background">300</span>
+<span class="text-on-surface-variant font-medium">Mbps</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Unlimited Data
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Dual-Band Router
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Ott Subscription
+                    </li>
+</ul>
+<div class="text-2xl font-bold mb-6">₹1,199<span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">Select Plan</button>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 flex flex-col hover:scale-105 transition-transform duration-300">
+<h3 class="text-xl font-bold mb-1">Giga Blast</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-headline font-bold text-on-background">1</span>
+<span class="text-on-surface-variant font-medium">Gbps</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Unlimited Data
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Premium Mesh WiFi
+                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                        Priority Support
+                    </li>
+</ul>
+<div class="text-2xl font-bold mb-6">₹2,499<span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">Select Plan</button>
+</div>
+</div>
+<p class="text-center mt-12 text-on-surface-variant text-sm">*Taxes applicable as extra. Speed mentioned is peak download speed under wired connection.</p>
+</div>
+</section>
+<!-- Coverage Areas Section -->
+<section class="py-24 bg-surface-container">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<h2 class="text-4xl font-headline font-bold text-on-background">Growing Across Chennai</h2>
+<p class="text-on-surface-variant text-lg">We're expanding our high-speed fiber network every day. Check out the major neighborhoods we currently serve with 100% fiber connectivity.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">Adyar</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">Velachery</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">Anna Nagar</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">T. Nagar</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">Mylapore</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">OMR Corridor</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">Besant Nagar</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-medium">Guindy</span>
+</div>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+                    Check your exact location
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="relative rounded-3xl overflow-hidden h-[500px] shadow-2xl">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA784QOfNozbRcVZLI2zKYyK5xkv22wXBG2c3HSBk2xrJCLEUzBpGvMcnijnYduc8pJWkXyCUFuOd3iyU1RlUOQd3zFIvyvcFdVqv7jpOkwmSqFBQUs7fA3nG9RJl2FPOHQyT2oobeVCHSfphGA04nFxSeDOQush1bI534Q_gfnMhcqHsf0w1S7kMcB1T2dnFx0iSjQpOjOSglOJKt1na3jTZKbrzSn79odPbMx1MvlypMFtdc3v9CKMdRMaVNkuJlSAFBFRB6ZqSE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex items-end p-10">
+<div class="text-on-primary">
+<p class="text-sm font-bold uppercase tracking-widest mb-2 opacity-80">Connected City</p>
+<h3 class="text-2xl font-headline font-bold">100% Fiber Infrastructure</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Local Office Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-surface-container-lowest rounded-[2.5rem] p-8 md:p-16 shadow-[0_40px_80px_rgba(10,26,60,0.08)] grid md:grid-cols-2 gap-12 items-center border border-outline-variant/10">
+<div class="space-y-8">
+<div>
+<h2 class="text-4xl font-headline font-bold mb-4">Visit Our Chennai Branch</h2>
+<p class="text-on-surface-variant">Need a personalized plan or technical consultation? Drop by our local experience center.</p>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<div>
+<h4 class="font-bold">Address</h4>
+<p class="text-on-surface-variant">Suite 402, GSurf Plaza, Anna Salai,<br/>Opp. Semmozhi Poonga, Chennai - 600006</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">call</span>
+</div>
+<div>
+<h4 class="font-bold">Chennai Hotline</h4>
+<p class="text-on-surface-variant">+91 44 2800 1234</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<h4 class="font-bold">Email</h4>
+<p class="text-on-surface-variant"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="34575c515a5a555d1a474144445b46407453474146521a575b59">[email&#160;protected]</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-3xl overflow-hidden aspect-square md:aspect-auto md:h-full bg-surface-container min-h-[350px]">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTYF5atrfef3Zf-bWqMdREwt3_ayV1F8MESlrsE-EB8-r-NJiSwltn1WdV9s-Zpg9HWHk5F_vxdWQJknLT_VjR_aiRB4I3wVIFsEsETq4Ly6aE0wHIztgTDHXerLpmXA8Ga_djshw3rrHvMel3Kwc6JKoqNMsneKoQpEqif98JOZs4BWM4AZuFfmKiC7xgCij7OSPuiEDISYHYC9W5bTjigrTi6yfD0wyf8Pi-xNZwS-iKPU5Eft2DIYwaeSstPlLcLS8TYpVd4Eo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-slate-50 dark:bg-slate-900 tonal-shift-from-surface">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100">GSurf</div>
+<p class="font-['Inter'] text-sm text-slate-500 dark:text-slate-400 opacity-80 hover:opacity-100 transition-opacity">© 2024 GSurf Velocity Fiber. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Legal</a>
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Contact Us</a>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-blue-700 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">social_leaderboard</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-blue-700 cursor-pointer hover:scale-110 transition-

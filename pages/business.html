@@ -1,0 +1,285 @@
+<html class="light" lang="en"><head></head><body class="bg-surface font-body text-on-surface flex flex-col min-h-screen">```html
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GSurf | Enterprise &amp; SME Business Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727783",
+                    "secondary-fixed-dim": "#b8c5f1",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e2e7ff",
+                    "primary-container": "#0061b4",
+                    "on-secondary-fixed": "#0a1a3c",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#dae2ff",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-secondary-container": "#4d5a81",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c1c6d3",
+                    "surface": "#faf8ff",
+                    "tertiary-fixed-dim": "#ffb59e",
+                    "tertiary": "#892500",
+                    "inverse-primary": "#a6c8ff",
+                    "on-primary-container": "#caddff",
+                    "secondary": "#505d84",
+                    "surface-container": "#eaedff",
+                    "primary": "#00498a",
+                    "on-background": "#0a1a3c",
+                    "primary-fixed": "#d5e3ff",
+                    "on-secondary-fixed-variant": "#38466a",
+                    "inverse-on-surface": "#eef0ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#852400",
+                    "secondary-container": "#c6d3ff",
+                    "surface-dim": "#ced9ff",
+                    "background": "#faf8ff",
+                    "tertiary-container": "#b23300",
+                    "surface-bright": "#faf8ff",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-tertiary-fixed": "#3a0b00",
+                    "inverse-surface": "#212f53",
+                    "on-primary-fixed": "#001c3b",
+                    "surface-variant": "#dae2ff",
+                    "on-surface": "#0a1a3c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#414752",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dae2ff",
+                    "surface-container-low": "#f2f3ff",
+                    "surface-tint": "#005fb0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#004786",
+                    "on-tertiary-container": "#ffd2c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-glass {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
+<div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-50 font-['Plus_Jakarta_Sans']">GSurf</div>
+<div class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Fiber Plans</a>
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1" href="#">Business</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Coverage</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 transition-colors duration-300">Login</button>
+<button class="bg-blue-700 dark:bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold scale-95 active:scale-90 transition-transform">
+                    Get Started
+                </button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Utility Anchors) -->
+<aside class="rounded-l-2xl fixed right-0 top-1/2 -translate-y-1/2 bg-[#ffffff] dark:bg-[#0a1a3c] shadow-2xl z-40 hidden lg:block">
+<div class="flex flex-col p-4 space-y-6">
+<div class="flex flex-col items-center gap-1 group cursor-pointer hover:translate-x-[-4px] transition-transform">
+<div class="p-3 rounded-xl bg-[#eaedff] text-[#00498a]">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#00498a]">Quick Pay</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer hover:translate-x-[-4px] transition-transform">
+<div class="p-3 rounded-xl text-[#414752] hover:bg-[#f2f3ff]">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#414752]">Recharge</span>
+</div>
+</div>
+</aside>
+<main class="pt-24 flex-grow">
+<!-- Hero Section -->
+<section class="relative px-8 py-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-6">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-headline font-bold text-sm tracking-wide">ENTERPRISE SOLUTIONS</span>
+<h1 class="text-5xl md:text-7xl font-extrabold font-headline tracking-tighter text-on-background leading-tight">
+                    Powering the Next <span class="text-primary">Generation</span> of Business.
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-body leading-relaxed">
+                    Uninterrupted high-speed connectivity with 99.9% uptime. From agile SMEs to global enterprises, GSurf delivers the backbone your digital future demands.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-full font-headline font-bold text-lg shadow-lg hover:shadow-primary/25 transition-all">
+                        View Enterprise Plans
+                    </button>
+<button class="border-2 border-primary/20 text-primary px-8 py-4 rounded-full font-headline font-bold text-lg hover:bg-primary/5 transition-all">
+                        Contact Sales
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="rounded-full overflow-hidden aspect-square border-[12px] border-surface-container shadow-2xl relative z-10">
+<img alt="Modern Office" class="w-full h-full object-cover" data-alt="Modern minimalist glass office space with clean lines, natural light pouring in, and high-tech collaborative workstations in a professional setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_LJ8B-kqg-rBtqEVokzyqDVI0dodHjiIMuPk0GGW-M69rF8fUJ3mJzgbHzD9gWH5H4Pqg2LV69xogJH-fOTEwyMdChJmMz_keNtIS3JRUtFyluNv5f2vRPYAghtTmdEdshIf-gpmIFVgu3X4cBy374o796-qIutAXwbCBjMsNC1lSK1nLh7CDlqwBI8OrnaxpKevzoRlIQlbZ55SNFsK_6RWZIUMXGXGdw9Hy3RRBtrJj8NnPUkZmgsppb235D5b_p1XctlIn2HI"/>
+</div>
+<!-- Abstract Deco -->
+<div class="absolute -top-10 -right-10 w-48 h-48 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</section>
+<!-- Bento Grid Solutions -->
+<section class="px-8 py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-4xl font-extrabold font-headline tracking-tight text-on-background">Engineered for Reliability</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Scalable solutions tailored to your business infrastructure, ensuring zero latency and maximum throughput.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Leased Lines -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-full bg-surface-container-lowest p-12 transition-all hover:translate-y-[-8px]">
+<div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+<div class="flex-1 space-y-6">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">fiber_smart_record</span>
+</div>
+<h3 class="text-3xl font-bold font-headline">Dedicated Leased Lines</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                    1:1 symmetric connectivity with guaranteed bandwidth. Ideal for large enterprises requiring secure, heavy-duty data transfer and high-frequency trading.
+                                </p>
+<ul class="space-y-3 font-medium">
+<li class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-xl">check_circle</span> Up to 10 Gbps speeds
+                                    </li>
+<li class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-xl">check_circle</span> 24/7 Premium NOC support
+                                    </li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 aspect-video rounded-full overflow-hidden shadow-xl">
+<img alt="Server Room" class="w-full h-full object-cover" data-alt="Professional data center server room with blue ambient lighting and neatly organized fiber optic cables representing enterprise connectivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7RM-LQlXZpA0PBk35RW6fBnb2JdtuXKJ6y786rt5yxttouwDfBhfv7SCjsn2TkkPlOWvX6YRG0zvbslFVJ5kiKmp_0U8N_jjZP-PbtwcGU4-kQvGEJ3-W_ryWGC2FMN-H93ZnJ6CK_TRgLwDNBtsEpkHkWzxVUtEdtmw_VN1vAsG8pFV9_0efX_emHWwLgsrrxi8LcTYZGRMM2OGHb70j03I6-jdLodCqu9szNdopNicrWjR9ZA8tu9gk8p6H7INdBg3emoySYnE"/>
+</div>
+</div>
+</div>
+<!-- SME Broadband -->
+<div class="bg-gradient-to-br from-surface-container-lowest to-surface-container p-10 rounded-full transition-all hover:translate-y-[-8px]">
+<div class="space-y-6">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container/10 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">business_center</span>
+</div>
+<h3 class="text-2xl font-bold font-headline">SME Office Broadband</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                High-speed fiber broadband designed for small to medium teams. Reliable, fast, and cost-effective connectivity.
+                            </p>
+<div class="pt-4">
+<span class="text-sm font-bold uppercase tracking-widest text-primary">Starts from</span>
+<div class="text-4xl font-extrabold font-headline text-on-background mt-1">$149<span class="text-lg text-on-surface-variant font-medium">/mo</span></div>
+</div>
+<button class="w-full py-4 rounded-full border-2 border-outline-variant hover:border-primary hover:text-primary font-bold transition-all">Explore SME Plans</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quote Lead Gen Form Section -->
+<section class="px-8 py-24">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-8">
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-on-background">Custom Connectivity for <span class="text-tertiary-container underline decoration-wavy underline-offset-8">Unique Business Needs</span>.</h2>
+<p class="text-xl text-on-surface-variant leading-relaxed">Our enterprise consultants work with you to design a network infrastructure that grows with your business. Get a tailor-made quote today.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex items-start gap-4">
+<div class="p-3 rounded-full bg-secondary-fixed text-primary">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Priority Support</h4>
+<p class="text-sm text-on-surface-variant">Dedicated account manager for your business.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-3 rounded-full bg-secondary-fixed text-primary">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Managed Security</h4>
+<p class="text-sm text-on-surface-variant">Built-in firewall and threat protection.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 rounded-full shadow-lg border border-outline-variant/10">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-2">Full Name</label>
+<input class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 focus:ring-2 focus:ring-primary shadow-sm" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-2">Work Email</label>
+<input class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 focus:ring-2 focus:ring-primary shadow-sm" placeholder="john@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-2">Company Name</label>
+<input class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 focus:ring-2 focus:ring-primary shadow-sm" placeholder="GSurf Enterprises" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-2">Requirement Type</label>
+<select class="w-full bg-surface-container-lowest border-0 rounded-full px-6 py-4 focus:ring-2 focus:ring-primary shadow-sm appearance-none">
+<option>SME Broadband</option>
+<option>Dedicated Leased Line</option>
+<option>Managed Wi-Fi Solutions</option>
+<option>Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-2">Additional Details</label>
+<textarea class="w-full bg-surface-container-lowest border-0 rounded-[24px] px-6 py-4 focus:ring-2 focus:ring-primary shadow-sm" placeholder="Tell us about your team size and office locations..." rows="3"></textarea>
+</div>
+<button class="w-full bg-tertiary-container text-on-tertiary py-5 rounded-full font-headline font-bold text-lg hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-tertiary-container/20" type="submit">
+                            Request My Custom Quote
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-slate-50 dark:bg-slate-900 tonal-shift-from-surface transition-all opacity-80 hover:opacity-100 font-['Inter'] text-sm text-slate-500 dark:text-slate-400">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100">GSurf</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Legal</a>
+<a class="text-slate-500 hover:text-blue-600 hover:underline transition-all" href="#">Contact Us</a>
+</div>
+<div class="text-center md:text-left">
+        © 2024 GSurf Velocity Fiber. All rights reserved.
+    </div>
+</div>
+</footer>
+```</body></html>

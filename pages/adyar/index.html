@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GSurf Fiber Adyar | Hyper-local Connectivity</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#505d84",
+                        "secondary-container": "#c6d3ff",
+                        "outline-variant": "#c1c6d3",
+                        "on-primary-fixed": "#001c3b",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#0a1a3c",
+                        "primary-container": "#0061b4",
+                        "on-secondary-fixed-variant": "#38466a",
+                        "surface-container-highest": "#dae2ff",
+                        "outline": "#727783",
+                        "on-surface-variant": "#414752",
+                        "surface-variant": "#dae2ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#b23300",
+                        "surface-dim": "#ced9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#3a0b00",
+                        "tertiary-fixed": "#ffdbd0",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-background": "#0a1a3c",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2ff",
+                        "on-secondary-container": "#4d5a81",
+                        "tertiary": "#892500",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffd2c5",
+                        "on-tertiary-fixed-variant": "#852400",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed": "#d5e3ff",
+                        "surface-container": "#eaedff",
+                        "on-surface": "#0a1a3c",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#caddff",
+                        "surface-tint": "#005fb0",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-surface": "#212f53",
+                        "surface": "#faf8ff",
+                        "primary": "#00498a",
+                        "background": "#faf8ff",
+                        "secondary-fixed-dim": "#b8c5f1",
+                        "inverse-primary": "#a6c8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { background: rgba(250, 248, 255, 0.8); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
+<nav class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-50">GSurf</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors duration-300" href="#">Fiber Plans</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Business</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Coverage</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 font-medium px-4 py-2 scale-95 active:scale-90 transition-transform">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold scale-95 active:scale-90 transition-transform hover:shadow-lg">Get Started</button>
+</div>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed text-primary font-medium text-xs mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                        NOW LIVE IN ADYAR
+                    </div>
+<h1 class="text-5xl md:text-7xl font-extrabold text-on-background leading-[1.1] mb-6 tracking-tight">
+                        GSurf Fiber is now live in Adyar
+                    </h1>
+<p class="text-lg text-on-surface-variant mb-8 max-w-lg leading-relaxed">
+                        Experience lightning-fast local connectivity designed for the heart of South Chennai. Reliable, high-speed fiber internet for your home and office.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all">Get GSurf Today</button>
+<button class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-[0_20px_40px_rgba(10,26,60,0.06)] hover:bg-surface-container transition-all">View All Plans</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/10 rounded-[2rem] blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<img alt="Modern workspace in Adyar" class="relative rounded-[2rem] shadow-2xl w-full object-cover aspect-[4/3]" data-alt="Modern home interior in Adyar Chennai with sleek electronics and warm ambient lighting through large windows at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDY_nJf58091-Z8Pi_Iaf1BeiRZUXa9AqpV9ayefR0xsFR7V_09m4VPN9kqlqOxhivbLmz8Am7UsVNjwAu5czkPmC0wdiJSZ31KYd4At-N3SahHlvUDqeuOq9i3-eR_cl6jAHWV56Oy2jLk28IWmVYmwMrRapdDphhwPnel66xXtg1QraLLWnLOoGTZDRZs17gL3v97Rk8Q8btpcEOQS_WggolE-lvDNNCOknejvpNdTjqtYx-grxruP6Ic57Tgc48p9rwzRynPY"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Local Network Status -->
+<section class="py-12 bg-surface-container">
+<div class="max-w-7xl mx-auto px-6">
+<div class="bg-surface-container-lowest p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h3 class="font-bold text-xl text-on-background">Network Status: Active &amp; Optimised</h3>
+<p class="text-on-surface-variant">Gandhi Nagar, Kasturba Nagar, and Besant Avenue</p>
+</div>
+</div>
+<div class="flex items-center gap-8 border-l border-outline-variant/15 pl-8 hidden md:flex">
+<div>
+<p class="text-xs font-bold text-primary tracking-widest uppercase">Latency</p>
+<p class="text-2xl font-black text-on-background">4ms</p>
+</div>
+<div>
+<p class="text-xs font-bold text-primary tracking-widest uppercase">Uptime</p>
+<p class="text-2xl font-black text-on-background">99.9%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Neighborhood Benefits (Bento Style) -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-on-background mb-4">Built for Adyar</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">We don't just serve Chennai; we live in Adyar. Our local infrastructure is optimized for your street.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-low p-10 rounded-[2rem] flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="bolt">bolt</span>
+<h3 class="text-3xl font-bold text-on-background mb-4">Hyper-Fast Installation</h3>
+<p class="text-lg text-on-surface-variant max-w-sm mb-8">Adyar-specific installation time: <strong>Within 12 hours</strong> of your request. No more waiting weeks for fiber.</p>
+</div>
+<div class="bg-primary/5 p-4 rounded-xl inline-block w-fit relative z-10">
+<span class="text-primary font-bold">Guaranteed same-day setup</span>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[20rem]" data-icon="speed">speed</span>
+</div>
+</div>
+<div class="bg-primary p-10 rounded-[2rem] text-on-primary flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="support_agent">support_agent</span>
+<h3 class="text-3xl font-bold mb-4">Local Tech Team</h3>
+<p class="text-blue-100/80 mb-8">Based near Adyar Bus Depot. We are just 5 minutes away if you need us.</p>
+</div>
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a friendly customer support representative" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA33T22aMF0ao9CGjNphH4xlW9rvWHy2WIjHEBbOQVeXIfb9IbV-yYH7eYkPBooQVhrq9q898GcH57reF6F0fb1gPhEdIbFzZPCDoWhhbigbPlCAF7FrEugxnGyz3OZA3dqxWlJwqd1bV9RItjKWad5e_BLQ5smkRy4vly6q_UNWiOC1QbcEnAUbB7Mbjhy49XB3v8VQk0kRzln1HSezy5eKUGEzhbM5MViNJOllDCxDG1pfD87LwBSoHYexkdaBZVEU7pGtDOD3uk"/>
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a professional technical support team member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR8GGqGfUf1W4-SxME4ann1VCU-rgIcpcCJhVOehJgxHi6_kBE97LfW_sbsy4K9GdDaBs1-mye9-nec-6VWD2_T49i2GLOKZrV8QXPsEok-t90FiH4oyC-VYf7Rp6JT5xoekG4XhbyGAMZDqII6O4tiUuIAYLhgA71M2P_RrFX7yYP03MYjeV-a-YoGgqiZQbMAv6bgz7CLNwOUrGPK_N09YAovH2J1kLwOtdwzkhywlw0ySLLvFxpG2_c1PrAX6FC1PpFtzpFPHQ"/>
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a smiling local network engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMpsi_ZzZyEz0ytjqzcnjET4Tvf1peaccxmaJknOJswnUoRNZI4JaqDjgq3I7c6dbP6iAmNBHq9gEAYm0rVzMobsXgixc8z8LYI3V79ublxYdlOvbhJZW-Zqwp953kQGS9zqtXasyBXFj4saFzaQ1EAEN1ufUMmGobpcr9UxcIB8QxmhicyfcV0PZQK-F6Pse5w1mrXSWcaiq4ZHEVkw_GaDEXglUlAvbEfBj-if4QkmOKMc5cgjQAw8nMsfMZAn0zTFpcmC_N9aU"/>
+</div>
+</div>
+<div class="bg-surface-container-highest p-10 rounded-[2rem] flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="groups">groups</span>
+<h3 class="text-3xl font-bold text-on-background mb-4">500+ Homes</h3>
+<p class="text-on-surface-variant">Join 500+ homes in Adyar already on GSurf. The most trusted name in Gandhi Nagar.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                        Read Local Reviews <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="md:col-span-2 bg-tertiary-container/10 p-10 rounded-[2rem] border-2 border-tertiary-container/20">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<h3 class="text-3xl font-bold text-on-background mb-2">Neighborhood Proof</h3>
+<p class="text-on-surface-variant italic">"Switched from a national ISP to GSurf last month. The speed in Kasturba Nagar is unbelievable, and the setup was done before my lunch break!"</p>
+<p class="mt-4 font-bold text-on-background">— Rajesh K., Kasturba Nagar Resident</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center">
+<p class="text-sm font-bold text-primary mb-1 uppercase tracking-tighter">Avg Speed</p>
+<p class="text-5xl font-black text-on-background tracking-tighter">482<span class="text-lg">Mbps</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Neighborhood Plans -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-on-background mb-4">Most Popular in Adyar</h2>
+<p class="text-on-surface-variant">Fiber plans tailored for working professionals and large families.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Standard Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col">
+<h3 class="text-xl font-bold text-on-background mb-2">Basic Fiber</h3>
+<p class="text-on-surface-variant text-sm mb-6">Perfect for solo users</p>
+<div class="mb-8">
+<span class="text-4xl font-black text-on-background">₹599</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> 100 Mbps Speed
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Unlimited Data
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-primary text-primary font-bold hover:bg-primary/5 transition-all">Select Plan</button>
+</div>
+<!-- Featured Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col ring-4 ring-primary relative scale-105 shadow-2xl">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Best Seller</div>
+<h3 class="text-xl font-bold text-on-background mb-2">Power User</h3>
+<p class="text-on-surface-variant text-sm mb-6">Optimized for Adyar Home Offices</p>
+<div class="mb-8">
+<span class="text-4xl font-black text-on-background">₹999</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> 300 Mbps Speed
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Priority Support
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Free Static IP
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-bold shadow-lg hover:shadow-primary/30 transition-all">Get Started</button>
+</div>
+<!-- Pro Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col">
+<h3 class="text-xl font-bold text-on-background mb-2">Extreme Fiber</h3>
+<p class="text-on-surface-variant text-sm mb-6">For large tech families</p>
+<div class="mb-8">
+<span class="text-4xl font-black text-on-background">₹1,499</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> 1 Gbps Speed
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Free Dual-Band Router
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-primary text-primary font-bold hover:bg-primary/5 transition-all">Select Plan</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Map & Coverage -->
+<section class="py-24 bg-surface overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-bold text-on-background mb-6 tracking-tight">Our Coverage in Adyar</h2>
+<p class="text-on-surface-variant mb-8 text-lg">We are expanding street by street. Currently delivering 100% fiber availability to over 85% of Adyar's residential lanes.</p>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="streetview">streetview</span>
+<div>
+<p class="font-bold text-on-background">Main Corridors</p>
+<p class="text-sm text-on-surface-variant">LB Road, Sardar Patel Road, and Canal Bank Road.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="home">home</span>
+<div>
+<p class="font-bold text-on-background">Residential Hubs</p>
+<p class="text-sm text-on-surface-variant">Gandhi Nagar (I-IV Main Road), Kasturba Nagar, Parameswari Nagar.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square bg-surface-container rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Stylized map view of Adyar Chennai city streets with neon blue fiber lines highlighting network coverage zones" data-location="Adyar, Chennai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR-VkIvj3JaALqWXd4xMxmB3-n_GYiikf5a72Weueq3RJdUV_A357gYuTuk-FMBF6Ba4ZlnDHsraxVGnz7ggHS0Xd0Arlurb-IJ_8vo3gzqKPc1cmV9Z8iSEwbK955GMlQWvZR1zXCEcxUI9gLAIYHVAhvEJTC-r6aPgrep_ssRmphRjCFLpNTQM1tGYcksUPY-WDBQglcBgpHlSSOxCH2mmGJDlqT2fWCPhRQNmQXt0nqpID7J7CxWvUrV6IzhyBTnGbD4Bc67Wk"/>
+<div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+<!-- Pulse Dots -->
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full animate-ping opacity-75"></div>
+<div class="absolute top-1/2 left-2/3 w-4 h-4 bg-primary rounded-full animate-ping opacity-75"></div>
+<div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-primary rounded-full animate-ping opacity-75"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="py-24 bg-surface-container-highest">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-4xl md:text-5xl font-black text-on-background mb-8 tracking-tight">Ready for faster fiber?</h2>
+<p class="text-lg text-on-surface-variant mb-12">Enter your address to see if your street is eligible for 12-hour installation.</p>
+<div class="bg-surface-container-lowest p-2 rounded-2xl flex flex-col md:flex-row gap-2 shadow-xl">
+<input class="flex-1 bg-transparent border-none focus:ring-0 px-6 py-4 text-on-background font-medium" placeholder="Enter your street name in Adyar..." type="text"/>
+<button class="bg-tertiary-container text-on-tertiary px-10 py-4 rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                    Check Availability <span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+<p class="mt-6 text-sm text-on-surface-variant">Looking for business plans? <a class="text-primary font-bold underline" href="#">Click here</a></p>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 w-full py-12 mt-auto">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100">GSurf</div>
+<p class="font-['Inter'] text-sm text-slate-500 dark:text-slate-400">Connecting Adyar with the fastest fiber network.</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Legal</a>
+<a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Contact Us</a>
+</nav>
+<div class="font-['Inter'] text-sm text-slate-500 dark:text-slate-400">
+                © 2024 GSurf Velocity Fiber. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
