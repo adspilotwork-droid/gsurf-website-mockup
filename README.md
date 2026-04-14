@@ -1,70 +1,77 @@
-# GSurf Website — Revamped Design
-
-This repository contains the redesigned HTML pages for the GSurf fiber broadband website.
-
----
+# GSurf Website — Revamped Design (Linked & Ready)
 
 ## 📁 Folder Structure
 
 ```
-gsurf-website/
+gsurf-website-v2/
 │
-├── index.html                    ← Homepage (Root)
+├── index.html                        ← Homepage
 │
-├── pages/
-│   ├── about.html                ← About Us
-│   ├── contact.html              ← Contact Us
-│   ├── coverage.html             ← Coverage Page
-│   ├── business.html             ← Business Page
-│   ├── plans.html                ← Common Plans Page
-│   ├── sitemap.html              ← HTML Sitemap
-│   │
-│   ├── chennai/
-│   │   ├── index.html            ← Chennai City HyperLocal Page
-│   │   └── plans.html            ← Chennai Plans Page
-│   │
-│   ├── adyar/
-│   │   └── index.html            ← Adyar Area Drilldown Page
-│   │
-│   └── t-nagar/
-│       └── index.html            ← T. Nagar Area Drilldown Page
+└── pages/
+    ├── about.html                    ← About Us
+    ├── contact.html                  ← Contact / Support
+    ├── coverage.html                 ← Coverage Map
+    ├── business.html                 ← Business Solutions
+    ├── plans.html                    ← Common Plans
+    ├── sitemap.html                  ← HTML Sitemap
+    │
+    ├── chennai/
+    │   ├── index.html                ← Chennai City HyperLocal Page
+    │   └── plans.html                ← Chennai-Specific Plans
+    │
+    ├── adyar/
+    │   └── index.html                ← Adyar Area Drilldown
+    │
+    └── t-nagar/
+        └── index.html                ← T. Nagar Area Drilldown
 ```
 
----
-
-## 🧭 Page Hierarchy (How pages are connected)
+## 🧭 Page Hierarchy
 
 ```
-Homepage (index.html)
+Homepage
 │
-├── About Us
-├── Contact Us
-├── Coverage
+├── Fiber Plans (Common Plans)
 ├── Business
-├── Plans (Common)
+├── Coverage
+├── Support / Contact
+├── About Us
 ├── Sitemap
 │
-└── Chennai (City Level)
+└── Chennai  ← City hub
     ├── Chennai Plans
-    ├── Adyar (Area Level)
-    └── T. Nagar (Area Level)
+    ├── Adyar
+    └── T. Nagar
 ```
 
+## ✅ What Was Fixed
+
+- **Logo** — GSurf brand image applied in header & footer on all 11 pages
+- **Nav bar** — Fully consistent across every page; all links working
+- **Footer** — Consistent across every page with full nav links including Chennai, Adyar, T. Nagar
+- **Mobile menu** — Hamburger toggle working on all pages
+- **Relative paths** — Correct for every page depth (root / pages / pages/city)
+
+## 📌 Notes for Developer
+
+- All pages are static HTML — no backend needed
+- Tailwind CSS loaded via CDN — no build step required
+- Logo is embedded as base64 — no separate image file needed
+- To add a new city (e.g. Velachery): copy `pages/adyar/` → `pages/velachery/`, update content, add link to Chennai page and footer
+- Images in page body still use Google-hosted URLs — replace with actual CDN/brand assets before go-live
+
+## 🚀 Push to GitHub Pages
+
+```bash
+git init
+git add .
+git commit -m "Revamped design — linked, logo fixed"
+git branch -M main
+git remote add origin https://github.com/YOUR_ORG/gsurf-website.git
+git push -u origin main
+```
+
+Then enable GitHub Pages from repo Settings → Pages → Deploy from `main` branch root.
+
 ---
-
-## 📌 Notes
-
-- All pages are **static HTML** — no backend or database required.
-- Styling uses **Tailwind CSS** loaded via CDN — no separate CSS files needed.
-- To add more city/area pages, follow the same folder pattern: `pages/{city-name}/index.html`
-- Images currently use hosted URLs (Google-hosted). These should be replaced with actual brand assets before going live.
-
----
-
-## 🚀 Viewing Locally
-
-Just open `index.html` in any browser. All pages work independently.
-
----
-
-*Prepared for: GSurf Fiber Connectivity*
+*GSurf Velocity Fiber — Revamp v2*
