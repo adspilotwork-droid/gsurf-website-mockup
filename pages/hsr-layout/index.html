@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 
-<html class="light" lang="en"><head>
+<html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About Us | GSurf Fiber Connectivity</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<title>GSurf Fiber HSR Layout | Hyper-local Connectivity</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "outline": "#727783",
-                        "secondary-fixed-dim": "#b8c5f1",
-                        "on-error-container": "#93000a",
-                        "surface-container-high": "#e2e7ff",
-                        "primary-container": "#0061b4",
-                        "on-secondary-fixed": "#0a1a3c",
-                        "on-primary": "#ffffff",
-                        "surface-container-highest": "#dae2ff",
-                        "tertiary-fixed": "#ffdbd0",
-                        "on-secondary-container": "#4d5a81",
-                        "error": "#ba1a1a",
-                        "outline-variant": "#c1c6d3",
-                        "surface": "#faf8ff",
-                        "tertiary-fixed-dim": "#ffb59e",
-                        "tertiary": "#892500",
-                        "inverse-primary": "#a6c8ff",
-                        "on-primary-container": "#caddff",
                         "secondary": "#505d84",
-                        "surface-container": "#eaedff",
-                        "primary": "#00498a",
-                        "on-background": "#0a1a3c",
-                        "primary-fixed": "#d5e3ff",
-                        "on-secondary-fixed-variant": "#38466a",
-                        "inverse-on-surface": "#eef0ff",
-                        "error-container": "#ffdad6",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-fixed-variant": "#852400",
                         "secondary-container": "#c6d3ff",
-                        "surface-dim": "#ced9ff",
-                        "background": "#faf8ff",
-                        "tertiary-container": "#b23300",
-                        "surface-bright": "#faf8ff",
-                        "primary-fixed-dim": "#a6c8ff",
-                        "on-tertiary-fixed": "#3a0b00",
-                        "inverse-surface": "#212f53",
+                        "outline-variant": "#c1c6d3",
                         "on-primary-fixed": "#001c3b",
-                        "surface-variant": "#dae2ff",
-                        "on-surface": "#0a1a3c",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "surface-bright": "#faf8ff",
                         "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#0a1a3c",
+                        "primary-container": "#0061b4",
+                        "on-secondary-fixed-variant": "#38466a",
+                        "surface-container-highest": "#dae2ff",
+                        "outline": "#727783",
                         "on-surface-variant": "#414752",
-                        "on-error": "#ffffff",
-                        "secondary-fixed": "#dae2ff",
-                        "surface-container-low": "#f2f3ff",
-                        "surface-tint": "#005fb0",
-                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dae2ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#b23300",
+                        "surface-dim": "#ced9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#3a0b00",
+                        "tertiary-fixed": "#ffdbd0",
+                        "primary-fixed-dim": "#a6c8ff",
                         "on-primary-fixed-variant": "#004786",
-                        "on-tertiary-container": "#ffd2c5"
+                        "on-background": "#0a1a3c",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2ff",
+                        "on-secondary-container": "#4d5a81",
+                        "tertiary": "#892500",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffd2c5",
+                        "on-tertiary-fixed-variant": "#852400",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed": "#d5e3ff",
+                        "surface-container": "#eaedff",
+                        "on-surface": "#0a1a3c",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#caddff",
+                        "surface-tint": "#005fb0",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-surface": "#212f53",
+                        "surface": "#faf8ff",
+                        "primary": "#00498a",
+                        "background": "#faf8ff",
+                        "secondary-fixed-dim": "#b8c5f1",
+                        "inverse-primary": "#a6c8ff"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -77,41 +79,38 @@
         }
     </script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .bg-glass {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { background: rgba(250, 248, 255, 0.8); backdrop-filter: blur(12px); }
     </style>
 </head>
-<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar -->
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(10,26,60,0.06)]">
 <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
-  <a href="../index.html" class="flex items-center">
+  <a href="../../index.html" class="flex items-center">
     <img src="data:image/png;base64,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" alt="GSurf Logo" style="height:44px;width:auto;" />
   </a>
   <nav class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/plans.html">Fiber Plans</a>
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/business.html">Business</a>
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/coverage.html">Coverage</a>
-    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../pages/contact.html">Support</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../../pages/plans.html">Fiber Plans</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../../pages/business.html">Business</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../../pages/coverage.html">Coverage</a>
+    <a class="text-slate-600 hover:text-blue-800 transition-colors duration-300" href="../../pages/contact.html">Support</a>
   </nav>
   <div class="flex items-center space-x-4">
     <button class="text-slate-600 font-bold text-sm">Login</button>
-    <a href="../pages/plans.html" class="bg-gradient-to-br from-[#00498a] to-[#0061b4] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transition-all">Get Started</a>
+    <a href="../../pages/plans.html" class="bg-gradient-to-br from-[#00498a] to-[#0061b4] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transition-all">Get Started</a>
   </div>
   <button class="md:hidden" id="mobile-menu-btn">
     <span class="material-symbols-outlined text-[#00498a]">menu</span>
   </button>
 </div>
 <div class="md:hidden hidden bg-white border-t border-slate-100 px-8 py-4 space-y-3" id="mobile-menu">
-  <a class="block font-bold text-slate-600 py-2" href="../pages/plans.html">Fiber Plans</a>
-  <a class="block font-bold text-slate-600 py-2" href="../pages/business.html">Business</a>
-  <a class="block font-bold text-slate-600 py-2" href="../pages/coverage.html">Coverage</a>
-  <a class="block font-bold text-slate-600 py-2" href="../pages/contact.html">Support</a>
+  <a class="block font-bold text-slate-600 py-2" href="../../pages/plans.html">Fiber Plans</a>
+  <a class="block font-bold text-slate-600 py-2" href="../../pages/business.html">Business</a>
+  <a class="block font-bold text-slate-600 py-2" href="../../pages/coverage.html">Coverage</a>
+  <a class="block font-bold text-slate-600 py-2" href="../../pages/contact.html">Support</a>
 </div>
 <script>
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -119,141 +118,254 @@
   });
 </script>
 </header>
-<main class="pt-32">
-<!-- Hero Section: The Fluid Conduit -->
-<section class="max-w-7xl mx-auto px-8 mb-24">
-<div class="grid lg:grid-cols-2 gap-16 items-center">
-<div class="space-y-6">
-<span class="inline-block py-1 px-3 bg-secondary-container text-on-secondary-container rounded-full text-xs font-semibold tracking-widest uppercase font-label">Our Mission</span>
-<h1 class="text-6xl md:text-7xl font-headline font-extrabold text-on-background leading-[1.1] tracking-tighter">
-                        About Us
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed text-primary font-medium text-xs mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                        NOW LIVE IN HSR LAYOUT
+                    </div>
+<h1 class="text-5xl md:text-7xl font-extrabold text-on-background leading-[1.1] mb-6 tracking-tight">
+                        GSurf Fiber is now live in HSR Layout
                     </h1>
-<p class="text-2xl font-headline font-semibold text-primary">We Provide Unlimited Network For You</p>
-<p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
-                        At GSurf, we believe that high-speed connectivity is a fundamental right, not a luxury. Our mission is to bridge the digital divide by deploying the world's most resilient fiber-optic infrastructure to every doorstep.
+<p class="text-lg text-on-surface-variant mb-8 max-w-lg leading-relaxed">
+                        Experience lightning-fast local connectivity designed for the heart of South Bangalore. Reliable, high-speed fiber internet for your home and office.
                     </p>
-<div class="flex gap-4 pt-4">
-<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold hover:shadow-xl transition-all">Explore Plans</button>
-<button class="border border-outline-variant/30 text-primary px-8 py-4 rounded-full font-bold hover:bg-surface-container transition-all">Our Story</button>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all">Get GSurf Today</button>
+<button class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-[0_20px_40px_rgba(10,26,60,0.06)] hover:bg-surface-container transition-all">View All Plans</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/10 rounded-[2rem] blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<img alt="Modern workspace in HSR Layout" class="relative rounded-[2rem] shadow-2xl w-full object-cover aspect-[4/3]" data-alt="Modern home interior in HSR Layout Bangalore with sleek electronics and warm ambient lighting through large windows at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDY_nJf58091-Z8Pi_Iaf1BeiRZUXa9AqpV9ayefR0xsFR7V_09m4VPN9kqlqOxhivbLmz8Am7UsVNjwAu5czkPmC0wdiJSZ31KYd4At-N3SahHlvUDqeuOq9i3-eR_cl6jAHWV56Oy2jLk28IWmVYmwMrRapdDphhwPnel66xXtg1QraLLWnLOoGTZDRZs17gL3v97Rk8Q8btpcEOQS_WggolE-lvDNNCOknejvpNdTjqtYx-grxruP6Ic57Tgc48p9rwzRynPY"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Local Network Status -->
+<section class="py-12 bg-surface-container">
+<div class="max-w-7xl mx-auto px-6">
+<div class="bg-surface-container-lowest p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h3 class="font-bold text-xl text-on-background">Network Status: Active &amp; Optimised</h3>
+<p class="text-on-surface-variant">Gandhi Nagar, Kasturba Nagar, and Besant Avenue</p>
+</div>
+</div>
+<div class="flex items-center gap-8 border-l border-outline-variant/15 pl-8 hidden md:flex">
+<div>
+<p class="text-xs font-bold text-primary tracking-widest uppercase">Latency</p>
+<p class="text-2xl font-black text-on-background">4ms</p>
+</div>
+<div>
+<p class="text-xs font-bold text-primary tracking-widest uppercase">Uptime</p>
+<p class="text-2xl font-black text-on-background">99.9%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Neighborhood Benefits (Bento Style) -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-on-background mb-4">Built for HSR Layout</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">We don't just serve Bangalore; we live in HSR Layout. Our local infrastructure is optimized for every sector.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-low p-10 rounded-[2rem] flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="bolt">bolt</span>
+<h3 class="text-3xl font-bold text-on-background mb-4">Hyper-Fast Installation</h3>
+<p class="text-lg text-on-surface-variant max-w-sm mb-8">HSR Layout-specific installation time: <strong>Within 12 hours</strong> of your request. No more waiting weeks for fiber.</p>
+</div>
+<div class="bg-primary/5 p-4 rounded-xl inline-block w-fit relative z-10">
+<span class="text-primary font-bold">Guaranteed same-day setup</span>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[20rem]" data-icon="speed">speed</span>
+</div>
+</div>
+<div class="bg-primary p-10 rounded-[2rem] text-on-primary flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="support_agent">support_agent</span>
+<h3 class="text-3xl font-bold mb-4">Local Tech Team</h3>
+<p class="text-blue-100/80 mb-8">Based near HSR Layout BDA Complex. We are just 5 minutes away if you need us.</p>
+</div>
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a friendly customer support representative" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA33T22aMF0ao9CGjNphH4xlW9rvWHy2WIjHEBbOQVeXIfb9IbV-yYH7eYkPBooQVhrq9q898GcH57reF6F0fb1gPhEdIbFzZPCDoWhhbigbPlCAF7FrEugxnGyz3OZA3dqxWlJwqd1bV9RItjKWad5e_BLQ5smkRy4vly6q_UNWiOC1QbcEnAUbB7Mbjhy49XB3v8VQk0kRzln1HSezy5eKUGEzhbM5MViNJOllDCxDG1pfD87LwBSoHYexkdaBZVEU7pGtDOD3uk"/>
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a professional technical support team member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR8GGqGfUf1W4-SxME4ann1VCU-rgIcpcCJhVOehJgxHi6_kBE97LfW_sbsy4K9GdDaBs1-mye9-nec-6VWD2_T49i2GLOKZrV8QXPsEok-t90FiH4oyC-VYf7Rp6JT5xoekG4XhbyGAMZDqII6O4tiUuIAYLhgA71M2P_RrFX7yYP03MYjeV-a-YoGgqiZQbMAv6bgz7CLNwOUrGPK_N09YAovH2J1kLwOtdwzkhywlw0ySLLvFxpG2_c1PrAX6FC1PpFtzpFPHQ"/>
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a smiling local network engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMpsi_ZzZyEz0ytjqzcnjET4Tvf1peaccxmaJknOJswnUoRNZI4JaqDjgq3I7c6dbP6iAmNBHq9gEAYm0rVzMobsXgixc8z8LYI3V79ublxYdlOvbhJZW-Zqwp953kQGS9zqtXasyBXFj4saFzaQ1EAEN1ufUMmGobpcr9UxcIB8QxmhicyfcV0PZQK-F6Pse5w1mrXSWcaiq4ZHEVkw_GaDEXglUlAvbEfBj-if4QkmOKMc5cgjQAw8nMsfMZAn0zTFpcmC_N9aU"/>
+</div>
+</div>
+<div class="bg-surface-container-highest p-10 rounded-[2rem] flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="groups">groups</span>
+<h3 class="text-3xl font-bold text-on-background mb-4">800+ Homes</h3>
+<p class="text-on-surface-variant">Join 800+ homes in HSR Layout already on GSurf. The most trusted name in Sectors 1, 2, 3 & 4.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                        Read Local Reviews <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="md:col-span-2 bg-tertiary-container/10 p-10 rounded-[2rem] border-2 border-tertiary-container/20">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<h3 class="text-3xl font-bold text-on-background mb-2">Neighborhood Proof</h3>
+<p class="text-on-surface-variant italic">"Switched from a national ISP to GSurf last month. The speed in Kasturba Nagar is unbelievable, and the setup was done before my lunch break!"</p>
+<p class="mt-4 font-bold text-on-background">— Rajesh K., Kasturba Nagar Resident</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center">
+<p class="text-sm font-bold text-primary mb-1 uppercase tracking-tighter">Avg Speed</p>
+<p class="text-5xl font-black text-on-background tracking-tighter">482<span class="text-lg">Mbps</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Neighborhood Plans -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-on-background mb-4">Most Popular in HSR Layout</h2>
+<p class="text-on-surface-variant">Fiber plans tailored for working professionals and large families.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Standard Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col">
+<h3 class="text-xl font-bold text-on-background mb-2">Basic Fiber</h3>
+<p class="text-on-surface-variant text-sm mb-6">Perfect for solo users</p>
+<div class="mb-8">
+<span class="text-4xl font-black text-on-background">₹599</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> 100 Mbps Speed
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Unlimited Data
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-primary text-primary font-bold hover:bg-primary/5 transition-all">Select Plan</button>
+</div>
+<!-- Featured Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col ring-4 ring-primary relative scale-105 shadow-2xl">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Best Seller</div>
+<h3 class="text-xl font-bold text-on-background mb-2">Power User</h3>
+<p class="text-on-surface-variant text-sm mb-6">Optimized for HSR Layout Home Offices</p>
+<div class="mb-8">
+<span class="text-4xl font-black text-on-background">₹999</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> 300 Mbps Speed
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Priority Support
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Free Static IP
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-bold shadow-lg hover:shadow-primary/30 transition-all">Get Started</button>
+</div>
+<!-- Pro Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col">
+<h3 class="text-xl font-bold text-on-background mb-2">Extreme Fiber</h3>
+<p class="text-on-surface-variant text-sm mb-6">For large tech families</p>
+<div class="mb-8">
+<span class="text-4xl font-black text-on-background">₹1,499</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> 1 Gbps Speed
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done">done</span> Free Dual-Band Router
+                        </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-primary text-primary font-bold hover:bg-primary/5 transition-all">Select Plan</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Map & Coverage -->
+<section class="py-24 bg-surface overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-bold text-on-background mb-6 tracking-tight">Our Coverage in HSR Layout</h2>
+<p class="text-on-surface-variant mb-8 text-lg">We are expanding street by street. Currently delivering 100% fiber availability to over 85% of HSR Layout's residential lanes.</p>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="streetview">streetview</span>
+<div>
+<p class="font-bold text-on-background">Main Corridors</p>
+<p class="text-sm text-on-surface-variant">LB Road, Sardar Patel Road, and Canal Bank Road.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="home">home</span>
+<div>
+<p class="font-bold text-on-background">Residential Hubs</p>
+<p class="text-sm text-on-surface-variant">Gandhi Nagar (I-IV Main Road), Kasturba Nagar, Parameswari Nagar.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="relative">
-<div class="absolute -top-10 -left-10 w-64 h-64 bg-primary-fixed-dim/30 rounded-full blur-3xl -z-10"></div>
-<div class="rounded-[2rem] overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
-<img alt="Digital Connectivity" class="w-full aspect-[4/5] object-cover" data-alt="Modern sleek data center with glowing blue neon fiber optic cables and server racks in a futuristic high-tech environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO88FmlcfoIM1yAqHlsx4Gn2VsZ9XK6m7Q3uNWgf9eZhsu8BkzydUYGygIermZX8yAbMaI83PRKGAtStQVBcuGx7QXChphCkJGzgpxMCOn7Bt3WqX08VVX_CI_R3Txt6xoDBsp8FjKPbDPp0AsUdSIoxqngId5SbvNAilkTnqSintzj46roDS8WHfxmCHM_L9u8BIM8SFlYHFFp8JadKZjPvoeO_H1vghxgvArKhguU6dvNbNU3vDP3gOKvILCrkhW1r2iHAevwLU"/>
-</div>
-<div class="absolute -bottom-8 -right-8 bg-surface-container-lowest p-8 rounded-2xl shadow-xl max-w-xs transform -rotate-2">
-<p class="font-headline font-bold text-3xl text-primary">100%</p>
-<p class="text-on-surface-variant font-medium">Fiber Optic Infrastructure</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Features Bento Grid -->
-<section class="bg-surface-container-low py-24">
-<div class="max-w-7xl mx-auto px-8">
-<div class="text-center mb-16 space-y-4">
-<h2 class="text-4xl font-headline font-bold tracking-tight text-on-background">Engineered for Performance</h2>
-<p class="text-on-surface-variant max-w-2xl mx-auto">We've reimagined the internet experience from the ground up, focusing on the three pillars of modern connectivity.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- High Speed Wi-Fi -->
-<div class="bg-surface-container-lowest p-10 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow group">
-<div class="w-16 h-16 rounded-full bg-secondary-fixed/50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="wifi">wifi</span>
-</div>
-<h3 class="text-2xl font-headline font-bold mb-4 text-on-background">High Speed Wi-Fi</h3>
-<p class="text-on-surface-variant leading-relaxed">Next-generation Wi-Fi 6 technology integrated into every router for seamless whole-home coverage.</p>
-</div>
-<!-- 99% Uptime -->
-<div class="bg-surface-container-lowest p-10 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow group">
-<div class="w-16 h-16 rounded-full bg-secondary-fixed/50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="update">update</span>
-</div>
-<h3 class="text-2xl font-headline font-bold mb-4 text-on-background">99.9% Uptime</h3>
-<p class="text-on-surface-variant leading-relaxed">Redundant network pathways and AI-driven monitoring ensure your connection stays live when it matters most.</p>
-</div>
-<!-- Speeds up to 1Gbps -->
-<div class="bg-surface-container-lowest p-10 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow group">
-<div class="w-16 h-16 rounded-full bg-secondary-fixed/50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="speed">speed</span>
-</div>
-<h3 class="text-2xl font-headline font-bold mb-4 text-on-background">Speeds up to 1Gbps</h3>
-<p class="text-on-surface-variant leading-relaxed">Experience true symmetrical speeds—download and upload at gigabit rates for gaming, streaming, and work.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Coverage Illustration Section -->
-<section class="max-w-7xl mx-auto px-8 py-24">
-<div class="bg-on-background rounded-[3rem] p-12 lg:p-20 relative overflow-hidden text-surface">
-<div class="absolute inset-0 opacity-10">
-<img class="w-full h-full object-cover" data-alt="Abstract world map made of glowing digital dots and lines representing a global fiber optic network over a dark background" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDllyAy8K1_Ds2_CJUN9cG9omRrt9JDZrRFFfcdA5-l9wpEuWaKSnKIoYugDvPvQGv666EAKmUbdJlZHF5AP--3nPFEWmNG07kpSXDUlCe1OhhbdCc9tgUdGDE_WElikEc1N2BGIGm5Dla6bahV_sMkUyOxsXUBajpPgsQT0wfoLaQSwzvBQxA4rlfDHFuHJDmAxAIZtaUXeMsiORDKO2aQy2xiH7tK-KFMav-KRt8StuH1P1ODLryIqDCZschf--KFUoKtq9eemg"/>
-</div>
-<div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-<div>
-<h2 class="text-4xl md:text-5xl font-headline font-extrabold mb-8 tracking-tight">Expanding the Horizon of Connectivity</h2>
-<div class="space-y-6">
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-surface text-xl" data-icon="location_on">location_on</span>
-</div>
-<div>
-<h4 class="text-xl font-bold mb-1">Massive Coverage</h4>
-<p class="text-surface-variant/80">Connecting over 2,000 cities with 50,000+ miles of laid fiber.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-surface text-xl" data-icon="public">public</span>
-</div>
-<div>
-<h4 class="text-xl font-bold mb-1">Global Backbone</h4>
-<p class="text-surface-variant/80">Direct peering with major content providers for lower latency.</p>
-</div>
-</div>
-</div>
-<div class="mt-12">
-<button class="bg-tertiary-container text-on-tertiary px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform">View Coverage Map</button>
-</div>
-</div>
-<div class="relative flex justify-center">
-<div class="w-full aspect-square bg-gradient-to-tr from-primary/20 to-primary-container/20 rounded-full p-8 border border-surface-variant/10">
-<img alt="Global Network Illustration" class="w-full h-full object-contain rounded-full shadow-2xl mix-blend-screen" data-alt="Close-up of a digital globe with glowing communication lines connecting major urban hubs at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu2blXCGJZQJWP7avvASosOZoZ1KDnCq_ib8Bz81vrO0lIsZWIKfzjygds_tX9ZzpdPcGo_Ba-MSK7F7NJ3No7qpuJs3kmn_c0gmUdm5pLBB3rkBbCZteQGZ6EYN9rSjAxE8Ykxuz950pWy59YjGKMO46Pg08shK2Few0qKaM7YQd5tbDrCgSTbxE8FURJA7cc9aYBtccSZI0XXZmTdSSSdTG_R498e70vUGyxeY7Af1wTDK0F90zMCyDv8QoblU-9ewkqMk4mqvE"/>
+<div class="aspect-square bg-surface-container rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Stylized map view of HSR Layout Chennai city streets with neon blue fiber lines highlighting network coverage zones" data-location="HSR Layout, Chennai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR-VkIvj3JaALqWXd4xMxmB3-n_GYiikf5a72Weueq3RJdUV_A357gYuTuk-FMBF6Ba4ZlnDHsraxVGnz7ggHS0Xd0Arlurb-IJ_8vo3gzqKPc1cmV9Z8iSEwbK955GMlQWvZR1zXCEcxUI9gLAIYHVAhvEJTC-r6aPgrep_ssRmphRjCFLpNTQM1tGYcksUPY-WDBQglcBgpHlSSOxCH2mmGJDlqT2fWCPhRQNmQXt0nqpID7J7CxWvUrV6IzhyBTnGbD4Bc67Wk"/>
+<div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+<!-- Pulse Dots -->
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full animate-ping opacity-75"></div>
+<div class="absolute top-1/2 left-2/3 w-4 h-4 bg-primary rounded-full animate-ping opacity-75"></div>
+<div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-primary rounded-full animate-ping opacity-75"></div>
 </div>
 </div>
 </div>
 </div>
 </section>
-</main>
-<!-- SideNavBar (Portal Quick Links) -->
-<aside class="hidden md:flex rounded-l-2xl fixed right-0 top-1/2 -translate-y-1/2 bg-[#ffffff] dark:bg-[#0a1a3c] shadow-2xl flex-col p-4 space-y-6 z-40 transition-transform hover:translate-x-[-4px]">
-<div class="flex flex-col items-center">
-<span class="material-symbols-outlined text-[#00498a] mb-1" data-icon="payments">payments</span>
-<span class="text-[10px] font-bold text-[#00498a] uppercase">Pay</span>
+<!-- Call to Action -->
+<section class="py-24 bg-surface-container-highest">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-4xl md:text-5xl font-black text-on-background mb-8 tracking-tight">Ready for faster fiber?</h2>
+<p class="text-lg text-on-surface-variant mb-12">Enter your address to see if your street is eligible for 12-hour installation.</p>
+<div class="bg-surface-container-lowest p-2 rounded-2xl flex flex-col md:flex-row gap-2 shadow-xl">
+<input class="flex-1 bg-transparent border-none focus:ring-0 px-6 py-4 text-on-background font-medium" placeholder="Enter your street name in HSR Layout..." type="text"/>
+<button class="bg-tertiary-container text-on-tertiary px-10 py-4 rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                    Check Availability <span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
 </div>
-<div class="w-8 h-[1px] bg-outline-variant/20 mx-auto"></div>
-<div class="flex flex-col items-center opacity-60">
-<span class="material-symbols-outlined text-[#414752]" data-icon="bolt">bolt</span>
-<span class="text-[10px] font-bold text-[#414752] uppercase">Boost</span>
+<p class="mt-6 text-sm text-on-surface-variant">Looking for business plans? <a class="text-primary font-bold underline" href="#">Click here</a></p>
 </div>
-</aside>
+</section>
 <!-- Footer -->
 <footer class="w-full py-12 mt-auto bg-slate-50 border-t border-slate-200">
 <div class="max-w-7xl mx-auto px-8">
   <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
-    <a href="../index.html" class="flex items-center">
+    <a href="../../index.html" class="flex items-center">
       <img src="data:image/png;base64,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" alt="GSurf Logo" style="height:44px;width:auto;" />
     </a>
     <nav class="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
-      <a class="hover:text-blue-600 transition-all" href="../pages/plans.html">Fiber Plans</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/business.html">Business</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/coverage.html">Coverage</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/bangalore/index.html">Bangalore</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/hsr-layout/index.html">HSR Layout</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/btm-layout/index.html">BTM Layout</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/about.html">About Us</a>
-      <a class="hover:text-blue-600 transition-all" href="../pages/contact.html">Contact</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/plans.html">Fiber Plans</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/business.html">Business</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/coverage.html">Coverage</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/bangalore/index.html">Bangalore</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/hsr-layout/index.html">HSR Layout</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/btm-layout/index.html">BTM Layout</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/about.html">About Us</a>
+      <a class="hover:text-blue-600 transition-all" href="../../pages/contact.html">Contact</a>
     </nav>
   </div>
   <div class="border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
